@@ -1,0 +1,32 @@
+@import "./scss/variables";
+@import "./scss/constants";
+
+*,
+html,
+body,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: $blackDark;
+    /*Oldbrowsers*/
+    background: -moz-linear-gradient(-45deg, $blackDark 0%, $red 100%);
+    /*FF3.6-15*/
+    background: -webkit-linear-gradient(-45deg, $blackDark 0%, $red 100%);
+    /*Chrome10-25,Safari5.1-6*/
+    background: linear-gradient(135deg, $blackDark 0%, $red 100%);
+    min-height: 100vh;
+    font-family: Roboto;
+}
+
+@import "./scss/navBar";
+
+.board {
+    width: 100%;
+}
+@import "./scss/routes";
+@import "./scss/panel";

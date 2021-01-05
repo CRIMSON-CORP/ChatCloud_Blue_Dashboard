@@ -1,0 +1,7 @@
+@import "./variables";
+.panel {
+    background: $blackDark;
+    padding: 50px;
+}
+
+@import "./panels/dashboard";

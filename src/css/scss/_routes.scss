@@ -1,0 +1,71 @@
+@import "./variables";
+.routes {
+    color: white;
+    ul.list-group {
+        border-radius: 0;
+        li.list-group-item {
+            border: none !important;
+            background: none;
+            padding: 0;
+        }
+
+        a {
+            margin-bottom: 32px;
+            color: white;
+        }
+    }
+
+    .r-i-c {
+        display: grid;
+        grid-template-columns: 8px 40px auto;
+        column-gap: 20px;
+        align-items: center;
+        cursor: pointer;
+
+        span {
+            background: $red;
+            width: 100%;
+            height: 100%;
+        }
+
+        h2 {
+            font-size: 20px;
+            font-weight: bold;
+        }
+    }
+
+    .logout_wrapper {
+        position: relative;
+        .logout_btn {
+            width: 170px;
+            height: 50px;
+            background: $blackDark;
+            border-radius: 50px;
+            -webkit-border-radius: 50px;
+            -moz-border-radius: 50px;
+            -ms-border-radius: 50px;
+            -o-border-radius: 50px;
+            line-height: 50px;
+            padding-left: 1.625rem;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+
+            span {
+                position: absolute;
+                width: 50px;
+                height: 50px;
+                background: $red;
+                border-radius: 50px;
+                top: 0;
+                left: 0;
+                display: grid;
+                place-items: center;
+                -webkit-border-radius: 50px;
+                -moz-border-radius: 50px;
+                -ms-border-radius: 50px;
+                -o-border-radius: 50px;
+            }
+        }
+    }
+}

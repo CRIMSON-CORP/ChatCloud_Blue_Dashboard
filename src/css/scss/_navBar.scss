@@ -1,0 +1,225 @@
+@import "./variables";
+
+.NavBar {
+    .row {
+        width: 100%;
+    }
+
+    .col-3,
+    .col-6 {
+        display: flex;
+        align-items: center;
+    }
+
+    .logo img {
+        width: 120px;
+    }
+
+    .search {
+        float: left;
+        .searchbar {
+            position: relative;
+        }
+
+        .searchBarConatiner {
+            width: 310px;
+            height: 50px;
+            background: $blackDark;
+        }
+
+        .searchIcon {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translate(15px, -50%);
+            -webkit-transform: translate(15px, -50%);
+            -moz-transform: translate(15px, -50%);
+            -ms-transform: translate(15px, -50%);
+            -o-transform: translate(15px, -50%);
+        }
+
+        input#search {
+            width: 100%;
+            height: 100%;
+            background: none;
+            padding-left: 50px;
+            caret-color: $grey;
+            color: white;
+        }
+
+        input#search::placeholder {
+            color: $grey;
+            font-size: 18px;
+            font-weight: normal;
+            font-family: inherit;
+        }
+    }
+
+    .utils {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+
+        .language,
+        .notification,
+        .profile {
+            margin-left: 40px;
+        }
+        .language {
+            width: 80px;
+            color: white;
+            font-size: 18px;
+            position: relative;
+            .lang-box {
+                width: 80px;
+                height: 45px;
+                padding: 0px 1rem;
+                border-radius: 50px;
+                background: $blackDark;
+                cursor: pointer;
+            }
+            .drop-down {
+                z-index: 99;
+                width: 150px;
+                position: absolute;
+                right: 0;
+                border-radius: 20px;
+                background: $blackDark;
+                overflow: hidden;
+                .card-header {
+                    font-size: 1rem;
+                    background: rgba(0, 0, 0, 0.2);
+                }
+
+                .card-body {
+                    padding: 0;
+                }
+
+                .card-body ul li {
+                    background: inherit;
+                    cursor: pointer;
+                    transition: all 0.4s;
+                    &:hover {
+                        background: $blackLight;
+                    }
+                }
+            }
+
+            span {
+                position: absolute;
+                background: $blackDark;
+                top: 50%;
+                right: 0;
+                pointer-events: none;
+                display: inline-grid;
+                place-items: center;
+                border-radius: 50px;
+                transform: translate(-1rem, -50%);
+                -webkit-border-radius: 50px;
+                -moz-border-radius: 50px;
+                -ms-border-radius: 50px;
+                -o-border-radius: 50px;
+                -webkit-transform: translate(-1rem, -50%);
+                -moz-transform: translate(-1rem, -50%);
+                -ms-transform: translate(-1rem, -50%);
+                -o-transform: translate(-1rem, -50%);
+            }
+        }
+
+        .notification {
+            position: relative;
+            .notification-container {
+                width: 50px;
+                height: 50px;
+                background: $blackDark;
+                border-radius: 50%;
+                -webkit-border-radius: 50%;
+                -moz-border-radius: 50%;
+                -ms-border-radius: 50%;
+                -o-border-radius: 50%;
+                display: inline-grid;
+                place-items: center;
+                cursor: pointer;
+            }
+
+            span.count {
+                position: absolute;
+                width: 14px;
+                height: 14px;
+                background: $red;
+                top: 0;
+                right: 0;
+                border-radius: 50%;
+                -webkit-border-radius: 50%;
+                -moz-border-radius: 50%;
+                -ms-border-radius: 50%;
+                -o-border-radius: 50%;
+            }
+        }
+
+        .profile {
+            .profile-container {
+                width: 70px;
+                height: 70px;
+                background: $blackDark;
+                display: inline-grid;
+                place-items: center;
+                border-radius: 50%;
+                -webkit-border-radius: 50%;
+                -moz-border-radius: 50%;
+                -ms-border-radius: 50%;
+                -o-border-radius: 50%;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+// drop-down transition
+.drop-enter-done {
+    transform: translateY(10px);
+    -webkit-transform: translateY(10px);
+    -moz-transform: translateY(10px);
+    -ms-transform: translateY(10px);
+    -o-transform: translateY(10px);
+}
+
+.drop-enter {
+    opacity: 0;
+    transition: all 200ms;
+}
+.drop-enter-active {
+    opacity: 1;
+    transform: translateY(10px);
+    transition: all 200ms;
+    -webkit-transform: translateY(10px);
+    -moz-transform: translateY(10px);
+    -ms-transform: translateY(10px);
+    -o-transform: translateY(10px);
+    -webkit-transition: all 200ms;
+    -moz-transition: all 200ms;
+    -ms-transition: all 200ms;
+    -o-transition: all 200ms;
+}
+.drop-exit {
+    opacity: 1;
+    transform: translateY(10px);
+    transition: all 200ms;
+    -webkit-transform: translateY(10px);
+    -moz-transform: translateY(10px);
+    -ms-transform: translateY(10px);
+    -o-transform: translateY(10px);
+    -webkit-transition: all 200ms;
+    -moz-transition: all 200ms;
+    -ms-transition: all 200ms;
+    -o-transition: all 200ms;
+}
+.drop-exit-active {
+    opacity: 0;
+    transform: translateY(0);
+    transition: all 200ms;
+    -webkit-transition: all 200ms;
+    -moz-transition: all 200ms;
+    -ms-transition: all 200ms;
+    -o-transition: all 200ms;
+}
