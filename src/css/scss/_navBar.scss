@@ -12,7 +12,7 @@
     }
 
     .logo img {
-        width: 120px;
+        width: 100px;
     }
 
     .search {
@@ -22,8 +22,8 @@
         }
 
         .searchBarConatiner {
-            width: 310px;
-            height: 50px;
+            width: 300px;
+            height: 40px;
             background: $blackDark;
         }
 
@@ -42,14 +42,15 @@
             width: 100%;
             height: 100%;
             background: none;
-            padding-left: 50px;
+            padding-left: 40px;
             caret-color: $grey;
             color: white;
+            font-size: 14px;
         }
 
         input#search::placeholder {
             color: $grey;
-            font-size: 18px;
+            font-size: 14px;
             font-weight: normal;
             font-family: inherit;
         }
@@ -63,36 +64,37 @@
         .language,
         .notification,
         .profile {
-            margin-left: 40px;
+            margin-left: 20px;
         }
         .language {
-            width: 80px;
+            width: 60px;
             color: white;
-            font-size: 18px;
+            font-size: 14px;
             position: relative;
             .lang-box {
-                width: 80px;
-                height: 45px;
-                padding: 0px 1rem;
+                width: 60px;
+                height: 35px;
+                padding: 0px 0.7rem;
                 border-radius: 50px;
                 background: $blackDark;
                 cursor: pointer;
             }
             .drop-down {
                 z-index: 99;
-                width: 150px;
+                width: 100px;
                 position: absolute;
                 right: 0;
                 border-radius: 20px;
                 background: $blackDark;
                 overflow: hidden;
                 .card-header {
-                    font-size: 1rem;
+                    font-size: 0.8rem;
                     background: rgba(0, 0, 0, 0.2);
                 }
 
                 .card-body {
                     padding: 0;
+                    font-size: 0.7rem;
                 }
 
                 .card-body ul li {
@@ -114,23 +116,24 @@
                 display: inline-grid;
                 place-items: center;
                 border-radius: 50px;
-                transform: translate(-1rem, -50%);
-                -webkit-border-radius: 50px;
-                -moz-border-radius: 50px;
-                -ms-border-radius: 50px;
-                -o-border-radius: 50px;
-                -webkit-transform: translate(-1rem, -50%);
-                -moz-transform: translate(-1rem, -50%);
-                -ms-transform: translate(-1rem, -50%);
-                -o-transform: translate(-1rem, -50%);
+                transform: translate(-0.45rem, -45%);
+                transition: all 0.4s;
+                transform-origin: center;
+            }
+            &.drop span {
+                transform: translate(-0.45rem, -50%) rotateX(180deg);
+                -webkit-transform: translate(-0.45rem, -50%) rotateX(180deg);
+                -moz-transform: translate(-0.45rem, -50%) rotateX(180deg);
+                -ms-transform: translate(-0.45rem, -50%) rotateX(180deg);
+                -o-transform: translate(-0.45rem, -50%) rotateX(180deg);
             }
         }
 
         .notification {
             position: relative;
             .notification-container {
-                width: 50px;
-                height: 50px;
+                width: 40px;
+                height: 40px;
                 background: $blackDark;
                 border-radius: 50%;
                 -webkit-border-radius: 50%;
@@ -144,8 +147,8 @@
 
             span.count {
                 position: absolute;
-                width: 14px;
-                height: 14px;
+                width: 10px;
+                height: 10px;
                 background: $red;
                 top: 0;
                 right: 0;
@@ -159,8 +162,8 @@
 
         .profile {
             .profile-container {
-                width: 70px;
-                height: 70px;
+                width: 55px;
+                height: 55px;
                 background: $blackDark;
                 display: inline-grid;
                 place-items: center;

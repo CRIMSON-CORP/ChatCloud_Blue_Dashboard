@@ -22,66 +22,66 @@ function Tabs() {
                             <Link to="/">
                                 <li className="list-group-item tab r-i-c">
                                     <span className="rect"></span>
-                                    <MdDashboard size="40px" />
+                                    <MdDashboard size="35px" />
                                     <h2>Dashboard</h2>
                                 </li>
                             </Link>
                             <Link to="/Conversations">
                                 <li className="list-group-item tab r-i-c">
                                     <span className="rect"></span>
-                                    <MdMessage size="40px" />
+                                    <MdMessage size="35px" />
                                     <h2>Conversations</h2>
                                 </li>
                             </Link>
                             <Link to="/Widgets">
                                 <li className="list-group-item tab r-i-c">
                                     <span className="rect"></span>
-                                    <MdWidgets size="40px" />
+                                    <MdWidgets size="35px" />
                                     <h2>Widgets</h2>
                                 </li>
                             </Link>
                             <Link to="/Options">
                                 <li className="list-group-item tab r-i-c">
                                     <span className="rect"></span>
-                                    <MdSettings size="40px" />
+                                    <MdSettings size="35px" />
                                     <h2>Options</h2>
                                 </li>
                             </Link>
                             <Link to="/Scripts">
                                 <li className="list-group-item tab r-i-c">
                                     <span className="rect"></span>
-                                    <MdDescription size="40px" />
+                                    <MdDescription size="35px" />
                                     <h2>Scripts</h2>
                                 </li>
                             </Link>
                             <Link to="/Statistics">
                                 <li className="list-group-item tab r-i-c">
                                     <span className="rect"></span>
-                                    <MdAssessment size="40px" />
+                                    <MdAssessment size="35px" />
                                     <h2>Statistics</h2>
                                 </li>
                             </Link>
                             <Link to="/Download_Plugins">
                                 <li className="list-group-item tab r-i-c">
                                     <span className="rect"></span>
-                                    <MdArrowDownward size="40px" />
+                                    <MdArrowDownward size="35px" />
                                     <h2>Download/Plugins</h2>
                                 </li>
                             </Link>
                             <Link to="/Faqs">
                                 <li className="list-group-item tab r-i-c">
                                     <span className="rect"></span>
-                                    <MdQuestionAnswer size="40px" />
+                                    <MdQuestionAnswer size="35px" />
                                     <h2>FAQ</h2>
                                 </li>
                             </Link>
                             <div className="logout_wrapper">
-                                <div className="logout_btn">
+                                <button className="logout_btn">
                                     <span>
-                                        <MdArrowBack size="30px" />
+                                        <MdArrowBack size="20px" />
                                     </span>
                                     <p>LOG OUT</p>
-                                </div>
+                                </button>
                             </div>
                         </ul>
                     </div>

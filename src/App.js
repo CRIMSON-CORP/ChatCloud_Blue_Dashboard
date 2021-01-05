@@ -6,9 +6,9 @@ import Tabs from "./Components/Tabs";
 
 function App() {
     return (
-        <div className="container50">
+        <div className="container-fluid">
             <NavBar />
-            <div className="container-fluid mt-5 board">
+            <div className="container-fluid mt-4 board">
                 <div className="row">
                     <Router>
                         <div className="col-3 tabs">

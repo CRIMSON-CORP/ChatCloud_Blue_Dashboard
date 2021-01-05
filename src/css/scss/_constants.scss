@@ -4,11 +4,12 @@ img {
 
 #root {
     min-height: 100vh;
-    padding: 50px;
+    padding: 30px;
 }
 
 .container,
 .container-fluid,
+.col-2,
 .col-3,
 .col-6,
 .col-9,
@@ -20,9 +21,11 @@ img {
 }
 
 input,
-select {
+select,
+button {
     outline: none;
     border: none;
+    color: inherit;
 }
 
 h1,

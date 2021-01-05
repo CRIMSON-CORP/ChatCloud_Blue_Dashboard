@@ -4,11 +4,12 @@ img {
 
 #root {
   min-height: 100vh;
-  padding: 50px;
+  padding: 30px;
 }
 
 .container,
 .container-fluid,
+.col-2,
 .col-3,
 .col-6,
 .col-9,
@@ -20,9 +21,11 @@ img {
 }
 
 input,
-select {
+select,
+button {
   outline: none;
   border: none;
+  color: inherit;
 }
 
 h1,
@@ -70,7 +73,7 @@ body {
 }
 
 .NavBar .logo img {
-  width: 120px;
+  width: 100px;
 }
 
 .NavBar .search {
@@ -82,8 +85,8 @@ body {
 }
 
 .NavBar .search .searchBarConatiner {
-  width: 310px;
-  height: 50px;
+  width: 300px;
+  height: 40px;
   background: #231f20;
 }
 
@@ -102,35 +105,36 @@ body {
   width: 100%;
   height: 100%;
   background: none;
-  padding-left: 50px;
+  padding-left: 40px;
   caret-color: #d0d0d0;
   color: white;
+  font-size: 14px;
 }
 
 .NavBar .search input#search::-webkit-input-placeholder {
   color: #d0d0d0;
-  font-size: 18px;
+  font-size: 14px;
   font-weight: normal;
   font-family: inherit;
 }
 
 .NavBar .search input#search:-ms-input-placeholder {
   color: #d0d0d0;
-  font-size: 18px;
+  font-size: 14px;
   font-weight: normal;
   font-family: inherit;
 }
 
 .NavBar .search input#search::-ms-input-placeholder {
   color: #d0d0d0;
-  font-size: 18px;
+  font-size: 14px;
   font-weight: normal;
   font-family: inherit;
 }
 
 .NavBar .search input#search::placeholder {
   color: #d0d0d0;
-  font-size: 18px;
+  font-size: 14px;
   font-weight: normal;
   font-family: inherit;
 }
@@ -150,20 +154,20 @@ body {
 .NavBar .utils .language,
 .NavBar .utils .notification,
 .NavBar .utils .profile {
-  margin-left: 40px;
+  margin-left: 20px;
 }
 
 .NavBar .utils .language {
-  width: 80px;
+  width: 60px;
   color: white;
-  font-size: 18px;
+  font-size: 14px;
   position: relative;
 }
 
 .NavBar .utils .language .lang-box {
-  width: 80px;
-  height: 45px;
-  padding: 0px 1rem;
+  width: 60px;
+  height: 35px;
+  padding: 0px 0.7rem;
   border-radius: 50px;
   background: #231f20;
   cursor: pointer;
@@ -171,7 +175,7 @@ body {
 
 .NavBar .utils .language .drop-down {
   z-index: 99;
-  width: 150px;
+  width: 100px;
   position: absolute;
   right: 0;
   border-radius: 20px;
@@ -180,12 +184,13 @@ body {
 }
 
 .NavBar .utils .language .drop-down .card-header {
-  font-size: 1rem;
+  font-size: 0.8rem;
   background: rgba(0, 0, 0, 0.2);
 }
 
 .NavBar .utils .language .drop-down .card-body {
   padding: 0;
+  font-size: 0.7rem;
 }
 
 .NavBar .utils .language .drop-down .card-body ul li {
@@ -209,15 +214,20 @@ body {
   display: inline-grid;
   place-items: center;
   border-radius: 50px;
-  transform: translate(-1rem, -50%);
-  -webkit-border-radius: 50px;
-  -moz-border-radius: 50px;
-  -ms-border-radius: 50px;
-  -o-border-radius: 50px;
-  -webkit-transform: translate(-1rem, -50%);
-  -moz-transform: translate(-1rem, -50%);
-  -ms-transform: translate(-1rem, -50%);
-  -o-transform: translate(-1rem, -50%);
+  -webkit-transform: translate(-0.45rem, -45%);
+          transform: translate(-0.45rem, -45%);
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+  -webkit-transform-origin: center;
+          transform-origin: center;
+}
+
+.NavBar .utils .language.drop span {
+  transform: translate(-0.45rem, -50%) rotateX(180deg);
+  -webkit-transform: translate(-0.45rem, -50%) rotateX(180deg);
+  -moz-transform: translate(-0.45rem, -50%) rotateX(180deg);
+  -ms-transform: translate(-0.45rem, -50%) rotateX(180deg);
+  -o-transform: translate(-0.45rem, -50%) rotateX(180deg);
 }
 
 .NavBar .utils .notification {
@@ -225,8 +235,8 @@ body {
 }
 
 .NavBar .utils .notification .notification-container {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   background: #231f20;
   border-radius: 50%;
   -webkit-border-radius: 50%;
@@ -241,8 +251,8 @@ body {
 
 .NavBar .utils .notification span.count {
   position: absolute;
-  width: 14px;
-  height: 14px;
+  width: 10px;
+  height: 10px;
   background: #ed1c24;
   top: 0;
   right: 0;
@@ -254,8 +264,8 @@ body {
 }
 
 .NavBar .utils .profile .profile-container {
-  width: 70px;
-  height: 70px;
+  width: 55px;
+  height: 55px;
   background: #231f20;
   display: -ms-inline-grid;
   display: inline-grid;
@@ -326,11 +336,16 @@ body {
 }
 
 .routes {
-  color: white;
+  color: white !important;
 }
 
 .routes ul.list-group {
   border-radius: 0;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: (1fr)[9];
+      grid-template-rows: repeat(9, 1fr);
+  row-gap: 25px;
 }
 
 .routes ul.list-group li.list-group-item {
@@ -340,17 +355,16 @@ body {
 }
 
 .routes ul.list-group a {
-  margin-bottom: 32px;
   color: white;
 }
 
 .routes .r-i-c {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 8px 40px auto;
-      grid-template-columns: 8px 40px auto;
-  -webkit-column-gap: 20px;
-          column-gap: 20px;
+  -ms-grid-columns: 8px 35px auto;
+      grid-template-columns: 8px 35px auto;
+  -webkit-column-gap: 10px;
+          column-gap: 10px;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -364,7 +378,7 @@ body {
 }
 
 .routes .r-i-c h2 {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
 }
 
@@ -373,36 +387,36 @@ body {
 }
 
 .routes .logout_wrapper .logout_btn {
-  width: 170px;
-  height: 50px;
+  width: 120px;
+  height: 35px;
+  font-size: 14px;
   background: #231f20;
   border-radius: 50px;
   -webkit-border-radius: 50px;
   -moz-border-radius: 50px;
   -ms-border-radius: 50px;
   -o-border-radius: 50px;
-  line-height: 50px;
-  padding-left: 1.625rem;
-  font-size: 18px;
+  line-height: 35px;
+  padding-left: 1.25rem;
   font-weight: bold;
   text-align: center;
 }
 
 .routes .logout_wrapper .logout_btn span {
   position: absolute;
-  width: 50px;
-  height: 50px;
+  width: 35px;
+  height: 35px;
   background: #ed1c24;
-  border-radius: 50px;
+  border-radius: 50%;
   top: 0;
   left: 0;
   display: -ms-grid;
   display: grid;
   place-items: center;
-  -webkit-border-radius: 50px;
-  -moz-border-radius: 50px;
-  -ms-border-radius: 50px;
-  -o-border-radius: 50px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
 }
 
 .panel {

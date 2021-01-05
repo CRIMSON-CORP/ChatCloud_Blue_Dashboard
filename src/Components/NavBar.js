@@ -36,7 +36,7 @@ function NavBar() {
                     <div className="searchbar">
                         <div className="searchBarConatiner">
                             <span className="searchIcon">
-                                <FiSearch color="white" size="1.3750em" />
+                                <FiSearch color="white" />
                             </span>
                             <input type="text" name="search" id="search" placeholder="Search" />
                         </div>
@@ -48,7 +48,7 @@ function NavBar() {
                             setLangDrop(false);
                         }}
                     >
-                        <div className="language">
+                        <div className={`language ${langDrop ? "drop" : ""}`}>
                             <div
                                 className="d-flex justify-content-lg-between align-items-center lang-box"
                                 onClick={() => {
@@ -79,14 +79,14 @@ function NavBar() {
 
                     <div className="notification">
                         <div className="notification-container">
-                            <FaBell color="white" fill="white" size="1rem" />
+                            <FaBell color="white" fill="white" size=".9rem" />
                             <span className="count"></span>
                         </div>
                     </div>
 
                     <div className="profile">
                         <div className="profile-container">
-                            <MdPerson size="3.125rem" color="white" />
+                            <MdPerson size="2.5rem" color="white" />
                         </div>
                     </div>
                 </div>
