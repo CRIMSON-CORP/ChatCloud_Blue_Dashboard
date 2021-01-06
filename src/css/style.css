@@ -828,7 +828,7 @@ ul.platform-lists li.platform a.others {
   display: grid;
   -ms-grid-rows: (1fr)[4];
       grid-template-rows: repeat(4, 1fr);
-  row-gap: 20px;
+  row-gap: 18px;
 }
 
 .widget .row-grid h5 {
@@ -838,16 +838,52 @@ ul.platform-lists li.platform a.others {
 }
 
 .widget .row-grid input {
-  padding: 8px 24px;
+  padding: 10px 22px;
   background: #333333;
   width: 100%;
   overflow: hidden;
 }
 
-.widget .row-grid input[type="file"]::-webkit-file-upload-button {
+.widget .row-grid label.spec {
+  display: block;
+  position: relative;
+  cursor: pointer;
+}
+
+.widget .row-grid label.spec span {
   color: rgba(255, 255, 255, 0.7);
   background: #231f20;
+  position: absolute;
+  display: inline;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  padding: 5px 12px;
+}
+
+.widget .row-grid label.spec input[type="color"] {
+  width: 107px;
+  height: auto;
+  top: 3px;
+  bottom: 3px;
+  display: inline-block;
+  padding: 0;
+  position: absolute;
+  right: 5px;
   border: none;
+  outline: none;
+}
+
+.widget .row-grid input[type="file"] {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.widget .row-grid input[type="file"]::-webkit-file-upload-button {
+  display: none;
 }
 
 .widget .row-grid .cta {
@@ -866,7 +902,7 @@ ul.platform-lists li.platform a.others {
   background: #354f7c;
 }
 
-.widget .row-grid .cta input.save {
+.widget .row-grid .cta input.submit {
   background: #198a00;
 }
 /*# sourceMappingURL=style.css.map */

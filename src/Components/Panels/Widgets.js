@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 function Widgets({
     props: {
@@ -14,6 +14,7 @@ function Widgets({
         },
     },
 }) {
+    const [themeColorState, setThemeColorState] = useState("#ffffff");
     return (
         <div className="container-fluid">
             <div className="header_tag">
@@ -28,16 +29,23 @@ function Widgets({
                     </div>
                     <div>
                         <h5>Agent Profile Picture</h5>
-                        <input type="file" name="agentName" id="agentName" />
+                        <label className="spec">
+                            <input type="file" name="agentName" id="agentName" />
+                            <span>Choose File</span>
+                        </label>
                     </div>
                     <div>
                         <h5>Theme Color</h5>
-                        <input
-                            type="text"
-                            name="themeColor"
-                            id="agentName"
-                            placeholder={themeColor}
-                        />
+                        <label className="spec">
+                            <input type="text" value={themeColorState} readOnly={true} />
+                            <input
+                                type="color"
+                                name="themeColor"
+                                id="themeColor"
+                                defaultValue={themeColor}
+                                onBlur={({ target: { value } }) => setThemeColorState(value)}
+                            />
+                        </label>
                     </div>
                     <div>
                         <h5>Messages Font Size</h5>
