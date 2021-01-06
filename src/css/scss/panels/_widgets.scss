@@ -29,6 +29,12 @@
             height: 45px;
             align-self: end;
             input {
+                &.reset {
+                    background: $reset;
+                }
+                &.save {
+                    background: $save;
+                }
             }
         }
     }

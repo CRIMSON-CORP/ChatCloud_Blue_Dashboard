@@ -861,4 +861,12 @@ ul.platform-lists li.platform a.others {
   -ms-grid-row-align: end;
       align-self: end;
 }
+
+.widget .row-grid .cta input.reset {
+  background: #354f7c;
+}
+
+.widget .row-grid .cta input.save {
+  background: #198a00;
+}
 /*# sourceMappingURL=style.css.map */
