@@ -1,7 +1,45 @@
 @import "./variables";
+@import "./panels/dashboard";
 .panel {
     background: $blackDark;
-    padding: 50px;
+    padding: 30px;
+    color: white;
+    & .row > div {
+        width: 100%;
+    }
+
+    .card-block {
+        .card {
+            border-radius: 0;
+            padding: 1rem;
+            box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.25), 0px 4px 20px rgba(0, 0, 0, 0.1);
+        }
+    }
+
+    .header_tag h3 {
+        font-size: 22px;
+        font-weight: bolder;
+    }
+}
+.blacklight {
+    background: $blackLight;
+}
+.blackdark {
+    background: $blackDark;
+}
+
+.loading {
+    background: $blackDark;
+    display: grid;
+    place-items: center;
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    width: calc(100% + 20px);
+    height: calc(100% + 20px);
+    z-index: 99;
 }
 
 @import "./panels/dashboard";
+@import "./panels/download_plugins";
+@import "./panels/widgets";

@@ -1,0 +1,61 @@
+@import "../variables";
+
+ul.platform-lists {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    column-gap: 15px;
+    li.platform {
+        box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.25), 0px 4px 20px rgba(0, 0, 0, 0.01);
+        a {
+            color: white;
+            display: grid;
+            grid-template-rows: 60px auto;
+            place-items: center;
+            row-gap: 10px;
+            padding: 10px;
+            span.info {
+                display: inline-block;
+                font-size: 10px;
+            }
+
+            &.wordpress {
+                background: $wordpress;
+            }
+            &.magento {
+                background: $magento;
+            }
+            &.laravel {
+                background: $laravel;
+            }
+            &.others {
+                background: $others;
+            }
+        }
+    }
+}
+
+.manual-install {
+    .manual {
+        font-size: 10px;
+        margin-left: 10px;
+    }
+
+    .steps {
+        margin-left: 10px;
+        .step {
+            margin-bottom: 10px;
+            h5 {
+                font-size: 16px;
+                margin-bottom: 5px;
+                background: linear-gradient($red 10%, $pink);
+                background-clip: text;
+                -webkit-background-clip: text;
+                color: transparent;
+                font-weight: 900;
+            }
+            p {
+                font-size: 12px;
+            }
+        }
+    }
+}

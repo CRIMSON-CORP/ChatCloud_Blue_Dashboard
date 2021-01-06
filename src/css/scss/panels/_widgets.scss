@@ -1,0 +1,35 @@
+@import "../variables";
+
+.widget {
+    .row-grid {
+        display: grid;
+        grid-template-rows: repeat(4, 1fr);
+        row-gap: 20px;
+        h5 {
+            font-size: 18px;
+            font-weight: normal;
+            margin-bottom: 15px;
+        }
+        input {
+            padding: 8px 24px;
+            background: $blackLight;
+            width: 100%;
+            overflow: hidden;
+        }
+        input[type="file"]::-webkit-file-upload-button {
+            color: rgba(255, 255, 255, 0.7);
+            background: $blackDark;
+            border: none;
+        }
+
+        .cta {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            column-gap: 25px;
+            height: 45px;
+            align-self: end;
+            input {
+            }
+        }
+    }
+}

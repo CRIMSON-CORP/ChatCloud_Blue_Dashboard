@@ -1,0 +1,49 @@
+{
+    "data": {
+        "charts": {
+            "lineChart": {
+                "chats": {
+                    "count": [205, 300, 345, 410]
+                },
+                "visitors": {
+                    "count": [100, 420, 560, 1200]
+                },
+                "leads": {
+                    "count": [30, 35, 65, 70]
+
+                },
+                "sales": {
+                    "count": [10, 21, 35, 56]
+                },
+                "services": {
+                    "count": [60, 90, 121, 210]
+                },
+                "others": {
+                    "count": [1, 7, 6, 12]
+                }
+            },
+            "currDayStats": {
+                "vistors": {
+                    "count": 2203,
+                    "'color": "red"
+                },
+                "chats": {
+                    "count": 432,
+                    "'color": "yellow"
+                },
+                "leads": {
+                    "count": 348,
+                    "'color": "orange"
+                }
+            }
+        }
+    },
+    "widgets": {
+        "agetName": "Felicia",
+        "themeColor": "#FFF",
+        "messagesFontSize": 12,
+        "timestampFontSize": 8,
+        "mesagesPadding": "10",
+        "widgetPos": "Bottom-right"
+    }
+}

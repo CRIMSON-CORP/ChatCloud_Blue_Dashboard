@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { CSSTransition } from "react-transition-group";
-import OnOutsiceClick from "react-outclick";
+import OnOutsideClick from "react-outclick";
 import logo from "../img/chatcloudb.png";
 import { FiSearch } from "react-icons/fi";
 import { MdKeyboardArrowDown, MdPerson } from "react-icons/md";
@@ -43,7 +43,7 @@ function NavBar() {
                     </div>
                 </div>
                 <div className="utils col-3">
-                    <OnOutsiceClick
+                    <OnOutsideClick
                         onOutsideClick={() => {
                             setLangDrop(false);
                         }}
@@ -75,7 +75,7 @@ function NavBar() {
                                 </div>
                             </CSSTransition>
                         </div>
-                    </OnOutsiceClick>
+                    </OnOutsideClick>
 
                     <div className="notification">
                         <div className="notification-container">
