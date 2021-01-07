@@ -5,6 +5,7 @@
     padding: 30px;
     color: white;
     overflow-y: auto;
+    height: 515px;
     &::-webkit-scrollbar {
         width: 8px;
         border-radius: 10px;
@@ -15,7 +16,7 @@
         background: none;
     }
 
-    &::-webkit-scrollbar-button {
+    &::-webkit-scrollbar-thumb {
         background: $blackLight;
     }
     & .row > div {
@@ -57,3 +58,4 @@
 @import "./panels/dashboard";
 @import "./panels/download_plugins";
 @import "./panels/widgets";
+@import "./panels/faqs";

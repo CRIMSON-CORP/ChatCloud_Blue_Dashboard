@@ -23,7 +23,7 @@ function Main() {
         fetchCall();
     }, []);
     return (
-        <div className="container-fluid ">
+        <div className="container-fluid panel-wrapper">
             {loading ? (
                 <div className="loading">
                     <h1>Fetching Data...</h1>

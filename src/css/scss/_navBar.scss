@@ -121,11 +121,11 @@
                 transform-origin: center;
             }
             &.drop span {
-                transform: translate(-0.45rem, -50%) rotateX(180deg);
-                -webkit-transform: translate(-0.45rem, -50%) rotateX(180deg);
-                -moz-transform: translate(-0.45rem, -50%) rotateX(180deg);
-                -ms-transform: translate(-0.45rem, -50%) rotateX(180deg);
-                -o-transform: translate(-0.45rem, -50%) rotateX(180deg);
+                transform: translate(-0.45rem, -50%) rotate(180deg);
+                -webkit-transform: translate(-0.45rem, -50%) rotate(180deg);
+                -moz-transform: translate(-0.45rem, -50%) rotate(180deg);
+                -ms-transform: translate(-0.45rem, -50%) rotate(180deg);
+                -o-transform: translate(-0.45rem, -50%) rotate(180deg);
             }
         }
 

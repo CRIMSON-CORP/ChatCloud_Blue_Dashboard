@@ -32,7 +32,7 @@ function Widgets({
                 className="list-group-item p-2"
                 onClick={() => {
                     setCurrentPos(position);
-                    setPosDrop(true);
+                    setPosDrop(false);
                 }}
             >
                 {position}
@@ -104,7 +104,7 @@ function Widgets({
                                 type="color"
                                 name="themeColor"
                                 defaultValue={themeColor}
-                                onBlur={(e) => {
+                                onChange={(e) => {
                                     setThemeColorState(e.target.value);
                                     setData(e);
                                 }}

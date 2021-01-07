@@ -89,6 +89,17 @@ p {
   font-size: 14px;
 }
 
+.r-c.r-c-24 {
+  -webkit-column-gap: 8px;
+          column-gap: 8px;
+}
+
+.r-c.r-c-24 h4 {
+  padding: 2px 0;
+  font-size: 20px;
+  font-weight: bold;
+}
+
 .container-fluid {
   position: relative;
 }
@@ -283,11 +294,11 @@ body {
 }
 
 .NavBar .utils .language.drop span {
-  transform: translate(-0.45rem, -50%) rotateX(180deg);
-  -webkit-transform: translate(-0.45rem, -50%) rotateX(180deg);
-  -moz-transform: translate(-0.45rem, -50%) rotateX(180deg);
-  -ms-transform: translate(-0.45rem, -50%) rotateX(180deg);
-  -o-transform: translate(-0.45rem, -50%) rotateX(180deg);
+  transform: translate(-0.45rem, -50%) rotate(180deg);
+  -webkit-transform: translate(-0.45rem, -50%) rotate(180deg);
+  -moz-transform: translate(-0.45rem, -50%) rotate(180deg);
+  -ms-transform: translate(-0.45rem, -50%) rotate(180deg);
+  -o-transform: translate(-0.45rem, -50%) rotate(180deg);
 }
 
 .NavBar .utils .notification {
@@ -607,6 +618,22 @@ div.dashboard .pie-chart {
   background: #231f20;
   padding: 30px;
   color: white;
+  overflow-y: auto;
+  height: 515px;
+}
+
+.panel::-webkit-scrollbar {
+  width: 8px;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  background: none;
+}
+
+.panel::-webkit-scrollbar-thumb {
+  background: #333333;
 }
 
 .panel .row > div {
@@ -957,5 +984,79 @@ ul.platform-lists li.platform a.others {
 
 .widget .row-grid .posDrop .drop-down {
   width: 100%;
+}
+
+.faqs .row-grid {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 2fr 1fr;
+      grid-template-columns: 2fr 1fr;
+  -webkit-column-gap: 25px;
+          column-gap: 25px;
+}
+
+.faqs .accordion .accordion__item {
+  margin-bottom: 10px;
+  transition: all 0.5s ease-out;
+  -webkit-transition: all 0.5s ease-out;
+  -moz-transition: all 0.5s ease-out;
+  -ms-transition: all 0.5s ease-out;
+  -o-transition: all 0.5s ease-out;
+}
+
+.faqs .accordion .accordion__item .accordion__button {
+  font-size: 12px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #333333;
+  padding: 15px;
+  outline: none;
+}
+
+.faqs .accordion .accordion__item .accordion__button h5 {
+  font-size: 12px;
+  margin-bottom: 5px;
+  -webkit-transition: all 0.4s ease-out;
+  transition: all 0.4s ease-out;
+}
+
+.faqs .accordion .accordion__item .accordion__button svg {
+  -webkit-transition: all 0.4s ease-out;
+  transition: all 0.4s ease-out;
+}
+
+.faqs .accordion .accordion__item .accordion__button.expanded h5 {
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(10%, #ed1c24), to(#d80164));
+  background: linear-gradient(#ed1c24 10%, #d80164);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  font-weight: 900;
+}
+
+.faqs .accordion .accordion__item .accordion__button.expanded svg {
+  transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+}
+
+.faqs .accordion .accordion__item .accordion__panel {
+  padding: 15px;
+  padding-top: 0;
+  background: #333333;
+}
+
+.faqs .accordion .accordion__item .accordion__panel p {
+  font-size: 10px;
+  font-style: italic;
 }
 /*# sourceMappingURL=style.css.map */

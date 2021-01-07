@@ -80,6 +80,14 @@ p {
         padding: 5px 0;
         font-size: 14px;
     }
+    &.r-c-24 {
+        column-gap: 8px;
+        h4 {
+            padding: 2px 0;
+            font-size: 20px;
+            font-weight: bold;
+        }
+    }
 }
 
 .container-fluid {

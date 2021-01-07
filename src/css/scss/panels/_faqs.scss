@@ -1,0 +1,64 @@
+@import "../variables";
+
+.faqs {
+    .row-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        column-gap: 25px;
+    }
+
+    .accordion {
+        .accordion__item {
+            margin-bottom: 10px;
+            transition: all 0.5s ease-out;
+            -webkit-transition: all 0.5s ease-out;
+            -moz-transition: all 0.5s ease-out;
+            -ms-transition: all 0.5s ease-out;
+            -o-transition: all 0.5s ease-out;
+            .accordion__button {
+                font-size: 12px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                background: $blackLight;
+                padding: 15px;
+                outline: none;
+
+                h5 {
+                    font-size: 12px;
+                    margin-bottom: 5px;
+                    transition: all 0.4s ease-out;
+                }
+                svg {
+                    transition: all 0.4s ease-out;
+                }
+
+                &.expanded h5 {
+                    background: linear-gradient($red 10%, $pink);
+                    background-clip: text;
+                    -webkit-background-clip: text;
+                    color: transparent;
+                    font-weight: 900;
+                }
+
+                &.expanded svg {
+                    transform: rotate(180deg);
+                    -webkit-transform: rotate(180deg);
+                    -moz-transform: rotate(180deg);
+                    -ms-transform: rotate(180deg);
+                    -o-transform: rotate(180deg);
+                }
+            }
+            .accordion__panel {
+                padding: 15px;
+                padding-top: 0;
+                background: $blackLight;
+
+                p {
+                    font-size: 10px;
+                    font-style: italic;
+                }
+            }
+        }
+    }
+}
