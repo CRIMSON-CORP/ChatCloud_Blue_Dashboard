@@ -39,11 +39,11 @@
         }
     },
     "widgets": {
-        "agetName": "Felicia",
-        "themeColor": "#FFFFFF",
+        "agentName": "Felicia",
+        "themeColor": "#FF0000",
         "messagesFontSize": 12,
         "timestampFontSize": 8,
-        "mesagesPadding": "10",
+        "messagesPadding": 10,
         "widgetPos": "Bottom-right"
     }
 }

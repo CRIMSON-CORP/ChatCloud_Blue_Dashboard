@@ -55,7 +55,7 @@ function Download_Plugins() {
                     <span className="rect"></span>
                     <h4>Manually Integrate Plugin</h4>
                 </div>
-                <span className="manual my-3 d-inline-block">
+                <span className="manual my-2 d-inline-block">
                     To manually integrate our Plugin, Please follow these Directions
                 </span>
                 <div className="steps">
