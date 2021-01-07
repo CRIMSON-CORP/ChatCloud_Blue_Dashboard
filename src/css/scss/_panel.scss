@@ -4,6 +4,20 @@
     background: $blackDark;
     padding: 30px;
     color: white;
+    overflow-y: auto;
+    &::-webkit-scrollbar {
+        width: 8px;
+        border-radius: 10px;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        -ms-border-radius: 10px;
+        -o-border-radius: 10px;
+        background: none;
+    }
+
+    &::-webkit-scrollbar-button {
+        background: $blackLight;
+    }
     & .row > div {
         width: 100%;
     }

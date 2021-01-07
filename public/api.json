@@ -40,7 +40,8 @@
     },
     "widgets": {
         "agentName": "Felicia",
-        "themeColor": "#FF0000",
+        "agentProfilePicURL": "",
+        "themeColor": "#FFFFFF",
         "messagesFontSize": 12,
         "timestampFontSize": 8,
         "messagesPadding": 10,

@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { CSSTransition } from "react-transition-group";
 import OnOutsideClick from "react-outclick";
 import { MdKeyboardArrowDown } from "react-icons/md";
-import { FaGalacticSenate } from "react-icons/fa";
 
 function Widgets({
     props: {
@@ -10,6 +9,7 @@ function Widgets({
             widgets: {
                 agentName,
                 themeColor,
+                agentProfilePicURL,
                 messagesFontSize,
                 timestampFontSize,
                 messagesPadding,
@@ -48,6 +48,7 @@ function Widgets({
 
     function submit(e) {
         e.preventDefault();
+        // Put file in Db and get Download URL
         var payload = {
             agentName: FormData.agentName,
             themeColor: FormData.themeColor,
@@ -56,6 +57,7 @@ function Widgets({
             mesagesPadding: parseInt(FormData.mesagesPadding),
             widgetPos: currentPos,
         };
+        // ^^ set Download URL in Payload object
 
         // send payload to API
     }
