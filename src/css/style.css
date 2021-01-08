@@ -623,7 +623,7 @@ div.dashboard .pie-chart {
 }
 
 .panel::-webkit-scrollbar {
-  width: 8px;
+  width: 5px;
   border-radius: 10px;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
@@ -1085,10 +1085,68 @@ ul.platform-lists li.platform a.others {
 .options .row-grid {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 1fr 1.75fr;
-      grid-template-columns: 1fr 1.75fr;
-  -webkit-column-gap: 30px;
-          column-gap: 30px;
+  -ms-grid-columns: 1fr 2fr;
+      grid-template-columns: 1fr 2fr;
+  -webkit-column-gap: 25px;
+          column-gap: 25px;
+}
+
+.options .row-grid p.tag {
+  font-size: 14px;
+  margin: 5px 0;
+  font-weight: bold;
+}
+
+.options .row-grid p.query_text {
+  font-size: 12px;
+  font-style: italic;
+}
+
+.options .row-grid .action input {
+  margin-right: 10px;
+  font-size: 12px;
+  padding: 4px 10px;
+  background: #231f20;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+}
+
+.options .row-grid .action input.del {
+  background: #ed1c24;
+}
+
+.options .row-grid .search.edit input#search {
+  padding: 8px;
+  font-size: 12px;
+  background: #231f20;
+  border-radius: 3px;
+}
+
+.options .row-grid .search.edit input#search::-webkit-input-placeholder {
+  opacity: 0.7;
+  font-size: 10px;
+  letter-spacing: 0;
+}
+
+.options .row-grid .search.edit input#search:-ms-input-placeholder {
+  opacity: 0.7;
+  font-size: 10px;
+  letter-spacing: 0;
+}
+
+.options .row-grid .search.edit input#search::-ms-input-placeholder {
+  opacity: 0.7;
+  font-size: 10px;
+  letter-spacing: 0;
+}
+
+.options .row-grid .search.edit input#search::placeholder {
+  opacity: 0.7;
+  font-size: 10px;
+  letter-spacing: 0;
 }
 
 .options .row-grid .search .searchbar {
@@ -1143,5 +1201,58 @@ ul.platform-lists li.platform a.others {
   font-size: 12px;
   font-family: inherit;
   letter-spacing: 0.5px;
+}
+
+.options p.query_header {
+  font-size: 12px;
+}
+
+.options p.query_header .caret {
+  -webkit-transition: -webkit-transform 0.4s ease-out;
+  transition: -webkit-transform 0.4s ease-out;
+  transition: transform 0.4s ease-out;
+  transition: transform 0.4s ease-out, -webkit-transform 0.4s ease-out;
+  -webkit-transition: transform 0.4s ease-out;
+  -moz-transition: transform 0.4s ease-out;
+  -ms-transition: transform 0.4s ease-out;
+  -o-transition: transform 0.4s ease-out;
+}
+
+.options p.query_header .caret.ex {
+  transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+}
+
+.options .string {
+  width: 90%;
+  margin-left: auto;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto 1rem 1rem;
+      grid-template-columns: auto 1rem 1rem;
+  -webkit-column-gap: 5px;
+          column-gap: 5px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.options .string p {
+  font-size: 10px;
+}
+
+.options .string svg {
+  cursor: pointer;
+}
+
+.options .accordion__item {
+  margin-bottom: 10px;
+}
+
+.options .accordion__panel {
+  margin: 15px 0;
 }
 /*# sourceMappingURL=style.css.map */
