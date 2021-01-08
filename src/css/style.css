@@ -904,6 +904,7 @@ ul.platform-lists li.platform a.others {
   border: none;
   outline: none;
   cursor: pointer;
+  border-color: transparent;
 }
 
 .widget .row-grid label.spec span.tooltip {
@@ -1088,5 +1089,59 @@ ul.platform-lists li.platform a.others {
       grid-template-columns: 1fr 1.75fr;
   -webkit-column-gap: 30px;
           column-gap: 30px;
+}
+
+.options .row-grid .search .searchbar {
+  position: relative;
+}
+
+.options .row-grid .search .searchIcon {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(10px, -50%);
+  -webkit-transform: translate(10px, -50%);
+  -moz-transform: translate(10px, -50%);
+  -ms-transform: translate(10px, -50%);
+  -o-transform: translate(10px, -50%);
+}
+
+.options .row-grid .search input#search {
+  width: 100%;
+  height: 100%;
+  background: none;
+  padding: 8px 0px 8px 35px;
+  caret-color: #d0d0d0;
+  color: white;
+  font-size: 14px;
+  width: 100%;
+}
+
+.options .row-grid .search input#search::-webkit-input-placeholder {
+  color: #d0d0d0;
+  font-size: 12px;
+  font-family: inherit;
+  letter-spacing: 0.5px;
+}
+
+.options .row-grid .search input#search:-ms-input-placeholder {
+  color: #d0d0d0;
+  font-size: 12px;
+  font-family: inherit;
+  letter-spacing: 0.5px;
+}
+
+.options .row-grid .search input#search::-ms-input-placeholder {
+  color: #d0d0d0;
+  font-size: 12px;
+  font-family: inherit;
+  letter-spacing: 0.5px;
+}
+
+.options .row-grid .search input#search::placeholder {
+  color: #d0d0d0;
+  font-size: 12px;
+  font-family: inherit;
+  letter-spacing: 0.5px;
 }
 /*# sourceMappingURL=style.css.map */

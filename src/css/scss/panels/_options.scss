@@ -5,5 +5,40 @@
         display: grid;
         grid-template-columns: 1fr 1.75fr;
         column-gap: 30px;
+
+        .search {
+            .searchbar {
+                position: relative;
+            }
+
+            .searchIcon {
+                position: absolute;
+                top: 50%;
+                left: 0;
+                transform: translate(10px, -50%);
+                -webkit-transform: translate(10px, -50%);
+                -moz-transform: translate(10px, -50%);
+                -ms-transform: translate(10px, -50%);
+                -o-transform: translate(10px, -50%);
+            }
+
+            input#search {
+                width: 100%;
+                height: 100%;
+                background: none;
+                padding: 8px 0px 8px 35px;
+                caret-color: $grey;
+                color: white;
+                font-size: 14px;
+                width: 100%;
+            }
+
+            input#search::placeholder {
+                color: $grey;
+                font-size: 12px;
+                font-family: inherit;
+                letter-spacing: 0.5px;
+            }
+        }
     }
 }
