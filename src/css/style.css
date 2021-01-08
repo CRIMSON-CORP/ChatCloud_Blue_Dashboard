@@ -619,7 +619,7 @@ div.dashboard .pie-chart {
   padding: 30px;
   color: white;
   overflow-y: auto;
-  height: 515px;
+  height: calc(100vh - 150px);
 }
 
 .panel::-webkit-scrollbar {
@@ -958,6 +958,7 @@ ul.platform-lists li.platform a.others {
   height: 45px;
   -ms-grid-row-align: end;
       align-self: end;
+  margin-bottom: 5px;
 }
 
 .widget .row-grid .cta input.reset {
@@ -975,7 +976,7 @@ ul.platform-lists li.platform a.others {
 .widget .row-grid .posDrop .dropDown {
   width: 100%;
   height: auto;
-  padding-left: 24px;
+  padding: 10px 24px;
 }
 
 .widget .row-grid .posDrop .dropDown span {
@@ -1023,8 +1024,11 @@ ul.platform-lists li.platform a.others {
 .faqs .accordion .accordion__item .accordion__button h5 {
   font-size: 12px;
   margin-bottom: 5px;
-  -webkit-transition: all 0.4s ease-out;
   transition: all 0.4s ease-out;
+  -webkit-transition: all 0.4s ease-out;
+  -moz-transition: all 0.4s ease-out;
+  -ms-transition: all 0.4s ease-out;
+  -o-transition: all 0.4s ease-out;
 }
 
 .faqs .accordion .accordion__item .accordion__button svg {
@@ -1058,5 +1062,22 @@ ul.platform-lists li.platform a.others {
 .faqs .accordion .accordion__item .accordion__panel p {
   font-size: 10px;
   font-style: italic;
+}
+
+.faqs .guideline-list p {
+  font-size: 12px;
+}
+
+.faqs .guideline-list p span {
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(10%, #ed1c24), to(#d80164));
+  background: linear-gradient(#ed1c24 10%, #d80164);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  font-weight: bold;
+}
+
+.faqs .guideline-list .guideline {
+  margin-bottom: 20px;
 }
 /*# sourceMappingURL=style.css.map */

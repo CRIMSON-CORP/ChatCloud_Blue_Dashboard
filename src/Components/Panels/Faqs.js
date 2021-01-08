@@ -10,7 +10,6 @@ import {
 import { FiArrowDown } from "react-icons/fi";
 import { IconContext } from "react-icons";
 function Faqs() {
-    const [accordions, setAccordions] = useState({});
     return (
         <div className="container-fluid faqs">
             <div className="row-grid">
@@ -219,6 +218,43 @@ function Faqs() {
                     <div className="r-c r-c-24">
                         <span className="rect"></span>
                         <h4>Guidelines</h4>
+                    </div>
+                    <div className="guideline-list blacklight p-3 mt-4">
+                        <div className="guideline">
+                            <p>
+                                <span>1.</span> Lorem ipsum dolor, sit amet consectetur adipisicing
+                                elit. Laborum consectetur cupiditate iusto repudiandae et impedit
+                                ratione quaerat maiores officiis dolores!
+                            </p>
+                        </div>
+                        <div className="guideline">
+                            <p>
+                                <span>2.</span> Lorem ipsum dolor, sit amet consectetur adipisicing
+                                elit. Laborum consectetur cupiditate iusto repudiandae et impedit
+                                ratione quaerat maiores officiis dolores!
+                            </p>
+                        </div>
+                        <div className="guideline">
+                            <p>
+                                <span>3.</span> Lorem ipsum dolor, sit amet consectetur adipisicing
+                                elit. Laborum consectetur cupiditate iusto repudiandae et impedit
+                                ratione quaerat maiores officiis dolores!
+                            </p>
+                        </div>
+                        <div className="guideline">
+                            <p>
+                                <span>4.</span> Lorem ipsum dolor, sit amet consectetur adipisicing
+                                elit. Laborum consectetur cupiditate iusto repudiandae et impedit
+                                ratione quaerat maiores officiis dolores!
+                            </p>
+                        </div>
+                        <div className="guideline">
+                            <p>
+                                <span>5.</span> Lorem ipsum dolor, sit amet consectetur adipisicing
+                                elit. Laborum consectetur cupiditate iusto repudiandae et impedit
+                                ratione quaerat maiores officiis dolores!
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>

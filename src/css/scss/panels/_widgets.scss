@@ -94,6 +94,7 @@
             column-gap: 25px;
             height: 45px;
             align-self: end;
+            margin-bottom: 5px;
             input {
                 &.reset {
                     background: $reset;
@@ -109,7 +110,7 @@
             .dropDown {
                 width: 100%;
                 height: auto;
-                padding-left: 24px;
+                padding: 10px 24px;
                 span {
                     right: 10px;
                 }
