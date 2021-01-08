@@ -1,0 +1,9 @@
+@import "../variables";
+
+.options {
+    .row-grid {
+        display: grid;
+        grid-template-columns: 1fr 1.75fr;
+        column-gap: 30px;
+    }
+}

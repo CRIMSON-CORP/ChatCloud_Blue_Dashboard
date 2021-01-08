@@ -40,7 +40,10 @@ function Main() {
                             <Route path="/Widgets">
                                 <Widgets props={{ apiData: apiData }} />
                             </Route>
-                            <Route path="/Options" component={Options} />
+                            <Route path="/Options">
+                                <Options props={{ apiData: apiData }} />
+                            </Route>
+
                             <Route path="/Scripts" component={Scripts} />
                             <Route path="/Statistics" component={Statistics} />
                             <Route path="/Download_Plugins" component={Download_Plugins} />

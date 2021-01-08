@@ -1080,4 +1080,13 @@ ul.platform-lists li.platform a.others {
 .faqs .guideline-list .guideline {
   margin-bottom: 20px;
 }
+
+.options .row-grid {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1.75fr;
+      grid-template-columns: 1fr 1.75fr;
+  -webkit-column-gap: 30px;
+          column-gap: 30px;
+}
 /*# sourceMappingURL=style.css.map */
