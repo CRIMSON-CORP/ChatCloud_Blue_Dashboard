@@ -619,6 +619,7 @@ div.dashboard .pie-chart {
   padding: 30px;
   color: white;
   overflow-y: auto;
+  overflow-x: hidden;
   height: calc(100vh - 150px);
 }
 
@@ -1254,5 +1255,126 @@ ul.platform-lists li.platform a.others {
 
 .options .accordion__panel {
   margin: 15px 0;
+}
+
+.connect .row .slider-row {
+  height: 200px;
+  position: relative;
+}
+
+.connect .row .slider-row .slider {
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  overflow: hidden;
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.connect .row .slider-row .swiper-container {
+  margin: 0;
+  overflow: visible;
+  width: 400px;
+  margin-top: -10px;
+}
+
+.connect .row .slider-row .swiper-wrapper {
+  width: auto;
+}
+
+.connect .row .slider-row .swiper_card,
+.connect .row .slider-row .swiper-slide {
+  width: 210px !important;
+  height: 150px;
+  margin-right: 10px;
+}
+
+.connect .row .slider-row .swiper_card {
+  position: relative;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  display: -ms-grid;
+  display: grid;
+  padding: 20px;
+  -ms-grid-rows: auto auto;
+      grid-template-rows: auto auto;
+  place-items: center;
+}
+
+.connect .row .slider-row .swiper_card .con_Status {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  display: -ms-inline-grid;
+  display: inline-grid;
+  -ms-grid-columns: auto auto;
+      grid-template-columns: auto auto;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-column-gap: 5px;
+          column-gap: 5px;
+  font-size: 8px;
+}
+
+.connect .row .slider-row .swiper_card .con_Status .indicator {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  background: #595959;
+}
+
+.connect .row .slider-row .swiper_card .con_Status .indicator.Connected {
+  background: #12ff00;
+  -webkit-box-shadow: 0px 0px 5px #4bb543, 0px 0px 10px #4bb543, 0px 0px 20px #4bb543;
+          box-shadow: 0px 0px 5px #4bb543, 0px 0px 10px #4bb543, 0px 0px 20px #4bb543;
+}
+
+.connect .row .slider-row .swiper_card .con_tag {
+  font-size: 12px;
+  display: inline-block;
+}
+
+.connect .row .slider-row .swiper_card .con_btn {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  -webkit-transform: translate(-50%, 50%);
+  -moz-transform: translate(-50%, 50%);
+  -ms-transform: translate(-50%, 50%);
+  -o-transform: translate(-50%, 50%);
+  font-size: 12px;
+  padding: 5px 1.6rem;
+  border-radius: 50px;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  -ms-border-radius: 50px;
+  -o-border-radius: 50px;
+}
+
+.connect .row .slider-row .swiper_card .con_btn.disconnect {
+  background: -webkit-gradient(linear, left top, left bottom, from(#ff7b7b), to(#ed1c24));
+  background: linear-gradient(180deg, #ff7b7b 0%, #ed1c24 100%);
+  -webkit-box-shadow: 0px 2px 10px rgba(237, 28, 36, 0.2), 0px 4px 14px rgba(237, 28, 36, 0.35);
+          box-shadow: 0px 2px 10px rgba(237, 28, 36, 0.2), 0px 4px 14px rgba(237, 28, 36, 0.35);
+}
+
+.connect .row .slider-row .swiper_card .con_btn.connect {
+  background: -webkit-gradient(linear, left top, left bottom, from(#4bb543), to(#198a00));
+  background: linear-gradient(180deg, #4bb543 0%, #198a00 100%);
 }
 /*# sourceMappingURL=style.css.map */

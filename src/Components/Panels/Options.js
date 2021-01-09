@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FiSearch, FiEdit, FiMinus } from "react-icons/fi";
+import { FiSearch, FiEdit, FiMinus, FiFacebook, FiInstagram, FiLinkedin } from "react-icons/fi";
 import { BiCaretDown } from "react-icons/bi";
 import {
     Accordion,
@@ -9,7 +9,12 @@ import {
     AccordionItemPanel,
     AccordionItemState,
 } from "react-accessible-accordion";
+
 import { Swiper, SwiperSlide } from "swiper/react";
+import SwiperCore from "swiper";
+import "swiper/swiper-bundle.css";
+import "swiper/components/pagination/pagination.min.css";
+import "swiper/components/navigation/navigation.min.css";
 
 function Options({
     props: {
@@ -194,14 +199,173 @@ function Options({
                                     <h5>Connect Pages</h5>
                                 </div>
 
-                                <div className="row mt-3 blackdark">
-                                    <div className="slider p-2">
-                                        <Swiper>
+                                <div className="slider-row mt-3 ">
+                                    <div className="slider px-4 blackdark">
+                                        {/* Not sure if these Connections should be rendered dynamicaly or static */}
+                                        <Swiper slidesPerView={2} spaceBetween={30} navigation>
                                             <SwiperSlide>
-                                                <div className="swiper_card">
+                                                <div className="swiper_card facebook blacklight">
                                                     <div className="con_Status">
-                                                        <span className="indicator"></span>
+                                                        <span
+                                                            className={`indicator ${
+                                                                connections.facebook
+                                                                    ? "Connected"
+                                                                    : "Disconnected"
+                                                            }`}
+                                                        ></span>
+                                                        {connections.facebook
+                                                            ? "Connected"
+                                                            : "Disconnected"}
                                                     </div>
+                                                    <FiFacebook
+                                                        color="#3B5998"
+                                                        fill="#3B5998"
+                                                        strokeWidth="0px"
+                                                        size="60px"
+                                                    />
+                                                    <p className="con_tag">
+                                                        {connections.facebook
+                                                            ? "Disconnect"
+                                                            : "Connect"}{" "}
+                                                        from Facebook
+                                                    </p>
+                                                    {connections.facebook ? (
+                                                        <button
+                                                            className="con_btn disconnect"
+                                                            onClick={() => {
+                                                                setConnection((prev) => {
+                                                                    return {
+                                                                        ...prev,
+                                                                        facebook: false,
+                                                                    };
+                                                                });
+                                                            }}
+                                                        >
+                                                            Disconnect
+                                                        </button>
+                                                    ) : (
+                                                        <button
+                                                            className="con_btn connect"
+                                                            onClick={() => {
+                                                                setConnection((prev) => {
+                                                                    return {
+                                                                        ...prev,
+                                                                        facebook: true,
+                                                                    };
+                                                                });
+                                                            }}
+                                                        >
+                                                            Connect
+                                                        </button>
+                                                    )}
+                                                </div>
+                                            </SwiperSlide>
+                                            <SwiperSlide>
+                                                <div className="swiper_card instagram blacklight">
+                                                    <div className="con_Status">
+                                                        <span
+                                                            className={`indicator ${
+                                                                connections.instagram
+                                                                    ? "Connected"
+                                                                    : "Disconnected"
+                                                            }`}
+                                                        ></span>
+                                                        {connections.instagram
+                                                            ? "Connected"
+                                                            : "Disconnected"}
+                                                    </div>
+                                                    <FiInstagram color="#E4405F" size="60px" />
+                                                    <p className="con_tag">
+                                                        {connections.instagram
+                                                            ? "Disconnect"
+                                                            : "Connect"}{" "}
+                                                        from Instagram
+                                                    </p>
+                                                    {connections.instagram ? (
+                                                        <button
+                                                            className="con_btn disconnect"
+                                                            onClick={() => {
+                                                                setConnection((prev) => {
+                                                                    return {
+                                                                        ...prev,
+                                                                        instagram: false,
+                                                                    };
+                                                                });
+                                                            }}
+                                                        >
+                                                            Disconnect
+                                                        </button>
+                                                    ) : (
+                                                        <button
+                                                            className="con_btn connect"
+                                                            onClick={() => {
+                                                                setConnection((prev) => {
+                                                                    return {
+                                                                        ...prev,
+                                                                        instagram: true,
+                                                                    };
+                                                                });
+                                                            }}
+                                                        >
+                                                            Connect
+                                                        </button>
+                                                    )}
+                                                </div>
+                                            </SwiperSlide>
+                                            <SwiperSlide>
+                                                <div className="swiper_card linkedin blacklight">
+                                                    <div className="con_Status">
+                                                        <span
+                                                            className={`indicator ${
+                                                                connections.linkedin
+                                                                    ? "Connected"
+                                                                    : "Disconnected"
+                                                            }`}
+                                                        ></span>
+                                                        {connections.linkedin
+                                                            ? "Connected"
+                                                            : "Disconnected"}
+                                                    </div>
+                                                    <FiLinkedin
+                                                        fill="#0E76A8"
+                                                        size="60px"
+                                                        strokeWidth={0}
+                                                    />
+                                                    <p className="con_tag">
+                                                        {connections.linkedin
+                                                            ? "Disconnect"
+                                                            : "Connect"}{" "}
+                                                        from Linkedin
+                                                    </p>
+                                                    {connections.linkedin ? (
+                                                        <button
+                                                            className="con_btn disconnect"
+                                                            onClick={() => {
+                                                                setConnection((prev) => {
+                                                                    return {
+                                                                        ...prev,
+                                                                        linkedin: false,
+                                                                    };
+                                                                });
+                                                            }}
+                                                        >
+                                                            Disconnect
+                                                        </button>
+                                                    ) : (
+                                                        <button
+                                                            className="con_btn connect"
+                                                            onClick={() => {
+                                                                setConnection((prev) => {
+                                                                    return {
+                                                                        ...prev,
+                                                                        linkedin: true,
+                                                                    };
+                                                                });
+                                                            }}
+                                                        >
+                                                            Connect
+                                                        </button>
+                                                    )}
                                                 </div>
                                             </SwiperSlide>
                                         </Swiper>
