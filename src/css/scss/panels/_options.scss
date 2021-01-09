@@ -229,4 +229,29 @@
             }
         }
     }
+    .swiper-button-prev {
+        background: url("./caret/caret-right-solid.svg");
+        background-repeat: no-repeat;
+        width: 30px;
+        height: 30px;
+        transform: rotate(180deg);
+        -webkit-transform: rotate(180deg);
+        -moz-transform: rotate(180deg);
+        -ms-transform: rotate(180deg);
+        left: -10%;
+        &::after {
+            display: none;
+        }
+    }
+    .swiper-button-next {
+        background: url("./caret/caret-right-solid.svg");
+        background-repeat: no-repeat;
+        width: 30px;
+        height: 30px;
+
+        right: -10%;
+        &::after {
+            display: none;
+        }
+    }
 }

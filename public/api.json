@@ -163,6 +163,52 @@
                     "id": "1237"
                 }
             ]
+        }, {
+            "label": "Greeting",
+            "content": [{
+                    "text": "May i have your number please?",
+                    "id": "123"
+                },
+                {
+                    "text": "This is Felicia, Thanks for Contacting Chatcloud, How may I help You?",
+                    "id": "1235"
+                },
+                {
+                    "text": "May i have your Phone number Please?",
+                    "id": "1236"
+                },
+                {
+                    "text": "May i have Your email address please?",
+                    "id": "1237"
+                },
+                {
+                    "text": "May i have your Phone number and Email Address in case we need to contact you later?",
+                    "id": "1237"
+                }
+            ]
+        }, {
+            "label": "Greeting",
+            "content": [{
+                    "text": "May i have your number please?",
+                    "id": "123"
+                },
+                {
+                    "text": "This is Felicia, Thanks for Contacting Chatcloud, How may I help You?",
+                    "id": "1235"
+                },
+                {
+                    "text": "May i have your Phone number Please?",
+                    "id": "1236"
+                },
+                {
+                    "text": "May i have Your email address please?",
+                    "id": "1237"
+                },
+                {
+                    "text": "May i have your Phone number and Email Address in case we need to contact you later?",
+                    "id": "1237"
+                }
+            ]
         }
     ]
 }
