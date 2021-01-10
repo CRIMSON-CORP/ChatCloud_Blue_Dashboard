@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 import OnOutsideClick from "react-outclick";
 import { CSSTransition } from "react-transition-group";
-import { MdKeyboardArrowDown } from "react-icons/md";
+import { MdKeyboardArrowDown, MdPeople } from "react-icons/md";
+import { BiChat, BiMessageCheck } from "react-icons/bi";
+import { FaCogs, FaCommentDollar, FaEllipsisH } from "react-icons/fa";
+import { IconContext } from "react-icons";
 
 import { Line, Pie } from "react-chartjs-2";
 
@@ -10,32 +13,53 @@ function Dashboard({
         apiData: {
             data: {
                 date,
-                charts: {
-                    lineChart: { chats, visitors, leads, sales, services, others },
-                    currDayStats,
-                },
+                charts: { website, facebook, instagram },
             },
         },
     },
 }) {
-    console.table(visitors.count);
-    // const [Data, setData] = useState(apiData);
+    // Static Variables
+    const labels = ["06:00", "12:00", "18:00", "24:00"];
+    const pages = ["Website", "Facebook", "Instagram"];
+    const graphPages = ["Visitors", "Live Chats", "Leads", "Sales", "Services", "Others"];
+    const lineColor = ["red", "cyan", "yellow", "green", "orange", "violet"];
+    // End of Static variables
+
+    const [main, setMain] = useState(website);
     const [statDrop, setStatDrop] = useState(false);
-    const [pages] = useState(["Website", "Facebook", "Instagram"]);
     const [page, setPage] = useState("Website");
-    const [graphPages] = useState(["Visitors", "Chats", "Leads", "Sales", "Services", "Others"]);
     const [graphDrop, setGraphDrop] = useState(false);
     const [graph, setGraph] = useState("Visitors");
-    const [lineGraphData, setLineGraphData] = useState(others);
-    const [lineColor] = useState({
-        visitors: "red",
-        chats: "cyan",
-        sales: "yellow",
-        leads: "green",
-        services: "orange",
-        others: "violet",
+
+    const [lineGraphData, setLineGraphData] = useState({
+        labels: labels,
+        datasets: [
+            {
+                backgroundColor: lineColor[0],
+                data: "",
+            },
+        ],
     });
-    const [CurrentStats, SetCurrentStats] = useState(currDayStats);
+    const [CurrentStats, setCurrentStats] = useState(main.currDayStats);
+
+    useEffect(() => {
+        switch (page) {
+            case "Website":
+                setMain(website);
+                break;
+            case "Facebook":
+                setMain(facebook);
+                break;
+            case "Instagram":
+                setMain(instagram);
+                break;
+            default:
+                setMain(website);
+        }
+        setCurrentStats(main.currDayStats);
+    }, [page, website, facebook, instagram, main.currDayStats]);
+
+    const DataServeLogic = {};
 
     const PieData = {
         labels: graphPages,
@@ -51,12 +75,12 @@ function Dashboard({
                     CurrentStats.others,
                 ],
                 backgroundColor: [
-                    lineColor.visitors,
-                    lineColor.chats,
-                    lineColor.leads,
-                    lineColor.sales,
-                    lineColor.services,
-                    lineColor.others,
+                    lineColor[0],
+                    lineColor[1],
+                    lineColor[2],
+                    lineColor[3],
+                    lineColor[4],
+                    lineColor[5],
                 ],
                 borderWidth: 0,
                 hoverBorderWidth: 2,
@@ -67,32 +91,33 @@ function Dashboard({
     useEffect(() => {
         switch (graph) {
             case "Visitors":
-                setLineGraph(visitors, lineColor.visitors);
+                setLineGraph(main.visitors, lineColor[0]);
                 break;
-            case "Chats":
-                setLineGraph(chats, lineColor.chats);
+            case "Live Chats":
+                setLineGraph(main.chats, lineColor[1]);
                 break;
             case "Leads":
-                setLineGraph(leads, lineColor.leads);
+                setLineGraph(main.leads, lineColor[2]);
                 break;
             case "Sales":
-                setLineGraph(sales, lineColor.sales);
+                setLineGraph(main.sales, lineColor[3]);
                 break;
             case "Services":
-                setLineGraph(services, lineColor.services);
+                setLineGraph(main.services, lineColor[4]);
                 break;
             case "Others":
-                setLineGraph(others, lineColor.others);
+                setLineGraph(main.others, lineColor[5]);
                 break;
             default:
-                setLineGraph(others, lineColor.visitors);
+                setLineGraph(main.visitors, lineColor[0]);
         }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [graph]);
 
-    function setLineGraph({ count }, bg) {
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [graph, main.chats, main.leads, main.others, main.sales, main.services, main.visitors]);
+
+    function setLineGraph(count, bg) {
         var GrpahData = {
-            labels: ["06:00", "12:00", "18:00", "24:00"],
+            labels: labels,
             datasets: [
                 {
                     backgroundColor: bg,
@@ -100,9 +125,29 @@ function Dashboard({
                 },
             ],
         };
-
         setLineGraphData(GrpahData);
     }
+
+    const options = {
+        responsive: true,
+        legend: { display: false },
+        scales: {
+            xAxes: [
+                {
+                    gridLines: {
+                        display: false,
+                    },
+                },
+            ],
+            yAxes: [
+                {
+                    gridLines: {
+                        display: false,
+                    },
+                },
+            ],
+        },
+    };
 
     var list = pages.map((page, index) => {
         return (
@@ -132,6 +177,8 @@ function Dashboard({
             </li>
         );
     });
+
+    // Static Variables
     return (
         <div className="container-fluid dashboard">
             <div className="header">
@@ -232,29 +279,7 @@ function Dashboard({
                                                 </OnOutsideClick>
                                             </div>
                                             <div className="graph pt-2">
-                                                <Line
-                                                    options={{
-                                                        responsive: true,
-                                                        legend: { display: false },
-                                                        scales: {
-                                                            xAxes: [
-                                                                {
-                                                                    gridLines: {
-                                                                        display: false,
-                                                                    },
-                                                                },
-                                                            ],
-                                                            yAxes: [
-                                                                {
-                                                                    gridLines: {
-                                                                        display: false,
-                                                                    },
-                                                                },
-                                                            ],
-                                                        },
-                                                    }}
-                                                    data={lineGraphData}
-                                                />
+                                                <LineGraph data={lineGraphData} options={options} />
                                             </div>
                                         </div>
                                     </div>
@@ -269,6 +294,7 @@ function Dashboard({
                                             </div>
                                             <div className="graph pie-chart pt-2">
                                                 <Pie
+                                                    style={{ width: 200, display: "none" }}
                                                     options={{
                                                         legend: {
                                                             display: true,
@@ -294,18 +320,70 @@ function Dashboard({
                         <div className="row mt-4">
                             <div className="r-c r-c-16">
                                 <span className="rect"></span>
-                                <h4>Today's Stat - {date}</h4>
+                                <h4>
+                                    Today's Stat - <span className="text-muted small">{date}</span>
+                                </h4>
                             </div>
 
-                            <div className="row">
-                                <div className="row-grid today">
-                                    <div className="">
-                                        <div className="icon"></div>
-                                        <div className="count">
-                                            <h3>{currDayStats.visitors}</h3>
-                                            <p>{graphPages[0]}</p>
+                            <div className="row mt-4">
+                                <div className="row today">
+                                    <IconContext.Provider value={{ size: "1.5rem" }}>
+                                        <div className="box shadow">
+                                            <div className="icon">
+                                                <MdPeople />
+                                            </div>
+                                            <div className="count">
+                                                <h3>{CurrentStats.visitors}</h3>
+                                                <p>{graphPages[0]}</p>
+                                            </div>
                                         </div>
-                                    </div>
+                                        <div className="box shadow">
+                                            <div className="icon">
+                                                <BiChat fill="white" />
+                                            </div>
+                                            <div className="count">
+                                                <h3>{CurrentStats.chats}</h3>
+                                                <p>{graphPages[1]}</p>
+                                            </div>
+                                        </div>
+                                        <div className="box shadow">
+                                            <div className="icon">
+                                                {" "}
+                                                <BiMessageCheck />
+                                            </div>
+                                            <div className="count">
+                                                <h3>{CurrentStats.leads}</h3>
+                                                <p>{graphPages[2]}</p>
+                                            </div>
+                                        </div>
+                                        <div className="box shadow">
+                                            <div className="icon">
+                                                <FaCommentDollar />
+                                            </div>
+                                            <div className="count">
+                                                <h3>{CurrentStats.sales}</h3>
+                                                <p>{graphPages[3]}</p>
+                                            </div>
+                                        </div>
+                                        <div className="box shadow">
+                                            <div className="icon">
+                                                <FaCogs />
+                                            </div>
+                                            <div className="count">
+                                                <h3>{CurrentStats.services}</h3>
+                                                <p>{graphPages[4]}</p>
+                                            </div>
+                                        </div>
+                                        <div className="box shadow">
+                                            <div className="icon">
+                                                <FaEllipsisH />
+                                            </div>
+                                            <div className="count">
+                                                <h3>{CurrentStats.others}</h3>
+                                                <p>{graphPages[5]}</p>
+                                            </div>
+                                        </div>
+                                    </IconContext.Provider>
                                 </div>
                             </div>
                         </div>
@@ -314,6 +392,10 @@ function Dashboard({
             </div>
         </div>
     );
+}
+
+function LineGraph({ data, options }) {
+    return <Line data={data} options={options} />;
 }
 
 export default Dashboard;

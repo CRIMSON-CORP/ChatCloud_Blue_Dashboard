@@ -2,34 +2,53 @@
     "data": {
         "date": "12/12/2020",
         "charts": {
-            "lineChart": {
-                "chats": {
-                    "count": [205, 300, 345, 410]
-                },
-                "visitors": {
-                    "count": [100, 420, 560, 1200]
-                },
-                "leads": {
-                    "count": [30, 35, 65, 70]
-
-                },
-                "sales": {
-                    "count": [10, 21, 35, 56]
-                },
-                "services": {
-                    "count": [60, 90, 121, 210]
-                },
-                "others": {
-                    "count": [1, 7, 6, 12]
+            "website": {
+                "visitors": [100, 420, 560, 1200],
+                "chats": [205, 300, 345, 410],
+                "leads": [30, 35, 65, 70],
+                "sales": [10, 21, 35, 56],
+                "services": [60, 90, 121, 210],
+                "others": [1, 7, 6, 12],
+                "currDayStats": {
+                    "visitors": 2203,
+                    "chats": 432,
+                    "leads": 348,
+                    "sales": 543,
+                    "services": 200,
+                    "others": 45
                 }
             },
-            "currDayStats": {
-                "visitors": 2203,
-                "chats": 432,
-                "leads": 348,
-                "sales": 543,
-                "services": 200,
-                "others": 45
+            "facebook": {
+                "visitors": [201, 240, 301, 600],
+                "chats": [205, 300, 345, 410],
+                "leads": [30, 35, 65, 70],
+                "sales": [10, 21, 35, 56],
+                "services": [60, 90, 121, 210],
+                "others": [1, 7, 6, 12],
+                "currDayStats": {
+                    "visitors": 100,
+                    "chats": 130,
+                    "leads": 100,
+                    "sales": 45,
+                    "services": 120,
+                    "others": 45
+                }
+            },
+            "instagram": {
+                "visitors": [100, 500, 640, 2000],
+                "chats": [205, 300, 345, 410],
+                "leads": [30, 35, 65, 70],
+                "sales": [10, 21, 35, 56],
+                "services": [60, 90, 121, 210],
+                "others": [1, 7, 6, 12],
+                "currDayStats": {
+                    "visitors": 300,
+                    "chats": 231,
+                    "leads": 76,
+                    "sales": 123,
+                    "services": 12,
+                    "others": 2
+                }
             }
         }
     },

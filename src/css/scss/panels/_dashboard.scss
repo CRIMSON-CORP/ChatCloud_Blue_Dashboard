@@ -86,7 +86,30 @@ div.dashboard {
     }
 }
 
-.today {
+.row.today {
     display: grid;
-    grid-template-columns: repeat(1fr, 6);
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: 5%;
+    .box {
+        padding: 15px;
+        background: $blackLight;
+        text-align: center;
+        .icon {
+            width: 3rem;
+            height: 3rem;
+            display: grid;
+            place-items: center;
+            margin: auto;
+            padding: 10px;
+            background: $blackDark;
+            border-radius: 5px;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            -ms-border-radius: 5px;
+            -o-border-radius: 5px;
+        }
+        h3 {
+            margin: 10px auto;
+        }
+    }
 }
