@@ -85,3 +85,8 @@ div.dashboard {
         grid-template-columns: 1fr 1fr;
     }
 }
+
+.today {
+    display: grid;
+    grid-template-columns: repeat(1fr, 6);
+}

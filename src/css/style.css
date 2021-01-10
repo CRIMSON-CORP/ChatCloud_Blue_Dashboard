@@ -614,6 +614,13 @@ div.dashboard .pie-chart {
       grid-template-columns: 1fr 1fr;
 }
 
+.today {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (6)[1fr];
+      grid-template-columns: repeat(1fr, 6);
+}
+
 .panel {
   background: #231f20;
   padding: 30px;
@@ -775,6 +782,13 @@ div.dashboard .pie-chart {
   display: grid;
   -ms-grid-columns: 1fr 1fr;
       grid-template-columns: 1fr 1fr;
+}
+
+.today {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (6)[1fr];
+      grid-template-columns: repeat(1fr, 6);
 }
 
 ul.platform-lists {
@@ -1228,7 +1242,7 @@ ul.platform-lists li.platform a.others {
 }
 
 .options .string {
-  width: 90%;
+  width: 85%;
   margin-left: auto;
   display: -ms-grid;
   display: grid;
@@ -1253,8 +1267,48 @@ ul.platform-lists li.platform a.others {
   margin-bottom: 10px;
 }
 
+.options .accordion__button {
+  position: relative;
+  z-index: 2;
+}
+
 .options .accordion__panel {
+  position: relative;
   margin: 15px 0;
+}
+
+.options .accordion__panel::before {
+  position: absolute;
+  content: "";
+  background: #888888;
+  width: 1px;
+  top: 0px;
+  height: 100%;
+  left: 5.5%;
+}
+
+.options .accordion__panel .string {
+  position: relative;
+}
+
+.options .accordion__panel .string::before {
+  position: absolute;
+  content: "";
+  width: 5px;
+  height: 5px;
+  background: #a1a1a1;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  left: -12%;
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
 }
 
 .connect .row .slider-row {
@@ -1279,7 +1333,7 @@ ul.platform-lists li.platform a.others {
 .connect .row .slider-row .swiper-container {
   margin: 0;
   overflow: visible;
-  width: 400px;
+  width: 100% !important;
   margin-top: -10px;
 }
 
@@ -1404,5 +1458,43 @@ ul.platform-lists li.platform a.others {
 
 .connect .swiper-button-next::after {
   display: none;
+}
+
+form {
+  width: 100%;
+  font-size: 12px;
+}
+
+form h5.tag {
+  font-size: 12px;
+  font-weight: normal;
+  margin-bottom: 10px;
+}
+
+form input {
+  padding: 5px;
+  background: #231f20;
+  width: 100%;
+  overflow: hidden;
+}
+
+form .dropDown {
+  width: 100%;
+}
+
+form .cta {
+  margin-top: 35px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-row-align: end;
+      align-self: end;
+}
+
+form .cta button {
+  background: #198a00;
+  margin-left: auto;
+  display: inline-block;
+  padding: 5px 50px;
+  font-size: 16px;
 }
 /*# sourceMappingURL=style.css.map */

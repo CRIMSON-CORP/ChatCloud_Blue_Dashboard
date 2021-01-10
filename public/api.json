@@ -1,5 +1,6 @@
 {
     "data": {
+        "date": "12/12/2020",
         "charts": {
             "lineChart": {
                 "chats": {
@@ -23,18 +24,12 @@
                 }
             },
             "currDayStats": {
-                "vistors": {
-                    "count": 2203,
-                    "'color": "red"
-                },
-                "chats": {
-                    "count": 432,
-                    "'color": "yellow"
-                },
-                "leads": {
-                    "count": 348,
-                    "'color": "orange"
-                }
+                "visitors": 2203,
+                "chats": 432,
+                "leads": 348,
+                "sales": 543,
+                "services": 200,
+                "others": 45
             }
         }
     },
@@ -46,6 +41,18 @@
         "timestampFontSize": 8,
         "messagesPadding": 10,
         "widgetPos": "Bottom-right"
+    },
+    "options": {
+        "SocialConnections": {
+            "facebook": true,
+            "instagram": false,
+            "linkedin": false
+        },
+        "optionSubSettings": {
+            "domainName": "hello World",
+            "domainKey": "e45r-dfde-ere4-wsds",
+            "widgetState": "Enabled"
+        }
     },
     "queries": [{
             "label": "Greeting",

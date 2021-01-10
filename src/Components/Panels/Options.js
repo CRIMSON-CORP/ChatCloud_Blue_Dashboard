@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { FiSearch, FiEdit, FiMinus, FiFacebook, FiInstagram, FiLinkedin } from "react-icons/fi";
+import { MdKeyboardArrowDown } from "react-icons/md";
 import { BiCaretDown } from "react-icons/bi";
 import {
     Accordion,
@@ -13,22 +14,28 @@ import {
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore from "swiper";
 import "swiper/swiper-bundle.css";
-import "swiper/components/pagination/pagination.min.css";
-import "swiper/components/navigation/navigation.min.css";
+import OnOutsideClick from "react-outclick";
+import { CSSTransition } from "react-transition-group";
 
 function Options({
     props: {
-        apiData: { queries },
+        apiData: {
+            queries,
+            options: { SocialConnections, optionSubSettings },
+        },
     },
 }) {
     const [editState, setEditState] = useState(false);
     const [deleteState, setDeleteState] = useState(false);
     const [query_to_edit, setQuerytoEdit] = useState({});
     const [query_to_delete, setQuerytoDelete] = useState({});
-    const [connections, setConnection] = useState({
-        facebook: true,
-        instagram: false,
-        linkedin: false,
+    const [connections, setConnection] = useState(SocialConnections);
+    const [widgetTab, setWidgetTab] = useState(false);
+    const [widgetOptions] = useState(["Enabled", "Disabled"]);
+    const [SubFormState, setSubFormState] = useState({
+        domainName: optionSubSettings.domainName,
+        domainKey: optionSubSettings.domainKey,
+        widgetState: optionSubSettings.widgetState,
     });
 
     function editQuery({ text, id }) {
@@ -87,6 +94,28 @@ function Options({
             </AccordionItem>
         );
     });
+
+    var list = widgetOptions.map((option, index) => {
+        return (
+            <li
+                key={index}
+                className="p-2"
+                onClick={() => {
+                    // Logic to set whether true or false for widget
+                    setWidgetTab(false);
+                }}
+            >
+                {option}
+            </li>
+        );
+    });
+
+    function submitOptions(e) {
+        e.preventDefault();
+        var payload = SubFormState;
+        // fetch logic to submit and save settings to API
+        return;
+    }
 
     return (
         <div className="container-fluid options">
@@ -371,6 +400,98 @@ function Options({
                                         </Swiper>
                                     </div>
                                 </div>
+
+                                <form onSubmit={submitOptions}>
+                                    <div className="row mt-4">
+                                        <div className="col-6 pr-2">
+                                            <div className="r-c r-c-16">
+                                                <span className="rect"></span>
+                                                <h5>Domain Settings</h5>
+                                            </div>
+                                            <div className="my-3 ml-2">
+                                                <h5 className="tag">Domain name</h5>
+                                                <input
+                                                    type="text"
+                                                    name="domainName"
+                                                    placeholder={SubFormState.domainName}
+                                                    onChange={(e) => {
+                                                        setSubFormState((prev) => {
+                                                            return {
+                                                                ...prev,
+                                                                [e.targte.name]: e.target.value,
+                                                            };
+                                                        });
+                                                    }}
+                                                />
+                                            </div>
+                                            <div className="my-3 ml-2">
+                                                <h5 className="tag">Domain key</h5>
+                                                <input
+                                                    type="text"
+                                                    name="domainKey"
+                                                    placeholder={SubFormState.domainKey}
+                                                    onChange={(e) => {
+                                                        setSubFormState((prev) => {
+                                                            return {
+                                                                ...prev,
+                                                                [e.targte.name]: e.target.value,
+                                                            };
+                                                        });
+                                                    }}
+                                                />
+                                            </div>
+                                        </div>
+                                        <div className="col-6 pl-2">
+                                            <div className="r-c r-c-16">
+                                                <span className="rect"></span>
+                                                <h5>Widget Options</h5>
+                                            </div>
+                                            <div className="my-3 ml-2">
+                                                <h5 className="tag">Enable/Disable Widget</h5>
+                                                <OnOutsideClick
+                                                    onOutsideClick={() => {
+                                                        setWidgetTab(false);
+                                                    }}
+                                                >
+                                                    <div
+                                                        className={`pages blackdark ${
+                                                            widgetTab ? "drop" : ""
+                                                        }`}
+                                                    >
+                                                        <div
+                                                            className="d-flex justify-content-lg-between align-items-center page-box dropDown"
+                                                            onClick={() => {
+                                                                setWidgetTab(!widgetTab);
+                                                            }}
+                                                        >
+                                                            {SubFormState.widgetState}
+                                                            <span>
+                                                                <MdKeyboardArrowDown size="1.4rem" />
+                                                            </span>
+                                                        </div>
+                                                        <CSSTransition
+                                                            in={widgetTab}
+                                                            timeout={400}
+                                                            classNames="drop"
+                                                            unmountOnExit
+                                                        >
+                                                            <div className="card drop-down shadow rounded-0">
+                                                                <div className="card-body">
+                                                                    <ul className="list-group">
+                                                                        {list}
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </CSSTransition>
+                                                    </div>
+                                                </OnOutsideClick>
+                                            </div>
+                                            <div className="cta">
+                                                <button type="submit">Save</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>

@@ -9,8 +9,10 @@ function Dashboard({
     props: {
         apiData: {
             data: {
+                date,
                 charts: {
                     lineChart: { chats, visitors, leads, sales, services, others },
+                    currDayStats,
                 },
             },
         },
@@ -33,6 +35,34 @@ function Dashboard({
         services: "orange",
         others: "violet",
     });
+    const [CurrentStats, SetCurrentStats] = useState(currDayStats);
+
+    const PieData = {
+        labels: graphPages,
+        datasets: [
+            {
+                label: "Stats",
+                data: [
+                    CurrentStats.visitors,
+                    CurrentStats.chats,
+                    CurrentStats.leads,
+                    CurrentStats.sales,
+                    CurrentStats.services,
+                    CurrentStats.others,
+                ],
+                backgroundColor: [
+                    lineColor.visitors,
+                    lineColor.chats,
+                    lineColor.leads,
+                    lineColor.sales,
+                    lineColor.services,
+                    lineColor.others,
+                ],
+                borderWidth: 0,
+                hoverBorderWidth: 2,
+            },
+        ],
+    };
 
     useEffect(() => {
         switch (graph) {
@@ -151,7 +181,7 @@ function Dashboard({
                         <span className="rect"></span>
                         <h4>Overview - {page}</h4>
                     </div>
-                    <div className="container">
+                    <div className="container-fluid">
                         <div className="row row-grid">
                             <div className="card-block">
                                 <div className="container-fluid mt-4">
@@ -240,16 +270,40 @@ function Dashboard({
                                             <div className="graph pie-chart pt-2">
                                                 <Pie
                                                     options={{
-                                                        responsive: true,
-                                                        legend: { display: false },
+                                                        legend: {
+                                                            display: true,
+                                                            position: "right",
+                                                        },
                                                     }}
-                                                    data={lineGraphData}
+                                                    data={PieData}
                                                 />
 
                                                 {/* <div className="pie-records">
                                                     <ul>li</ul>
                                                 </div> */}
                                             </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="container-fluid">
+                        <div className="row mt-4">
+                            <div className="r-c r-c-16">
+                                <span className="rect"></span>
+                                <h4>Today's Stat - {date}</h4>
+                            </div>
+
+                            <div className="row">
+                                <div className="row-grid today">
+                                    <div className="">
+                                        <div className="icon"></div>
+                                        <div className="count">
+                                            <h3>{currDayStats.visitors}</h3>
+                                            <p>{graphPages[0]}</p>
                                         </div>
                                     </div>
                                 </div>
