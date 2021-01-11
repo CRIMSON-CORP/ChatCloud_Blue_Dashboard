@@ -32,11 +32,9 @@ function Main() {
                 <div className="row">
                     <div>
                         <Switch>
-                            <Route
-                                path="/Conversations"
-                                component={Conversations}
-                                props={apiData}
-                            />
+                            <Route path="/Conversations">
+                                <Conversations props={{ apiData }} />
+                            </Route>
                             <Route path="/Widgets">
                                 <Widgets props={{ apiData: apiData }} />
                             </Route>

@@ -236,5 +236,133 @@
                 }
             ]
         }
+    ],
+
+    "conversations": [{
+            "chatId": 244321,
+            "userId": 12753457390287,
+            "type": "sucess",
+            "messages": [{
+                    "sender": "agent",
+                    "timestamp": "GMT 10:98:08 00",
+                    "message": "For a month."
+                }, {
+                    "sender": "agent",
+                    "timestamp": "GMT 10:98:08 00",
+                    "message": "For a month."
+                }, {
+                    "sender": "agent",
+                    "timestamp": "GMT 10:98:08 00",
+                    "message": "For a month."
+                }, {
+                    "sender": "agent",
+                    "timestamp": "GMT 10:98:08 00",
+                    "message": "For a month."
+                }, {
+                    "sender": "agent",
+                    "timestamp": "GMT 10:98:08 00",
+                    "message": "For a month."
+                }, {
+                    "sender": "agent",
+                    "timestamp": "GMT 10:98:08 00",
+                    "message": "For a month."
+                }, {
+                    "sender": "agent",
+                    "timestamp": "GMT 10:98:08 00",
+                    "message": "For a month."
+                }, {
+                    "sender": "agent",
+                    "timestamp": "GMT 10:98:08 00",
+                    "message": "For a month."
+                }, {
+                    "sender": "agent",
+                    "timestamp": "GMT 10:98:08 00",
+                    "message": "For a month."
+                }, {
+                    "sender": "agent",
+                    "timestamp": "GMT 10:98:08 00",
+                    "message": "For a month."
+                },
+                {
+                    "sender": "agent",
+                    "timestamp": "GMT 10:98:08 00",
+                    "message": "For a month."
+                },
+                {
+                    "sender": "agent",
+                    "timestamp": "GMT 10:98:08 00",
+                    "message": "For a month."
+                },
+                {
+                    "sender": "user",
+                    "timestamp": "GMT 10:98:06 0",
+                    "message": "Great. What are all formalities needed to be done?"
+                }, {
+                    "sender": "agent",
+                    "timestamp": "GMT 10:98:08 00",
+                    "message": "Sir for booking this package you have to pay 2500/- with a copy of your id proof and photograph."
+                }, {
+                    "sender": "user",
+                    "timestamp": "GMT 10:98:06 00",
+                    "message": "Just send me your account details and your WhatsApp number."
+                }, {
+                    "sender": "agent",
+                    "timestamp": "GMT 10:98:08 00",
+                    "message": "OK!"
+                }
+            ],
+            "lead": {
+                "leadType": "Sales",
+                "leadSent": "03:14:07 2038/01/19",
+                "category": "Instagram"
+            },
+            "visitor": {
+                "name": "Alan Walker",
+                "phoneNumber": "+1-541-754-3010",
+                "email": "alanwalker@eample.com",
+                "ipAddress": "192.168.0.45",
+                "location": "123 Main Street, New York, NY 10030"
+            }
+        },
+        {
+            "chatId": 244334,
+            "userId": 12753457390287,
+            "type": "pendding",
+            "messages": [{
+                    "sender": "agent",
+                    "timestamp": "GMT 10:98:08 00",
+                    "message": "For a month."
+                },
+                {
+                    "sender": "user",
+                    "timestamp": "GMT 10:98:06 0",
+                    "message": "lities needed to be done?"
+                }, {
+                    "sender": "agent",
+                    "timestamp": "GMT 10:98:08 00",
+                    "message": "Sir for booking this package you have to pay 2500/- with a copy of your id proof and photograph."
+                }, {
+                    "sender": "user",
+                    "timestamp": "GMT 10:98:06 00",
+                    "message": "Just send me your account details and your WhatsApp number."
+                }, {
+                    "sender": "agent",
+                    "timestamp": "GMT 10:98:08 00",
+                    "message": "OK!"
+                }
+            ],
+            "lead": {
+                "leadType": "Sales",
+                "leadSent": "03:14:07 2038/01/19",
+                "category": "Instagram"
+            },
+            "visitor": {
+                "name": "Alan Walker",
+                "phoneNumber": "+1-541-754-3010",
+                "email": "alanwalker@eample.com",
+                "ipAddress": "192.168.0.45",
+                "location": "123 Main Street, New York, NY 10030"
+            }
+        }
     ]
 }

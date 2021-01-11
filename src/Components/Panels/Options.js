@@ -231,7 +231,7 @@ function Options({
                                 <div className="slider-row mt-3 ">
                                     <div className="slider px-4 blackdark">
                                         {/* Not sure if these Connections should be rendered dynamicaly or static */}
-                                        <Swiper slidesPerView={2} spaceBetween={30} navigation>
+                                        <Swiper slidesPerView={2} spaceBetween={30}>
                                             <SwiperSlide>
                                                 <div className="swiper_card facebook blacklight">
                                                     <div className="con_Status">
@@ -402,8 +402,8 @@ function Options({
                                 </div>
 
                                 <form onSubmit={submitOptions}>
-                                    <div className="row mt-4">
-                                        <div className="col-6 pr-2">
+                                    <div className="row mt-4 form_grid">
+                                        <div className="">
                                             <div className="r-c r-c-16">
                                                 <span className="rect"></span>
                                                 <h5>Domain Settings</h5>
@@ -441,7 +441,7 @@ function Options({
                                                 />
                                             </div>
                                         </div>
-                                        <div className="col-6 pl-2">
+                                        <div className="">
                                             <div className="r-c r-c-16">
                                                 <span className="rect"></span>
                                                 <h5>Widget Options</h5>

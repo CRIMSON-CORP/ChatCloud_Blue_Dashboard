@@ -22,7 +22,15 @@ function Widgets({
     const [posDrop, setPosDrop] = useState(false);
     const [currentPos, setCurrentPos] = useState(widgetPos);
     const [positions] = useState(["Top-left", "Top-right", "Bottom-left", "Bottom-right"]);
-    const [FormData, setFormData] = useState({});
+    const [FormData, setFormData] = useState({
+        agentName: agentName,
+        themeColor: themeColor,
+        messagesFontSize: parseInt(messagesFontSize),
+        timestampFontSize: parseInt(timestampFontSize),
+        mesagesPadding: parseInt(messagesPadding),
+        widgetPos: currentPos,
+        // Dont Forget to Add  Profile image URL Steve
+    });
     const [Tooltip, setTooltip] = useState(false);
 
     const posList = positions.map((position, index) => {
@@ -58,7 +66,6 @@ function Widgets({
             widgetPos: currentPos,
         };
         // ^^ set Download URL in Payload object
-
         // send payload to API
     }
     return (
@@ -68,7 +75,7 @@ function Widgets({
             </div>
 
             <form className="row mt-4 widget" onSubmit={submit}>
-                <div className="row-grid col-6 p-0 pr-5">
+                <div className="row-grid p-0">
                     <div>
                         <h5>Agent Name</h5>
                         <input
@@ -121,7 +128,7 @@ function Widgets({
                         />
                     </div>
                 </div>
-                <div className="row-grid col-6 p-0 pl-5">
+                <div className="row-grid p-0">
                     <div>
                         <h5>Time-Stamp Font-Size</h5>
                         <input

@@ -5,6 +5,12 @@
         display: grid;
         grid-template-columns: 1fr 2fr;
         column-gap: 25px;
+        @media screen and (max-width: 1000px) {
+            & {
+                grid-template-columns: 1fr;
+                row-gap: 25px;
+            }
+        }
         p.tag {
             font-size: 14px;
             margin: 5px 0;
@@ -266,36 +272,17 @@
             }
         }
     }
-    .swiper-button-prev {
-        background: url("./caret/caret-right-solid.svg");
-        background-repeat: no-repeat;
-        width: 30px;
-        height: 30px;
-        transform: rotate(180deg);
-        -webkit-transform: rotate(180deg);
-        -moz-transform: rotate(180deg);
-        -ms-transform: rotate(180deg);
-        left: -10%;
-        &::after {
-            display: none;
-        }
-    }
-    .swiper-button-next {
-        background: url("./caret/caret-right-solid.svg");
-        background-repeat: no-repeat;
-        width: 30px;
-        height: 30px;
-
-        right: -10%;
-        &::after {
-            display: none;
-        }
-    }
 }
 
 form {
     width: 100%;
     font-size: 12px;
+    .form_grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        column-gap: 20px;
+        row-gap: 16px;
+    }
     h5.tag {
         font-size: 12px;
         font-weight: normal;

@@ -35,7 +35,7 @@ function Dashboard({
         labels: labels,
         datasets: [
             {
-                backgroundColor: lineColor[0],
+                backgroundColor: "rgba(0,0,0,0.5)",
                 data: "",
             },
         ],
@@ -58,8 +58,6 @@ function Dashboard({
         }
         setCurrentStats(main.currDayStats);
     }, [page, website, facebook, instagram, main.currDayStats]);
-
-    const DataServeLogic = {};
 
     const PieData = {
         labels: graphPages,
@@ -122,6 +120,10 @@ function Dashboard({
                 {
                     backgroundColor: bg,
                     data: count,
+                    borderColor: bg,
+                    borderWidth: 3,
+                    pointBorderWidth: 1.5,
+                    pointBackgroundColor: "#444",
                 },
             ],
         };
@@ -178,7 +180,6 @@ function Dashboard({
         );
     });
 
-    // Static Variables
     return (
         <div className="container-fluid dashboard">
             <div className="header">
@@ -296,6 +297,7 @@ function Dashboard({
                                                 <Pie
                                                     style={{ width: 200, display: "none" }}
                                                     options={{
+                                                        responsive: true,
                                                         legend: {
                                                             display: true,
                                                             position: "right",
@@ -303,10 +305,6 @@ function Dashboard({
                                                     }}
                                                     data={PieData}
                                                 />
-
-                                                {/* <div className="pie-records">
-                                                    <ul>li</ul>
-                                                </div> */}
                                             </div>
                                         </div>
                                     </div>
@@ -325,8 +323,8 @@ function Dashboard({
                                 </h4>
                             </div>
 
-                            <div className="row mt-4">
-                                <div className="row today">
+                            <div className="row">
+                                <div className="row today mt-4">
                                     <IconContext.Provider value={{ size: "1.5rem" }}>
                                         <div className="box shadow">
                                             <div className="icon">
@@ -394,8 +392,22 @@ function Dashboard({
     );
 }
 
+function setGradient(canvas, bg) {
+    const ctx = canvas.getContext("2d");
+    const gradient = ctx.createLinearGradient(300, 0, 0, 400);
+    gradient.addColorStop(0, bg);
+    gradient.addColorStop(1, "rgba(0,0,0,0)");
+    return gradient;
+}
 function LineGraph({ data, options }) {
-    return <Line data={data} options={options} />;
+    const bg = data.datasets[0].backgroundColor;
+    function getChartData(canvas) {
+        if (typeof bg !== "object") {
+            data.datasets[0].backgroundColor = setGradient(canvas, bg);
+        }
+        return data;
+    }
+    return <Line data={getChartData} options={options} />;
 }
 
 export default Dashboard;
