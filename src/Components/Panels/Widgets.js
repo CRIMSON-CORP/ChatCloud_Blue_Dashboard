@@ -63,6 +63,7 @@ function Widgets({
     function submit(e) {
         e.preventDefault();
         // Put file in Db and get Download URL
+        // eslint-disable-next-line no-unused-vars
         var payload = {
             agentName: FormData.agentName,
             themeColor: FormData.themeColor,

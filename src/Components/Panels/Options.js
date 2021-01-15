@@ -146,6 +146,7 @@ function Options({
 
     function submitOptions(e) {
         e.preventDefault();
+        // eslint-disable-next-line no-unused-vars
         var payload = SubFormState;
         // fetch logic to submit and save settings to API
         return;
