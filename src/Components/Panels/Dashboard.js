@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
+import { Line, Pie } from "react-chartjs-2";
 import OnOutsideClick from "react-outclick";
 import { CSSTransition } from "react-transition-group";
 import { MdKeyboardArrowDown, MdPeople } from "react-icons/md";
 import { BiChat, BiMessageCheck } from "react-icons/bi";
 import { FaCogs, FaCommentDollar, FaEllipsisH } from "react-icons/fa";
 import { IconContext } from "react-icons";
-
-import { Line, Pie } from "react-chartjs-2";
+import { TimelineLite } from "gsap";
 
 function Dashboard({
     props: {
@@ -22,7 +22,7 @@ function Dashboard({
     const labels = ["06:00", "12:00", "18:00", "24:00"];
     const pages = ["Website", "Facebook", "Instagram"];
     const graphPages = ["Visitors", "Live Chats", "Leads", "Sales", "Services", "Others"];
-    const lineColor = ["red", "cyan", "yellow", "green", "orange", "violet"];
+    const lineColor = ["#ed1c24", "#29b6f6", "#fdd835", "#7cb342", "#f4511e", "#7e57c2"];
     // End of Static variables
 
     const [main, setMain] = useState(website);
@@ -36,11 +36,29 @@ function Dashboard({
         datasets: [
             {
                 backgroundColor: "rgba(0,0,0,0.5)",
-                data: "",
+                data: [null],
             },
         ],
     });
     const [CurrentStats, setCurrentStats] = useState(main.currDayStats);
+    useEffect(() => {
+        var tl = new TimelineLite({ duration: 0.25 });
+        tl.from(".header_tag h3", { y: 20, opacity: 0 });
+        tl.from(".r-c", { x: -20, opacity: 0, stagger: { each: 0.5 } }, "-=.2");
+        tl.from(
+            ".card",
+            {
+                scale: 0.8,
+                opacity: 0,
+                stagger: { each: 0.3 },
+                duration: 0.5,
+                ease: "back.out(2.5)",
+            },
+            "-=1.5"
+        );
+        tl.from(".options", { x: 20, opacity: 0 }, "-=1");
+        tl.from(".box", { scale: 0.8, opacity: 0, stagger: { each: 0.1 } });
+    }, []);
 
     useEffect(() => {
         switch (page) {
@@ -56,9 +74,11 @@ function Dashboard({
             default:
                 setMain(website);
         }
-        setCurrentStats(main.currDayStats);
-    }, [page, website, facebook, instagram, main.currDayStats]);
+    }, [page, website, facebook, instagram]);
 
+    useEffect(() => {
+        setCurrentStats(main.currDayStats);
+    }, [main.currDayStats, page]);
     const PieData = {
         labels: graphPages,
         datasets: [
@@ -72,14 +92,7 @@ function Dashboard({
                     CurrentStats.services,
                     CurrentStats.others,
                 ],
-                backgroundColor: [
-                    lineColor[0],
-                    lineColor[1],
-                    lineColor[2],
-                    lineColor[3],
-                    lineColor[4],
-                    lineColor[5],
-                ],
+                backgroundColor: lineColor,
                 borderWidth: 0,
                 hoverBorderWidth: 2,
             },
@@ -87,6 +100,7 @@ function Dashboard({
     };
 
     useEffect(() => {
+        console.log(main.visitors);
         switch (graph) {
             case "Visitors":
                 setLineGraph(main.visitors, lineColor[0]);
@@ -195,7 +209,7 @@ function Dashboard({
                     >
                         <div className={`pages blacklight ${statDrop ? "drop" : ""}`}>
                             <div
-                                className="d-flex justify-content-lg-between align-items-center page-box dropDown"
+                                className="d-flex align-items-center justify-content-between page-box dropDown"
                                 onClick={() => {
                                     setStatDrop(!statDrop);
                                 }}
@@ -223,16 +237,16 @@ function Dashboard({
                     </OnOutsideClick>
                 </div>
             </div>
-            <div className="container-fluid mt-4">
+            <div className="container-fluid mt-5">
                 <div className="row">
                     <div className="r-c r-c-16">
                         <span className="rect"></span>
                         <h4>Overview - {page}</h4>
                     </div>
                     <div className="container-fluid">
-                        <div className="row row-grid">
+                        <div className="row row-grid mt-3">
                             <div className="card-block">
-                                <div className="container-fluid mt-4">
+                                <div className="container-fluid">
                                     <div className="row">
                                         <div className="card line-graph blacklight">
                                             <div className="d-flex justify-content-between align-items-center">
@@ -286,8 +300,9 @@ function Dashboard({
                                     </div>
                                 </div>
                             </div>
+
                             <div className="card-block">
-                                <div className="container-fluid mt-4">
+                                <div className="container-fluid">
                                     <div className="row">
                                         <div className="card line-graph blacklight">
                                             <div className="d-flex justify-content-between align-items-center">
@@ -295,12 +310,17 @@ function Dashboard({
                                             </div>
                                             <div className="graph pie-chart pt-2">
                                                 <Pie
-                                                    style={{ width: 200, display: "none" }}
                                                     options={{
                                                         responsive: true,
                                                         legend: {
                                                             display: true,
                                                             position: "right",
+                                                            labels: {
+                                                                boxWidth: 20,
+                                                                padding: 15,
+                                                                fontFamily: "Roboto",
+                                                                fontColor: "White",
+                                                            },
                                                         },
                                                     }}
                                                     data={PieData}
@@ -315,7 +335,7 @@ function Dashboard({
                 </div>
                 <div className="row">
                     <div className="container-fluid">
-                        <div className="row mt-4">
+                        <div className="row mt-5">
                             <div className="r-c r-c-16">
                                 <span className="rect"></span>
                                 <h4>
@@ -324,7 +344,7 @@ function Dashboard({
                             </div>
 
                             <div className="row">
-                                <div className="row today mt-4">
+                                <div className="row today mt-3">
                                     <IconContext.Provider value={{ size: "1.5rem" }}>
                                         <div className="box shadow">
                                             <div className="icon">
@@ -346,7 +366,6 @@ function Dashboard({
                                         </div>
                                         <div className="box shadow">
                                             <div className="icon">
-                                                {" "}
                                                 <BiMessageCheck />
                                             </div>
                                             <div className="count">
@@ -394,7 +413,7 @@ function Dashboard({
 
 function setGradient(canvas, bg) {
     const ctx = canvas.getContext("2d");
-    const gradient = ctx.createLinearGradient(300, 0, 0, 400);
+    const gradient = ctx.createLinearGradient(200, 0, 200, 200);
     gradient.addColorStop(0, bg);
     gradient.addColorStop(1, "rgba(0,0,0,0)");
     return gradient;
@@ -402,12 +421,14 @@ function setGradient(canvas, bg) {
 function LineGraph({ data, options }) {
     const bg = data.datasets[0].backgroundColor;
     function getChartData(canvas) {
-        if (typeof bg !== "object") {
+        if (typeof bg === "string") {
             data.datasets[0].backgroundColor = setGradient(canvas, bg);
         }
         return data;
     }
-    return <Line data={getChartData} options={options} />;
+    return data.datasets[0].data.length === 0 ? null : (
+        <Line data={getChartData} options={options} />
+    );
 }
 
 export default Dashboard;

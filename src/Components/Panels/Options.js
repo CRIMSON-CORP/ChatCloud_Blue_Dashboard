@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FiSearch, FiEdit, FiMinus, FiFacebook, FiInstagram, FiLinkedin } from "react-icons/fi";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { BiCaretDown } from "react-icons/bi";
@@ -12,10 +12,10 @@ import {
 } from "react-accessible-accordion";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import SwiperCore from "swiper";
 import "swiper/swiper-bundle.css";
 import OnOutsideClick from "react-outclick";
 import { CSSTransition } from "react-transition-group";
+import { TimelineLite } from "gsap";
 
 function Options({
     props: {
@@ -37,6 +37,35 @@ function Options({
         domainKey: optionSubSettings.domainKey,
         widgetState: optionSubSettings.widgetState,
     });
+
+    useEffect(() => {
+        var tl = new TimelineLite({ duration: 0.2 });
+        tl.from(".options .queries, .options .connect", {
+            autoAlpha: 0,
+            scale: 0.9,
+            stagger: { each: 0.2 },
+            ease: "back.out(2)",
+        })
+            .from(".options .r-c", { x: -20, opacity: 0, stagger: { each: 0.25 } }, "-=.75")
+            .from(".options .search", { opacity: 0, scale: 0.9, ease: "back.out(1.7)" }, "-=1.5")
+            .from(
+                ".options .accordion__heading",
+                { opacity: 0, scale: 0.9, stagger: { each: 0.2 }, ease: "back.out(1.7)" },
+                "-=.75"
+            )
+            .from(
+                ".swiper_card",
+                {
+                    opacity: 0,
+                    scale: 0.9,
+                    stagger: { each: 0.5 },
+                    ease: "back.out(1.7)",
+                },
+                "-=1.5"
+            )
+            .from(".input-box", { autoAlpha: 0, x: -30, stagger: { each: 0.2 } }, "-=1")
+            .from(".cta", { autoAlpha: 0, ease: "back.out(1.5)" });
+    }, []);
 
     function editQuery({ text, id }) {
         if (!text) return;
@@ -78,12 +107,14 @@ function Options({
                                 <FiEdit
                                     onClick={() => {
                                         setEditState(true);
+                                        setDeleteState(false);
                                         setQuerytoEdit({ text, id });
                                     }}
                                 />
                                 <FiMinus
                                     onClick={() => {
                                         setDeleteState(true);
+                                        setEditState(false);
                                         setQuerytoDelete({ text, id });
                                     }}
                                 />
@@ -101,6 +132,9 @@ function Options({
                 key={index}
                 className="p-2"
                 onClick={() => {
+                    setSubFormState((prev) => {
+                        return { ...prev, widgetState: option };
+                    });
                     // Logic to set whether true or false for widget
                     setWidgetTab(false);
                 }}
@@ -169,6 +203,7 @@ function Options({
                                                             <input
                                                                 type="submit"
                                                                 value="Edit"
+                                                                className="edit"
                                                                 onClick={() => {
                                                                     setEditState(false);
                                                                     editQuery(query_to_edit);
@@ -231,7 +266,7 @@ function Options({
                                 <div className="slider-row mt-3 ">
                                     <div className="slider px-4 blackdark">
                                         {/* Not sure if these Connections should be rendered dynamicaly or static */}
-                                        <Swiper slidesPerView={2} spaceBetween={30}>
+                                        <Swiper slidesPerView={1.5} spaceBetween={40}>
                                             <SwiperSlide>
                                                 <div className="swiper_card facebook blacklight">
                                                     <div className="con_Status">
@@ -408,11 +443,12 @@ function Options({
                                                 <span className="rect"></span>
                                                 <h5>Domain Settings</h5>
                                             </div>
-                                            <div className="my-3 ml-2">
+                                            <div className="my-3 ml-2 input-box">
                                                 <h5 className="tag">Domain name</h5>
                                                 <input
                                                     type="text"
                                                     name="domainName"
+                                                    className="px-3"
                                                     placeholder={SubFormState.domainName}
                                                     onChange={(e) => {
                                                         setSubFormState((prev) => {
@@ -424,11 +460,12 @@ function Options({
                                                     }}
                                                 />
                                             </div>
-                                            <div className="my-3 ml-2">
+                                            <div className="my-3 ml-2 input-box">
                                                 <h5 className="tag">Domain key</h5>
                                                 <input
                                                     type="text"
                                                     name="domainKey"
+                                                    className="px-3"
                                                     placeholder={SubFormState.domainKey}
                                                     onChange={(e) => {
                                                         setSubFormState((prev) => {
@@ -446,7 +483,7 @@ function Options({
                                                 <span className="rect"></span>
                                                 <h5>Widget Options</h5>
                                             </div>
-                                            <div className="my-3 ml-2">
+                                            <div className="my-3 ml-2 input-box">
                                                 <h5 className="tag">Enable/Disable Widget</h5>
                                                 <OnOutsideClick
                                                     onOutsideClick={() => {
@@ -486,7 +523,7 @@ function Options({
                                                     </div>
                                                 </OnOutsideClick>
                                             </div>
-                                            <div className="cta">
+                                            <div className="cta ">
                                                 <button type="submit">Save</button>
                                             </div>
                                         </div>

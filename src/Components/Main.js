@@ -8,6 +8,7 @@ import Scripts from "./Panels/Scripts";
 import Statistics from "./Panels/Statistics";
 import Download_Plugins from "./Panels/Download_Plugins";
 import Faqs from "./Panels/Faqs";
+import { gsap } from "gsap";
 
 function Main() {
     const [apiData, setApiData] = useState();
@@ -19,13 +20,17 @@ function Main() {
             data = await data.json();
             setApiData(data);
             setLoading(false);
+            gsap.from(".panel", { opacity: 0, duration: 0.5 });
         }
-        fetchCall();
+        setTimeout(() => {
+            fetchCall();
+        }, 1000);
     }, []);
     return (
-        <div className="container-fluid panel-wrapper">
+        <>
             {loading ? (
                 <div className="loading">
+                    <span className="spinner-grow spinner-grow"></span>
                     <h1>Fetching Data...</h1>
                 </div>
             ) : (
@@ -53,7 +58,7 @@ function Main() {
                     </div>
                 </div>
             )}
-        </div>
+        </>
     );
 }
 

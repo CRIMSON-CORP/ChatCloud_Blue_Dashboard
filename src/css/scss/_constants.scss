@@ -39,7 +39,7 @@ p {
 }
 
 .drop-down {
-    z-index: 99;
+    z-index: 999 !important;
     width: 100px;
     position: absolute;
     right: 0;

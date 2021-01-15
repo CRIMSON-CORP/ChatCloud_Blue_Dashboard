@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import {
     Accordion,
     AccordionItem,
@@ -9,7 +9,18 @@ import {
 } from "react-accessible-accordion";
 import { FiArrowDown } from "react-icons/fi";
 import { IconContext } from "react-icons";
+import { TimelineLite } from "gsap";
 function Faqs() {
+    useEffect(() => {
+        var tl = new TimelineLite({ duration: 0.25 });
+        tl.from(".r-c", { x: -20, opacity: 0, stagger: { each: 0.5 } }, "-=.2");
+        tl.from(
+            ".accordion__heading",
+            { opacity: 0, scale: 0.9, stagger: { each: 0.2 }, ease: "back.out(1.7)" },
+            "-=.2"
+        );
+        tl.from(".guideline-list", { opacity: 0 }, "-=1");
+    }, []);
     return (
         <div className="container-fluid faqs">
             <div className="row-grid">
@@ -21,33 +32,6 @@ function Faqs() {
                     <div className="accordion mt-4">
                         <Accordion allowZeroExpanded={true} allowMultipleExpanded={true}>
                             <IconContext.Provider value={{ color: " #ed1c24", size: "1.5rem" }}>
-                                <AccordionItem>
-                                    <AccordionItemHeading>
-                                        <AccordionItemState>
-                                            {({ expanded }) => {
-                                                return (
-                                                    <AccordionItemButton
-                                                        className={`accordion__button ${
-                                                            expanded ? "expanded" : "collapsed"
-                                                        }`}
-                                                    >
-                                                        <h5>
-                                                            Lorem ipsum dolor sit amet, consectetur
-                                                        </h5>
-                                                        <FiArrowDown />
-                                                    </AccordionItemButton>
-                                                );
-                                            }}
-                                        </AccordionItemState>
-                                    </AccordionItemHeading>
-                                    <AccordionItemPanel>
-                                        <p>
-                                            Lorem ipsum dolor sit, amet consectetur adipisicing
-                                            elit. Eligendi odit est esse quisquam eveniet magnam
-                                            reprehenderit nihil placeat quos animi?
-                                        </p>
-                                    </AccordionItemPanel>
-                                </AccordionItem>
                                 <AccordionItem>
                                     <AccordionItemHeading>
                                         <AccordionItemState>

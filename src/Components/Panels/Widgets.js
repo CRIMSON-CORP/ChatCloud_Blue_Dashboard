@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { CSSTransition } from "react-transition-group";
 import OnOutsideClick from "react-outclick";
 import { MdKeyboardArrowDown } from "react-icons/md";
-
+import { TimelineLite } from "gsap";
 function Widgets({
     props: {
         apiData: {
@@ -32,6 +32,12 @@ function Widgets({
         // Dont Forget to Add  Profile image URL Steve
     });
     const [Tooltip, setTooltip] = useState(false);
+
+    useEffect(() => {
+        var tl = new TimelineLite({ duration: 0.25 });
+        tl.from(".header_tag h3", { y: 20, opacity: 0 });
+        tl.from("form .row-grid div", { opacity: 0, stagger: { each: 0.1 } });
+    }, []);
 
     const posList = positions.map((position, index) => {
         return (
@@ -96,11 +102,11 @@ function Widgets({
                         <h5>Theme Color</h5>
                         <label
                             className="spec"
-                            onMouseEnter={() => {
+                            onMouseEnter={async () => {
                                 setTooltip(true);
-                                setTimeout(() => {
-                                    setTooltip(false);
-                                }, 2000);
+                            }}
+                            onMouseOut={() => {
+                                setTooltip(false);
                             }}
                         >
                             <span className={`tooltip ${Tooltip ? "show" : ""}`}>
@@ -156,7 +162,7 @@ function Widgets({
                         >
                             <div className={`posDrop blacklight ${posDrop ? "drop" : ""}`}>
                                 <div
-                                    className="d-flex justify-content-lg-between align-items-center pos-box dropDown"
+                                    className="d-flex  align-items-start pos-box dropDown"
                                     onClick={() => {
                                         setPosDrop(!posDrop);
                                     }}

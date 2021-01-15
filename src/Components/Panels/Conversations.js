@@ -4,6 +4,7 @@ import { MdKeyboardArrowDown } from "react-icons/md";
 import { NavLink, Route, Switch } from "react-router-dom";
 import OnOutsideClick from "react-outclick";
 import { CSSTransition } from "react-transition-group";
+import { TimelineLite, Back } from "gsap";
 
 function Conversations({
     props: {
@@ -20,8 +21,18 @@ function Conversations({
     const [classifyDispute, setClassifyDispute] = useState(false);
 
     useEffect(() => {
-        console.log(disputePayLoad.disputeTye);
-        console.log(disputePayLoad.note);
+        var tl = new TimelineLite({ duration: 0.25 });
+        tl.from(".header_tag h3", { y: 20, opacity: 0 });
+        tl.from(".convo_grid > div", {
+            opacity: 0,
+            scale: 0.9,
+            transformOrigin: "center",
+            stagger: { each: 0.25 },
+            ease: "back.out(3)",
+        });
+    }, []);
+
+    useEffect(() => {
         if (disputePayLoad.disputeTye === "" || disputePayLoad.note === "") {
             setDisputeBtnDisable(true);
         } else {

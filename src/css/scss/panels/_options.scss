@@ -32,9 +32,19 @@
                 -moz-border-radius: 3px;
                 -ms-border-radius: 3px;
                 -o-border-radius: 3px;
+                &.del {
+                    background: $red;
+                }
+                &.edit {
+                    background: $reset;
+                }
             }
-            input.del {
-                background: $red;
+        }
+        form {
+            input[type="button"],
+            input[type="submit"] {
+                display: inline;
+                width: unset;
             }
         }
 
@@ -186,18 +196,20 @@
             .swiper-container {
                 margin: 0;
                 overflow: visible;
-                width: 100% !important;
+                width: 550px;
                 margin-top: -10px;
             }
             .swiper-wrapper {
-                width: auto;
+                width: 600px;
+                display: grid;
+                grid-template-columns: repeat(3, 210px);
+                column-gap: 20px;
             }
 
             .swiper_card,
             .swiper-slide {
                 width: 210px !important;
                 height: 150px;
-                margin-right: 10px;
             }
 
             .swiper_card {
@@ -239,8 +251,9 @@
                     }
                 }
                 .con_tag {
-                    font-size: 12px;
+                    font-size: 10px;
                     display: inline-block;
+                    text-align: center;
                 }
 
                 .con_btn {

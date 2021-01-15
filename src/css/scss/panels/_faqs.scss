@@ -11,7 +11,7 @@
         display: grid;
         grid-template-columns: 2fr 1fr;
         column-gap: 25px;
-        row-gap: 25px;
+        row-gap: 40px;
         @media screen and(max-width:800px) {
             grid-template-columns: 1fr;
         }
@@ -47,17 +47,18 @@
                     transition: all 0.4s ease-out;
                 }
 
-                &.expanded h5 {
-                    @include colorText();
-                    font-weight: 900;
-                }
-
-                &.expanded svg {
-                    transform: rotate(180deg);
-                    -webkit-transform: rotate(180deg);
-                    -moz-transform: rotate(180deg);
-                    -ms-transform: rotate(180deg);
-                    -o-transform: rotate(180deg);
+                &.expanded {
+                    h5 {
+                        @include colorText();
+                        font-weight: 900;
+                    }
+                    svg {
+                        transform: rotate(180deg);
+                        -webkit-transform: rotate(180deg);
+                        -moz-transform: rotate(180deg);
+                        -ms-transform: rotate(180deg);
+                        -o-transform: rotate(180deg);
+                    }
                 }
             }
             .accordion__panel {

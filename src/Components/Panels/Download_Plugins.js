@@ -1,8 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FaEllipsisH, FaLaravel, FaMagento, FaWordpressSimple } from "react-icons/fa";
 import { FiDownload } from "react-icons/fi";
-
+import { TimelineLite, Power4 } from "gsap";
 function Download_Plugins() {
+    useEffect(() => {
+        var tl = new TimelineLite({ duration: 0.25 });
+        tl.from(".header_tag h3", { y: 20, opacity: 0 });
+        tl.from(".r-c", { x: -20, opacity: 0, stagger: { each: 1 } }, "-=.2");
+        tl.to(
+            ".platform",
+            { scale: 1, opacity: 1, stagger: { each: 0.125 }, ease: Power4 },
+            "-=1.5"
+        );
+        tl.from(".manual", { opacity: 0 }, "-=.25");
+        tl.from(".step", { opacity: 0, stagger: { each: 0.1 } }, "-=.1");
+    });
     return (
         <div className="container-fluid">
             <div className="header_tag">

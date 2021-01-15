@@ -80,7 +80,7 @@
                 cursor: pointer;
             }
             .drop-down {
-                z-index: 99;
+                z-index: 10000 !important;
                 width: 100px;
                 position: absolute;
                 right: 0;
@@ -180,11 +180,11 @@
 
 // drop-down transition
 .drop-enter-done {
-    transform: translateY(10px);
-    -webkit-transform: translateY(10px);
-    -moz-transform: translateY(10px);
-    -ms-transform: translateY(10px);
-    -o-transform: translateY(10px);
+    transform: translate(0px, 10px);
+    -webkit-transform: translate(0px, 10px);
+    -moz-transform: translate(0px, 10px);
+    -ms-transform: translate(0px, 10px);
+    -o-transform: translate(0px, 10px);
 }
 
 .drop-enter {
@@ -193,12 +193,12 @@
 }
 .drop-enter-active {
     opacity: 1;
-    transform: translateY(10px);
+    transform: translate(0px, 10px);
     transition: all 200ms;
-    -webkit-transform: translateY(10px);
-    -moz-transform: translateY(10px);
-    -ms-transform: translateY(10px);
-    -o-transform: translateY(10px);
+    -webkit-transform: translate(0px, 10px);
+    -moz-transform: translate(0px, 10px);
+    -ms-transform: translate(0px, 10px);
+    -o-transform: translate(0px, 10px);
     -webkit-transition: all 200ms;
     -moz-transition: all 200ms;
     -ms-transition: all 200ms;
@@ -206,12 +206,12 @@
 }
 .drop-exit {
     opacity: 1;
-    transform: translateY(10px);
+    transform: translate(0px, 10px);
     transition: all 200ms;
-    -webkit-transform: translateY(10px);
-    -moz-transform: translateY(10px);
-    -ms-transform: translateY(10px);
-    -o-transform: translateY(10px);
+    -webkit-transform: translate(0px, 10px);
+    -moz-transform: translate(0px, 10px);
+    -ms-transform: translate(0px, 10px);
+    -o-transform: translate(0px, 10px);
     -webkit-transition: all 200ms;
     -moz-transition: all 200ms;
     -ms-transition: all 200ms;
@@ -219,10 +219,14 @@
 }
 .drop-exit-active {
     opacity: 0;
-    transform: translateY(0);
+    transform: translate(0px, 0px);
     transition: all 200ms;
     -webkit-transition: all 200ms;
     -moz-transition: all 200ms;
     -ms-transition: all 200ms;
     -o-transition: all 200ms;
+    -webkit-transform: translate(0px, 0px);
+    -moz-transform: translate(0px, 0px);
+    -ms-transform: translate(0px, 0px);
+    -o-transform: translate(0px, 0px);
 }
