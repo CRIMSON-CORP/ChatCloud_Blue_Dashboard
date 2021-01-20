@@ -78,20 +78,19 @@ function Widgets({
     return (
         <div className="container-fluid">
             <div className="header_tag">
-                <span className="rect"></span> <h3>Widgets Settings</h3>
+                <h3>Widgets Settings</h3>
             </div>
-
             <form className="row mt-4 widget" onSubmit={submit}>
                 <div className="row-grid p-0">
-                    <div>
-                        <h5>Agent Name</h5>
-                        <input
-                            type="text"
-                            name="agentName"
-                            placeholder={agentName}
-                            onChange={setData}
-                        />
-                    </div>
+                    <InputBoxGen
+                        props={{
+                            header: "Agent Name",
+                            type: "text",
+                            name: "agentName",
+                            placeholder: agentName,
+                            change: setData,
+                        }}
+                    />
                     <div>
                         <h5>Agent Profile Picture</h5>
                         <label className="spec">
@@ -125,35 +124,35 @@ function Widgets({
                             />
                         </label>
                     </div>
-                    <div>
-                        <h5>Messages Font Size</h5>
-                        <input
-                            type="text"
-                            name="messagesFontSize"
-                            placeholder={messagesFontSize}
-                            onChange={setData}
-                        />
-                    </div>
+                    <InputBoxGen
+                        props={{
+                            header: "Messages Font Size",
+                            type: "text",
+                            name: "messagesFontSize",
+                            placeholder: messagesFontSize,
+                            change: setData,
+                        }}
+                    />
                 </div>
                 <div className="row-grid p-0">
-                    <div>
-                        <h5>Time-Stamp Font-Size</h5>
-                        <input
-                            type="text"
-                            name="timestampFontSize"
-                            placeholder={timestampFontSize}
-                            onChange={setData}
-                        />
-                    </div>
-                    <div>
-                        <h5>Messages Padding</h5>
-                        <input
-                            type="text"
-                            name="mesagesPadding"
-                            placeholder={messagesPadding}
-                            onChange={setData}
-                        />
-                    </div>
+                    <InputBoxGen
+                        props={{
+                            header: "Time-Stamp Font-Size",
+                            type: "text",
+                            name: "timestampFontSize",
+                            placeholder: timestampFontSize,
+                            change: setData,
+                        }}
+                    />
+                    <InputBoxGen
+                        props={{
+                            header: "Messages Padding",
+                            type: "text",
+                            name: "mesagesPadding",
+                            placeholder: messagesPadding,
+                            change: setData,
+                        }}
+                    />
                     <div>
                         <h5>Widget Positions</h5>
                         <OnOutsideClick
@@ -190,17 +189,27 @@ function Widgets({
                     </div>
                     <div className="cta">
                         <input
-                            className="reset"
+                            className="reset shadow"
                             type="reset"
                             value="Reset"
                             onClick={() => {
                                 setThemeColorState(themeColor);
+                                setCurrentPos(widgetPos);
                             }}
                         />
-                        <input className="submit" type="submit" value="Save" />
+                        <input className="submit shadow" type="submit" value="Save" />
                     </div>
                 </div>
             </form>
+        </div>
+    );
+}
+
+function InputBoxGen({ props: { header, type, name, placeholder, change } }) {
+    return (
+        <div>
+            <h5>{header}</h5>
+            <input type={type} name={name} placeholder={placeholder} onChange={change} />
         </div>
     );
 }

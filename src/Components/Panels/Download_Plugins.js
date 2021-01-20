@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { FaEllipsisH, FaLaravel, FaMagento, FaWordpressSimple } from "react-icons/fa";
 import { FiDownload } from "react-icons/fi";
+import { IconContext } from "react-icons";
 import { TimelineLite, Power4 } from "gsap";
 function Download_Plugins() {
     useEffect(() => {
@@ -13,7 +14,51 @@ function Download_Plugins() {
             "-=1.5"
         );
         tl.from(".manual", { opacity: 0 }, "-=.25");
-        tl.from(".step", { opacity: 0, stagger: { each: 0.1 } }, "-=.1");
+        tl.from(".step", { opacity: 0, stagger: { each: 0.1 } }, "-=.25");
+    });
+
+    const Downloads = [
+        {
+            link: "",
+            classname: "wordpress",
+            text: "Download for WordPress",
+            icon: <FaWordpressSimple />,
+        },
+        {
+            link: "",
+            classname: "magento",
+            text: "Download for Magento",
+            icon: <FaMagento />,
+        },
+        {
+            link: "",
+            classname: "laravel",
+            text: "Download for Laravel",
+            icon: <FaLaravel />,
+        },
+        {
+            link: "",
+            classname: "others",
+            text: "Download for Other CMS",
+            icon: <FaEllipsisH />,
+        },
+        {
+            link: "",
+            classname: "others",
+            text: "Manual Install",
+            icon: <FiDownload />,
+        },
+    ];
+
+    var DownloadJSX = Downloads.map(({ link, classname, icon, text }, index) => {
+        return (
+            <li className="platform" key={index}>
+                <a href={link} className={classname}>
+                    {icon}
+                    <span className="info">{text}</span>
+                </a>
+            </li>
+        );
     });
     return (
         <div className="container-fluid">
@@ -23,48 +68,19 @@ function Download_Plugins() {
 
             <div className="row mt-4">
                 <div className="r-c r-c-16">
-                    <span className="rect"></span>
                     <h4>Download our Plugin for Your Desired Platform</h4>
                 </div>
                 <div className="row-grid">
                     <ul className="platform-lists list-unstyled my-3">
-                        <li className="platform">
-                            <a href="" className="wordpress">
-                                <FaWordpressSimple size="50px" color="white" />
-                                <span className="info">Download for WordPress</span>
-                            </a>
-                        </li>
-                        <li className="platform">
-                            <a href="" className="magento">
-                                <FaMagento size="50px" color="white" />
-                                <span className="info">Download for Magento</span>
-                            </a>
-                        </li>
-                        <li className="platform">
-                            <a href="" className="laravel">
-                                <FaLaravel size="50px" color="white" />
-                                <span className="info">Download for Laravel</span>
-                            </a>
-                        </li>
-                        <li className="platform">
-                            <a href="" className="others">
-                                <FaEllipsisH size="50px" color="white" />
-                                <span className="info">Download for Other CMS</span>
-                            </a>
-                        </li>
-                        <li className="platform">
-                            <a href="" className="others">
-                                <FiDownload size="50px" color="white" />
-                                <span className="info">Manual Install</span>
-                            </a>
-                        </li>
+                        <IconContext.Provider value={{ style: { color: "white" }, size: 50 }}>
+                            {DownloadJSX}
+                        </IconContext.Provider>
                     </ul>
                 </div>
             </div>
 
             <div className="row mt-4 manual-install">
                 <div className="r-c r-c-16">
-                    <span className="rect"></span>
                     <h4>Manually Integrate Plugin</h4>
                 </div>
                 <span className="manual my-2 d-inline-block">

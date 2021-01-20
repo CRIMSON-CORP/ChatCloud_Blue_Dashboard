@@ -28,10 +28,6 @@
                 padding: 4px 10px;
                 background: $blackDark;
                 border-radius: 3px;
-                -webkit-border-radius: 3px;
-                -moz-border-radius: 3px;
-                -ms-border-radius: 3px;
-                -o-border-radius: 3px;
                 &.del {
                     background: $red;
                 }
@@ -72,10 +68,6 @@
                 top: 50%;
                 left: 0;
                 transform: translate(10px, -50%);
-                -webkit-transform: translate(10px, -50%);
-                -moz-transform: translate(10px, -50%);
-                -ms-transform: translate(10px, -50%);
-                -o-transform: translate(10px, -50%);
             }
 
             input#search {
@@ -97,22 +89,27 @@
         }
     }
 
+    .overflow {
+        max-height: 60vh;
+        overflow-y: scroll;
+        &::-webkit-scrollbar {
+            width: 5px;
+            border-radius: 10px;
+            background: none;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, 0.2);
+        }
+    }
     p.query_header {
         font-size: 12px;
 
         .caret {
             transition: transform 0.4s ease-out;
-            -webkit-transition: transform 0.4s ease-out;
-            -moz-transition: transform 0.4s ease-out;
-            -ms-transition: transform 0.4s ease-out;
-            -o-transition: transform 0.4s ease-out;
 
             &.ex {
                 transform: rotate(180deg);
-                -webkit-transform: rotate(180deg);
-                -moz-transform: rotate(180deg);
-                -ms-transform: rotate(180deg);
-                -o-transform: rotate(180deg);
             }
         }
     }
@@ -161,17 +158,9 @@
                 height: 5px;
                 background: #a1a1a1;
                 border-radius: 50%;
-                -webkit-border-radius: 50%;
-                -moz-border-radius: 50%;
-                -ms-border-radius: 50%;
-                -o-border-radius: 50%;
                 left: -12%;
                 top: 50%;
                 transform: translateY(-50%);
-                -webkit-transform: translateY(-50%);
-                -moz-transform: translateY(-50%);
-                -ms-transform: translateY(-50%);
-                -o-transform: translateY(-50%);
             }
         }
     }
@@ -196,29 +185,19 @@
             .swiper-container {
                 margin: 0;
                 overflow: visible;
-                width: 550px;
                 margin-top: -10px;
             }
-            .swiper-wrapper {
-                width: 600px;
-                display: grid;
-                grid-template-columns: repeat(3, 210px);
-                column-gap: 20px;
-            }
-
-            .swiper_card,
-            .swiper-slide {
+            .swiper_card {
                 width: 210px !important;
                 height: 150px;
+            }
+            .swiper-slide:last-child {
+                padding-right: 100px;
             }
 
             .swiper_card {
                 position: relative;
                 border-radius: 5px;
-                -webkit-border-radius: 5px;
-                -moz-border-radius: 5px;
-                -ms-border-radius: 5px;
-                -o-border-radius: 5px;
                 display: grid;
                 padding: 20px;
                 grid-template-rows: auto auto;
@@ -237,10 +216,6 @@
                         width: 8px;
                         height: 8px;
                         border-radius: 50%;
-                        -webkit-border-radius: 50%;
-                        -moz-border-radius: 50%;
-                        -ms-border-radius: 50%;
-                        -o-border-radius: 50%;
                         background: #595959;
 
                         &.Connected {
@@ -261,17 +236,9 @@
                     bottom: 0;
                     left: 50%;
                     transform: translate(-50%, 50%);
-                    -webkit-transform: translate(-50%, 50%);
-                    -moz-transform: translate(-50%, 50%);
-                    -ms-transform: translate(-50%, 50%);
-                    -o-transform: translate(-50%, 50%);
                     font-size: 12px;
                     padding: 5px 1.6rem;
                     border-radius: 50px;
-                    -webkit-border-radius: 50px;
-                    -moz-border-radius: 50px;
-                    -ms-border-radius: 50px;
-                    -o-border-radius: 50px;
 
                     &.disconnect {
                         background: linear-gradient(180deg, #ff7b7b 0%, #ed1c24 100%);

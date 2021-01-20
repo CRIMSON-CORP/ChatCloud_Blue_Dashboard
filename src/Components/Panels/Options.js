@@ -40,12 +40,13 @@ function Options({
 
     useEffect(() => {
         var tl = new TimelineLite({ duration: 0.2 });
-        tl.from(".options .queries, .options .connect", {
-            autoAlpha: 0,
-            scale: 0.9,
-            stagger: { each: 0.2 },
-            ease: "back.out(2)",
-        })
+        tl.from(".header_tag h3", { y: 20, opacity: 0 })
+            .from(".options .queries, .options .connect", {
+                autoAlpha: 0,
+                scale: 0.9,
+                stagger: { each: 0.2 },
+                ease: "back.out(2)",
+            })
             .from(".options .r-c", { x: -20, opacity: 0, stagger: { each: 0.25 } }, "-=.75")
             .from(".options .search", { opacity: 0, scale: 0.9, ease: "back.out(1.7)" }, "-=1.5")
             .from(
@@ -160,11 +161,10 @@ function Options({
                     <div className="row-grid">
                         <div className="p-3 blacklight queries ">
                             <div className="r-c r-c-16">
-                                <span className="rect"></span>
                                 <h5>Queries</h5>
                             </div>
                             <div className="row">
-                                <div className="blackdark p-2 mt-3">
+                                <div className="blackdark p-2 mt-3 overflow">
                                     <div className="search">
                                         <div className="searchbar blacklight">
                                             <div className="searchBarConatiner">
@@ -260,14 +260,13 @@ function Options({
                         <div className="connect">
                             <div className="row blacklight p-3">
                                 <div className="r-c r-c-16">
-                                    <span className="rect"></span>
                                     <h5>Connect Pages</h5>
                                 </div>
 
                                 <div className="slider-row mt-3 ">
                                     <div className="slider px-4 blackdark">
                                         {/* Not sure if these Connections should be rendered dynamicaly or static */}
-                                        <Swiper slidesPerView={1.5} spaceBetween={40}>
+                                        <Swiper slidesPerView={3}>
                                             <SwiperSlide>
                                                 <div className="swiper_card facebook blacklight">
                                                     <div className="con_Status">
@@ -399,7 +398,8 @@ function Options({
                                                     <p className="con_tag">
                                                         {connections.linkedin
                                                             ? "Disconnect"
-                                                            : "Connect"}{" "}
+                                                            : "Connect"}
+                                                        {"  "}
                                                         from Linkedin
                                                     </p>
                                                     {connections.linkedin ? (
@@ -433,6 +433,7 @@ function Options({
                                                     )}
                                                 </div>
                                             </SwiperSlide>
+                                            <SwiperSlide></SwiperSlide>
                                         </Swiper>
                                     </div>
                                 </div>
@@ -441,7 +442,6 @@ function Options({
                                     <div className="row mt-4 form_grid">
                                         <div className="">
                                             <div className="r-c r-c-16">
-                                                <span className="rect"></span>
                                                 <h5>Domain Settings</h5>
                                             </div>
                                             <div className="my-3 ml-2 input-box">
@@ -481,7 +481,6 @@ function Options({
                                         </div>
                                         <div className="">
                                             <div className="r-c r-c-16">
-                                                <span className="rect"></span>
                                                 <h5>Widget Options</h5>
                                             </div>
                                             <div className="my-3 ml-2 input-box">

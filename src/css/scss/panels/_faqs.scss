@@ -1,6 +1,7 @@
 @import "../variables";
 @mixin colorText {
-    background: linear-gradient($red 10%, $pink);
+    background: linear-gradient($red 40%, $pink);
+    text-shadow: 1px 2px 2px rgba(0, 0, 0, 0.2);
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
@@ -21,10 +22,6 @@
         .accordion__item {
             margin-bottom: 10px;
             transition: all 0.5s ease-out;
-            -webkit-transition: all 0.5s ease-out;
-            -moz-transition: all 0.5s ease-out;
-            -ms-transition: all 0.5s ease-out;
-            -o-transition: all 0.5s ease-out;
             .accordion__button {
                 font-size: 12px;
                 display: flex;
@@ -35,13 +32,9 @@
                 outline: none;
 
                 h5 {
-                    font-size: 12px;
+                    font-size: 14px;
                     margin-bottom: 5px;
                     transition: all 0.4s ease-out;
-                    -webkit-transition: all 0.4s ease-out;
-                    -moz-transition: all 0.4s ease-out;
-                    -ms-transition: all 0.4s ease-out;
-                    -o-transition: all 0.4s ease-out;
                 }
                 svg {
                     transition: all 0.4s ease-out;
@@ -54,10 +47,6 @@
                     }
                     svg {
                         transform: rotate(180deg);
-                        -webkit-transform: rotate(180deg);
-                        -moz-transform: rotate(180deg);
-                        -ms-transform: rotate(180deg);
-                        -o-transform: rotate(180deg);
                     }
                 }
             }
@@ -65,7 +54,6 @@
                 padding: 15px;
                 padding-top: 0;
                 background: $blackLight;
-
                 p {
                     font-size: 10px;
                     font-style: italic;

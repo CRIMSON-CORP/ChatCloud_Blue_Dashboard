@@ -42,6 +42,7 @@ p {
     z-index: 999 !important;
     width: 100px;
     position: absolute;
+    top: 100%;
     right: 0;
     border-radius: 20px;
     background: $blackDark;
@@ -67,12 +68,15 @@ p {
 }
 
 .r-c {
-    display: grid;
-    grid-template-columns: 5px auto;
-    column-gap: 5px;
+    position: relative;
+    padding-left: 15px;
 
-    span.rect {
-        width: 100%;
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 6px;
         height: 100%;
         background: $red;
     }
@@ -81,7 +85,6 @@ p {
         font-size: 14px;
     }
     &.r-c-24 {
-        column-gap: 8px;
         h4 {
             padding: 2px 0;
             font-size: 20px;
@@ -104,4 +107,5 @@ ul {
 
 button {
     cursor: pointer;
+    outline: none;
 }

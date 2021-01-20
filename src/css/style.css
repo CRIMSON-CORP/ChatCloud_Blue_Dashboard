@@ -42,6 +42,7 @@ p {
   z-index: 999 !important;
   width: 100px;
   position: absolute;
+  top: 100%;
   right: 0;
   border-radius: 20px;
   background: #231f20;
@@ -70,16 +71,16 @@ p {
 }
 
 .r-c {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 5px auto;
-      grid-template-columns: 5px auto;
-  -webkit-column-gap: 5px;
-          column-gap: 5px;
+  position: relative;
+  padding-left: 15px;
 }
 
-.r-c span.rect {
-  width: 100%;
+.r-c::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 6px;
   height: 100%;
   background: #ed1c24;
 }
@@ -87,11 +88,6 @@ p {
 .r-c.r-c-16 h4 {
   padding: 5px 0;
   font-size: 14px;
-}
-
-.r-c.r-c-24 {
-  -webkit-column-gap: 8px;
-          column-gap: 8px;
 }
 
 .r-c.r-c-24 h4 {
@@ -115,6 +111,7 @@ ul {
 
 button {
   cursor: pointer;
+  outline: none;
 }
 
 *,
@@ -436,13 +433,14 @@ body {
   border: none !important;
   background: none;
   padding: 0;
+  padding-left: 15px;
 }
 
 .routes ul.list-group a {
   color: white;
 }
 
-.routes ul.list-group a.active span.rect {
+.routes ul.list-group a.active .r-i-c::before {
   opacity: 1;
   transform: translateX(0px);
   -webkit-transform: translateX(0px);
@@ -454,19 +452,22 @@ body {
 .routes .r-i-c {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 5px 35px auto;
-      grid-template-columns: 5px 35px auto;
+  -ms-grid-columns: 35px auto;
+      grid-template-columns: 35px auto;
   -webkit-column-gap: 10px;
           column-gap: 10px;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   cursor: pointer;
+  position: relative;
 }
 
-.routes .r-i-c span {
+.routes .r-i-c::before {
+  position: absolute;
+  content: "";
   background: #ed1c24;
-  width: 100%;
+  width: 7px;
   height: 100%;
   opacity: 0;
   transform: translateX(-10px);
@@ -690,10 +691,6 @@ div.dashboard .pie-chart {
 .panel::-webkit-scrollbar {
   width: 5px;
   border-radius: 10px;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  -ms-border-radius: 10px;
-  -o-border-radius: 10px;
   background: none;
 }
 
@@ -945,8 +942,8 @@ ul.platform-lists {
 
 ul.platform-lists li.platform {
   position: relative;
-  -webkit-box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.25), 0px 4px 20px rgba(0, 0, 0, 0.01);
-          box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.25), 0px 4px 20px rgba(0, 0, 0, 0.01);
+  -webkit-box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.3), 0px 4px 20px rgba(0, 0, 0, 0.15);
+          box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.3), 0px 4px 20px rgba(0, 0, 0, 0.15);
   -webkit-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
   -webkit-transform: scale(0.9);
@@ -987,11 +984,8 @@ ul.platform-lists li.platform a.others {
 }
 
 ul.platform-lists li.platform:hover {
-  transform: translate(0px, -5px) scale(1.05) !important;
   -webkit-transform: translate(0px, -5px) scale(1.05) !important;
-  -moz-transform: translate(0px, -5px) scale(1.05) !important;
-  -ms-transform: translate(0px, -5px) scale(1.05) !important;
-  -o-transform: translate(0px, -5px) scale(1.05) !important;
+          transform: translate(0px, -5px) scale(1.05) !important;
   -webkit-box-shadow: none;
           box-shadow: none;
 }
@@ -1005,6 +999,7 @@ ul.platform-lists li.platform::before {
   height: 100%;
   background: white;
   opacity: 0.1;
+  pointer-events: none;
 }
 
 .manual-install .manual {
@@ -1163,6 +1158,18 @@ ul.platform-lists li.platform::before {
       align-self: end;
 }
 
+.widget .row-grid .cta input {
+  -webkit-transition: -webkit-box-shadow 0.3s ease-out;
+  transition: -webkit-box-shadow 0.3s ease-out;
+  transition: box-shadow 0.3s ease-out;
+  transition: box-shadow 0.3s ease-out, -webkit-box-shadow 0.3s ease-out;
+}
+
+.widget .row-grid .cta input:active {
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+}
+
 .widget .row-grid .cta input.reset {
   background: #354f7c;
 }
@@ -1208,11 +1215,8 @@ ul.platform-lists li.platform::before {
 
 .faqs .accordion .accordion__item {
   margin-bottom: 10px;
-  transition: all 0.5s ease-out;
   -webkit-transition: all 0.5s ease-out;
-  -moz-transition: all 0.5s ease-out;
-  -ms-transition: all 0.5s ease-out;
-  -o-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
 }
 
 .faqs .accordion .accordion__item .accordion__button {
@@ -1232,13 +1236,10 @@ ul.platform-lists li.platform::before {
 }
 
 .faqs .accordion .accordion__item .accordion__button h5 {
-  font-size: 12px;
+  font-size: 14px;
   margin-bottom: 5px;
-  transition: all 0.4s ease-out;
   -webkit-transition: all 0.4s ease-out;
-  -moz-transition: all 0.4s ease-out;
-  -ms-transition: all 0.4s ease-out;
-  -o-transition: all 0.4s ease-out;
+  transition: all 0.4s ease-out;
 }
 
 .faqs .accordion .accordion__item .accordion__button svg {
@@ -1247,8 +1248,9 @@ ul.platform-lists li.platform::before {
 }
 
 .faqs .accordion .accordion__item .accordion__button.expanded h5 {
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(10%, #ed1c24), to(#d80164));
-  background: linear-gradient(#ed1c24 10%, #d80164);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(40%, #ed1c24), to(#d80164));
+  background: linear-gradient(#ed1c24 40%, #d80164);
+  text-shadow: 1px 2px 2px rgba(0, 0, 0, 0.2);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
@@ -1256,11 +1258,8 @@ ul.platform-lists li.platform::before {
 }
 
 .faqs .accordion .accordion__item .accordion__button.expanded svg {
-  transform: rotate(180deg);
   -webkit-transform: rotate(180deg);
-  -moz-transform: rotate(180deg);
-  -ms-transform: rotate(180deg);
-  -o-transform: rotate(180deg);
+          transform: rotate(180deg);
 }
 
 .faqs .accordion .accordion__item .accordion__panel {
@@ -1279,8 +1278,9 @@ ul.platform-lists li.platform::before {
 }
 
 .faqs .guideline-list p span {
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(10%, #ed1c24), to(#d80164));
-  background: linear-gradient(#ed1c24 10%, #d80164);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(40%, #ed1c24), to(#d80164));
+  background: linear-gradient(#ed1c24 40%, #d80164);
+  text-shadow: 1px 2px 2px rgba(0, 0, 0, 0.2);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
@@ -1325,10 +1325,6 @@ ul.platform-lists li.platform::before {
   padding: 4px 10px;
   background: #231f20;
   border-radius: 3px;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  -ms-border-radius: 3px;
-  -o-border-radius: 3px;
 }
 
 .options .row-grid .action input.del {
@@ -1384,11 +1380,8 @@ ul.platform-lists li.platform::before {
   position: absolute;
   top: 50%;
   left: 0;
-  transform: translate(10px, -50%);
   -webkit-transform: translate(10px, -50%);
-  -moz-transform: translate(10px, -50%);
-  -ms-transform: translate(10px, -50%);
-  -o-transform: translate(10px, -50%);
+          transform: translate(10px, -50%);
 }
 
 .options .row-grid .search input#search {
@@ -1430,6 +1423,21 @@ ul.platform-lists li.platform::before {
   letter-spacing: 0.5px;
 }
 
+.options .overflow {
+  max-height: 60vh;
+  overflow-y: scroll;
+}
+
+.options .overflow::-webkit-scrollbar {
+  width: 5px;
+  border-radius: 10px;
+  background: none;
+}
+
+.options .overflow::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+}
+
 .options p.query_header {
   font-size: 12px;
 }
@@ -1439,18 +1447,11 @@ ul.platform-lists li.platform::before {
   transition: -webkit-transform 0.4s ease-out;
   transition: transform 0.4s ease-out;
   transition: transform 0.4s ease-out, -webkit-transform 0.4s ease-out;
-  -webkit-transition: transform 0.4s ease-out;
-  -moz-transition: transform 0.4s ease-out;
-  -ms-transition: transform 0.4s ease-out;
-  -o-transition: transform 0.4s ease-out;
 }
 
 .options p.query_header .caret.ex {
-  transform: rotate(180deg);
   -webkit-transform: rotate(180deg);
-  -moz-transform: rotate(180deg);
-  -ms-transform: rotate(180deg);
-  -o-transform: rotate(180deg);
+          transform: rotate(180deg);
 }
 
 .options .string {
@@ -1510,17 +1511,10 @@ ul.platform-lists li.platform::before {
   height: 5px;
   background: #a1a1a1;
   border-radius: 50%;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  -ms-border-radius: 50%;
-  -o-border-radius: 50%;
   left: -12%;
   top: 50%;
-  transform: translateY(-50%);
   -webkit-transform: translateY(-50%);
-  -moz-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  -o-transform: translateY(-50%);
+          transform: translateY(-50%);
 }
 
 .connect .row .slider-row {
@@ -1545,33 +1539,21 @@ ul.platform-lists li.platform::before {
 .connect .row .slider-row .swiper-container {
   margin: 0;
   overflow: visible;
-  width: 550px;
   margin-top: -10px;
 }
 
-.connect .row .slider-row .swiper-wrapper {
-  width: 600px;
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: (210px)[3];
-      grid-template-columns: repeat(3, 210px);
-  -webkit-column-gap: 20px;
-          column-gap: 20px;
-}
-
-.connect .row .slider-row .swiper_card,
-.connect .row .slider-row .swiper-slide {
+.connect .row .slider-row .swiper_card {
   width: 210px !important;
   height: 150px;
+}
+
+.connect .row .slider-row .swiper-slide:last-child {
+  padding-right: 100px;
 }
 
 .connect .row .slider-row .swiper_card {
   position: relative;
   border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -o-border-radius: 5px;
   display: -ms-grid;
   display: grid;
   padding: 20px;
@@ -1601,10 +1583,6 @@ ul.platform-lists li.platform::before {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  -ms-border-radius: 50%;
-  -o-border-radius: 50%;
   background: #595959;
 }
 
@@ -1624,18 +1602,11 @@ ul.platform-lists li.platform::before {
   position: absolute;
   bottom: 0;
   left: 50%;
-  transform: translate(-50%, 50%);
   -webkit-transform: translate(-50%, 50%);
-  -moz-transform: translate(-50%, 50%);
-  -ms-transform: translate(-50%, 50%);
-  -o-transform: translate(-50%, 50%);
+          transform: translate(-50%, 50%);
   font-size: 12px;
   padding: 5px 1.6rem;
   border-radius: 50px;
-  -webkit-border-radius: 50px;
-  -moz-border-radius: 50px;
-  -ms-border-radius: 50px;
-  -o-border-radius: 50px;
 }
 
 .connect .row .slider-row .swiper_card .con_btn.disconnect {
@@ -1940,6 +1911,8 @@ form .cta button {
   background: linear-gradient(180deg, #ed1c24 0%, #d80164 100%);
   -webkit-box-shadow: 0px 5px 10px rgba(216, 1, 101, 0.5);
           box-shadow: 0px 5px 10px rgba(216, 1, 101, 0.5);
+  -webkit-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
 }
 
 .info .dispute_btn.disabled {
@@ -1949,12 +1922,12 @@ form .cta button {
           box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
 }
 
-form .css-1okebmr-indicatorSeparator {
-  display: none;
-}
-
-form .css-26l3qy-menu {
-  position: absolute;
+.info .dispute_btn:active {
+  transform: scale(0.95);
+  -webkit-transform: scale(0.95);
+  -moz-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  -o-transform: scale(0.95);
 }
 
 form textarea {

@@ -99,6 +99,10 @@
             height: 45px;
             align-self: end;
             input {
+                transition: box-shadow 0.3s ease-out;
+                &:active {
+                    box-shadow: none !important;
+                }
                 &.reset {
                     background: $reset;
                 }

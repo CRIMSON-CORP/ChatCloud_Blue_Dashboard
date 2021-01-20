@@ -100,7 +100,6 @@ function Dashboard({
     };
 
     useEffect(() => {
-        console.log(main.visitors);
         switch (graph) {
             case "Visitors":
                 setLineGraph(main.visitors, lineColor[0]);
@@ -240,7 +239,6 @@ function Dashboard({
             <div className="container-fluid mt-5">
                 <div className="row">
                     <div className="r-c r-c-16">
-                        <span className="rect"></span>
                         <h4>Overview - {page}</h4>
                     </div>
                     <div className="container-fluid">
@@ -337,7 +335,6 @@ function Dashboard({
                     <div className="container-fluid">
                         <div className="row mt-5">
                             <div className="r-c r-c-16">
-                                <span className="rect"></span>
                                 <h4>
                                     Today's Stat - <span className="text-muted small">{date}</span>
                                 </h4>

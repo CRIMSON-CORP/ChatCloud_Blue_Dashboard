@@ -4,7 +4,7 @@ import { MdKeyboardArrowDown } from "react-icons/md";
 import { NavLink, Route, Switch } from "react-router-dom";
 import OnOutsideClick from "react-outclick";
 import { CSSTransition } from "react-transition-group";
-import { TimelineLite, Back } from "gsap";
+import { TimelineLite } from "gsap";
 
 function Conversations({
     props: {
@@ -128,7 +128,6 @@ function Conversations({
                         <div className="dispute p-3 blacklight shadow">
                             <div className="details ">
                                 <div className="r-c r-c-24">
-                                    <span className="rect"></span>
                                     <h4>Details</h4>
                                 </div>
                                 <div className="detail_box">
@@ -145,7 +144,6 @@ function Conversations({
                             </div>
                             <div className="visitor_info">
                                 <div className="r-c r-c-24">
-                                    <span className="rect"></span>
                                     <h4>Visitor Info</h4>
                                 </div>
                                 <div className="visitor_box">
@@ -185,7 +183,6 @@ function Conversations({
                             }`}
                         >
                             <div className="r-c r-c-24">
-                                <span className="rect"></span>
                                 <h4>Reclassify Lead</h4>
                             </div>
                             <form
@@ -274,7 +271,6 @@ function Conversations({
                 <div className="row convo_grid">
                     <div className="chats blacklight shadow p-3 box">
                         <div className="r-c r-c-24">
-                            <span className="rect"></span>
                             <h4>Chats</h4>
                         </div>
                         <div className="chatList mt-3">
@@ -283,7 +279,6 @@ function Conversations({
                     </div>
                     <div className="conversations blacklight shadow p-3 box">
                         <div className="r-c r-c-24">
-                            <span className="rect"></span>
                             <h4>Conversation</h4>
                         </div>
                         <div className="messages mt-3">
