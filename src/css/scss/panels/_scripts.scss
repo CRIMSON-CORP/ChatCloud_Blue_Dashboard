@@ -1,0 +1,185 @@
+@import "../variables";
+
+.scripts {
+    p.tag {
+        font-size: 14px;
+        margin: 5px 0;
+        font-weight: bold;
+    }
+
+    p.query_text {
+        font-size: 12px;
+        font-style: italic;
+    }
+    .action {
+        input {
+            margin-right: 10px;
+            font-size: 12px;
+            padding: 4px 10px;
+            background: $blackDark;
+            border-radius: 3px;
+            &.del {
+                background: $red;
+            }
+            &.edit {
+                background: $reset;
+            }
+        }
+    }
+    form {
+        input[type="button"],
+        input[type="submit"] {
+            display: inline;
+            width: unset;
+        }
+    }
+
+    .search {
+        &.edit {
+            input#search {
+                padding: 8px;
+                font-size: 12px;
+                background: $blackDark;
+                border-radius: 3px;
+                &::placeholder {
+                    opacity: 0.7;
+                    font-size: 10px;
+                    letter-spacing: 0;
+                }
+            }
+        }
+
+        .searchbar {
+            position: relative;
+        }
+
+        .searchIcon {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            transform: translate(10px, -50%);
+        }
+
+        input#search {
+            width: 100%;
+            height: 100%;
+            background: none;
+            padding: 8px 0px 8px 35px;
+            caret-color: $grey;
+            color: white;
+            font-size: 14px;
+            width: 100%;
+        }
+        input#search::placeholder {
+            color: $grey;
+            font-size: 12px;
+            font-family: inherit;
+            letter-spacing: 0.5px;
+        }
+    }
+
+    .overflow {
+        max-height: 60vh;
+        overflow-y: scroll;
+        &::-webkit-scrollbar {
+            width: 5px;
+            border-radius: 10px;
+            background: none;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, 0.2);
+        }
+    }
+    p.query_header {
+        font-size: 12px;
+
+        .caret {
+            transition: transform 0.4s ease-out;
+
+            &.ex {
+                transform: rotate(180deg);
+            }
+        }
+    }
+
+    .string-container {
+        width: 100%;
+        position: relative;
+        .string {
+            width: calc(100% - 40px);
+            margin-left: auto;
+            display: grid;
+            grid-template-columns: auto 1rem 1rem;
+            column-gap: 5px;
+            align-items: center;
+            p {
+                font-size: 10px;
+            }
+            svg {
+                cursor: pointer;
+            }
+        }
+
+        &::before {
+            position: absolute;
+            content: "";
+            width: 5px;
+            height: 5px;
+            background: #a1a1a1;
+            border-radius: 50%;
+            left: 20px;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+    .accordion__item {
+        margin-bottom: 10px;
+    }
+
+    .accordion__button {
+        position: relative;
+        z-index: 2;
+    }
+    .accordion__panel {
+        position: relative;
+        &::before {
+            position: absolute;
+            content: "";
+            background: #888888;
+            width: 1px;
+            top: 0px;
+            height: 100%;
+            left: 20px;
+        }
+        margin: 15px 0;
+    }
+
+    .row-grid {
+        display: grid;
+        grid-template-columns: 7fr 3fr;
+        column-gap: 30px;
+    }
+
+    @media only screen and (max-width: 800px) {
+        .row-grid {
+            grid-template-columns: 1fr;
+            grid-template-rows: auto auto;
+            row-gap: 30px;
+        }
+    }
+
+    .spInstruct {
+        p {
+            font-size: 12px;
+            span {
+                color: $red;
+                font-weight: bold;
+            }
+        }
+
+        .instruction {
+            margin-bottom: 20px;
+        }
+    }
+}

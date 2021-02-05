@@ -1,149 +1,85 @@
 import React, { useState, useEffect } from "react";
-import { FiSearch, FiEdit, FiMinus, FiFacebook, FiInstagram, FiLinkedin } from "react-icons/fi";
-import { MdKeyboardArrowDown } from "react-icons/md";
-import { BiCaretDown } from "react-icons/bi";
-import {
-    Accordion,
-    AccordionItem,
-    AccordionItemHeading,
-    AccordionItemButton,
-    AccordionItemPanel,
-    AccordionItemState,
-} from "react-accessible-accordion";
-
+import { FiFacebook, FiInstagram, FiLinkedin, FiPlus } from "react-icons/fi";
+import { MdCheck, MdDelete, MdEdit, MdError, MdKeyboardArrowDown } from "react-icons/md";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { IconContext } from "react-icons";
 import "swiper/swiper-bundle.css";
-import OnOutsideClick from "react-outclick";
-import { CSSTransition } from "react-transition-group";
+import "swiper/components/navigation/navigation.min.css";
+import SwiperCore, { Navigation } from "swiper";
 import { TimelineLite } from "gsap";
+import Dropdown from "rc-dropdown";
+import Menu, { Item as MenuItem, Divider } from "rc-menu";
+import "rc-dropdown/assets/index.css";
+import { CSSTransition } from "react-transition-group";
+import { v4 } from "uuid";
+import { FaEllipsisH } from "react-icons/fa";
 
 function Options({
     props: {
         apiData: {
-            queries,
-            options: { SocialConnections, optionSubSettings },
+            options: {
+                connections,
+                SocialConnections,
+                optionSubSettings: { domainName, domainKey, widgetState },
+            },
         },
     },
 }) {
-    const [editState, setEditState] = useState(false);
-    const [deleteState, setDeleteState] = useState(false);
-    const [query_to_edit, setQuerytoEdit] = useState({});
-    const [query_to_delete, setQuerytoDelete] = useState({});
-    const [connections, setConnection] = useState(SocialConnections);
-    const [widgetTab, setWidgetTab] = useState(false);
-    const [widgetOptions] = useState(["Enabled", "Disabled"]);
     const [SubFormState, setSubFormState] = useState({
-        domainName: optionSubSettings.domainName,
-        domainKey: optionSubSettings.domainKey,
-        widgetState: optionSubSettings.widgetState,
+        domainName: domainName,
+        domainKey: domainKey,
+        widgetState: widgetState,
     });
+    const [AvailableCon, setAvailableCons] = useState([
+        {
+            id: 1,
+            link: "",
+            name: "Facebook",
+            conStatus: false,
+            icon: <FiFacebook />,
+        },
+        {
+            id: 2,
+            link: "",
+            name: "Instagram",
+            conStatus: false,
+            icon: <FiInstagram />,
+        },
+        {
+            id: 3,
+            link: "",
+            name: "Linkedin",
+            conStatus: false,
+            icon: <FiLinkedin />,
+        },
+    ]);
 
     useEffect(() => {
         var tl = new TimelineLite({ duration: 0.2 });
         tl.from(".header_tag h3", { y: 20, opacity: 0 })
-            .from(".options .queries, .options .connect", {
+            .from(".options .connect", {
                 autoAlpha: 0,
                 scale: 0.9,
-                stagger: { each: 0.2 },
                 ease: "back.out(2)",
             })
-            .from(".options .r-c", { x: -20, opacity: 0, stagger: { each: 0.25 } }, "-=.75")
-            .from(".options .search", { opacity: 0, scale: 0.9, ease: "back.out(1.7)" }, "-=1.5")
-            .from(
-                ".options .accordion__heading",
-                { opacity: 0, scale: 0.9, stagger: { each: 0.2 }, ease: "back.out(1.7)" },
-                "-=.75"
-            )
+            .from(".options .r-c", { x: -20, opacity: 0, stagger: { each: 0.2 } }, "-=.25")
             .from(
                 ".swiper_card",
                 {
                     opacity: 0,
                     scale: 0.9,
-                    stagger: { each: 0.5 },
+                    stagger: { each: 0.2 },
                     ease: "back.out(1.7)",
                 },
-                "-=1.5"
+                "-=.25"
             )
-            .from(".input-box", { autoAlpha: 0, x: -30, stagger: { each: 0.2 } }, "-=1")
-            .from(".cta", { autoAlpha: 0, ease: "back.out(1.5)" });
+            .from(".input-box", { autoAlpha: 0, x: -30, stagger: { each: 0.2 } }, "-=.5")
+            .from(".cta", { autoAlpha: 0, ease: "back.out(1.5)" })
+            .from(".swiper-button-next, .swiper-button-prev", {
+                opacity: 0,
+                stagger: { each: 0.2 },
+            });
     }, []);
-
-    function editQuery({ text, id }) {
-        if (!text) return;
-        // Call Api to Edit query with the Id in parameter
-        setEditState(false);
-        return;
-    }
-    function DeleteQuery(id) {
-        if (!id) return;
-        // Call Api to Delete query with the Id in parameter
-        setEditState(false);
-        return;
-    }
-
-    var Queries = queries.map((query, index) => {
-        return (
-            <AccordionItem key={index}>
-                <AccordionItemHeading>
-                    <AccordionItemButton>
-                        <AccordionItemState>
-                            {({ expanded }) => {
-                                return (
-                                    <p className="query_header blacklight mb-2 p-2">
-                                        <BiCaretDown
-                                            className={`mr-1 caret ${expanded ? "ex" : "clp"}`}
-                                        />
-                                        {query.label}
-                                    </p>
-                                );
-                            }}
-                        </AccordionItemState>
-                    </AccordionItemButton>
-                </AccordionItemHeading>
-                <AccordionItemPanel>
-                    {query.content.map(({ text, id }, index) => {
-                        return (
-                            <div className="blacklight my-1 p-2 string" key={index}>
-                                <p>{text}</p>
-                                <FiEdit
-                                    onClick={() => {
-                                        setEditState(true);
-                                        setDeleteState(false);
-                                        setQuerytoEdit({ text, id });
-                                    }}
-                                />
-                                <FiMinus
-                                    onClick={() => {
-                                        setDeleteState(true);
-                                        setEditState(false);
-                                        setQuerytoDelete({ text, id });
-                                    }}
-                                />
-                            </div>
-                        );
-                    })}
-                </AccordionItemPanel>
-            </AccordionItem>
-        );
-    });
-
-    var list = widgetOptions.map((option, index) => {
-        return (
-            <li
-                key={index}
-                className="p-2"
-                onClick={() => {
-                    setSubFormState((prev) => {
-                        return { ...prev, widgetState: option };
-                    });
-                    // Logic to set whether true or false for widget
-                    setWidgetTab(false);
-                }}
-            >
-                {option}
-            </li>
-        );
-    });
 
     function submitOptions(e) {
         e.preventDefault();
@@ -152,384 +88,177 @@ function Options({
         // fetch logic to submit and save settings to API
         return;
     }
+    SwiperCore.use([Navigation]);
+
+    function select({ key }) {
+        setSubFormState((prev) => {
+            return { ...prev, widgetState: key };
+        });
+    }
+
+    const menu = (
+        <Menu onSelect={select}>
+            <MenuItem key="Enabled">Enabled</MenuItem>
+            <Divider />
+            <MenuItem key="Disabled">Disabled</MenuItem>
+        </Menu>
+    );
+
+    const Cards = AvailableCon.map(({ id, link, name, conStatus, icon, color }) => {
+        return (
+            <SwiperSlide key={id}>
+                <div className={`swiper_card blacklight shadow ${name}`}>
+                    <div className="con_Status">
+                        <span
+                            className={`indicator ${conStatus ? "Connected" : "Disconnected"}`}
+                        ></span>
+                        {conStatus ? "Connected" : "Disconnected"}
+                    </div>
+                    <div className="actions">
+                        <MdEdit size={15} />
+                        <MdDelete
+                            className="delete"
+                            size={15}
+                            onClick={() => {
+                                setAvailableCons(
+                                    AvailableCon.filter((con) => {
+                                        return con.id !== id;
+                                    })
+                                );
+                            }}
+                        />
+                    </div>
+                    <div className="icon">{icon}</div>
+                    <p className="con_tag">
+                        {conStatus ? "Disconnect from " : "Connect to "}
+                        {name}
+                    </p>
+
+                    <button
+                        className={`con_btn ${conStatus ? "disconnect" : "connect"}`}
+                        onClick={() => {
+                            if (!conStatus) {
+                                setAvailableCons(
+                                    AvailableCon.map((con) => {
+                                        if (con.id === id) con.conStatus = true;
+                                        return con;
+                                    })
+                                );
+                            } else {
+                                setAvailableCons(
+                                    AvailableCon.map((con) => {
+                                        if (con.id === id) con.conStatus = false;
+                                        return con;
+                                    })
+                                );
+                            }
+                        }}
+                    >
+                        {conStatus ? "Disconnect" : "Connect"}
+                    </button>
+                </div>
+            </SwiperSlide>
+        );
+    });
 
     return (
         <div className="container-fluid options">
             <div className="header_tag">
                 <h3>Options</h3>
-                <div className="container-fluid mt-3">
-                    <div className="row-grid">
-                        <div className="p-3 blacklight queries ">
+            </div>
+            <div className="container-fluid mt-3">
+                <div className="row-grid">
+                    <div className="connect">
+                        <div className="row blacklight p-3">
                             <div className="r-c r-c-16">
-                                <h5>Queries</h5>
+                                <h5>Connect Pages</h5>
                             </div>
-                            <div className="row">
-                                <div className="blackdark p-2 mt-3 overflow">
-                                    <div className="search">
-                                        <div className="searchbar blacklight">
-                                            <div className="searchBarConatiner">
-                                                <span className="searchIcon">
-                                                    <FiSearch color="white" size="16px" />
-                                                </span>
-                                                <input
-                                                    type="text"
-                                                    name="search"
-                                                    id="search"
-                                                    placeholder="Search Queries"
-                                                />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    {editState && (
-                                        <div className="search edit mt-3">
-                                            <div className="searchbar blacklight p-2">
-                                                <p className="tag">Edit Query</p>
-                                                <div className="searchBarConatiner">
-                                                    <form>
-                                                        <input
-                                                            type="text"
-                                                            name="edit"
-                                                            id="search"
-                                                            className="mb-2"
-                                                            placeholder={query_to_edit.text}
-                                                        />
-                                                        <div className="action">
-                                                            <input
-                                                                type="button"
-                                                                value="Cancel"
-                                                                onClick={() => {
-                                                                    setEditState(false);
-                                                                }}
-                                                            />
-                                                            <input
-                                                                type="submit"
-                                                                value="Edit"
-                                                                className="edit"
-                                                                onClick={() => {
-                                                                    setEditState(false);
-                                                                    editQuery(query_to_edit);
-                                                                }}
-                                                            />
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    )}
-                                    {deleteState && (
-                                        <div className="Delete blacklight mt-3 p-2">
-                                            <p className="tag">Delete Query?</p>
-                                            <p className="italic my-2 query_text">
-                                                {query_to_delete.text}
-                                            </p>
-                                            <div className="action">
-                                                <input
-                                                    type="button"
-                                                    value="No"
-                                                    className="blackdark"
-                                                    onClick={() => {
-                                                        setDeleteState(false);
-                                                    }}
-                                                />
-                                                <input
-                                                    type="submit"
-                                                    value="Yes"
-                                                    className="del"
-                                                    onClick={() => {
-                                                        setDeleteState(false);
-                                                        DeleteQuery(query_to_delete.id);
-                                                    }}
-                                                />
-                                            </div>
-                                        </div>
-                                    )}
-
-                                    <div className="row mt-4">
-                                        <div className="accordion">
-                                            <Accordion
-                                                allowZeroExpanded={true}
-                                                allowMultipleExpanded={true}
-                                            >
-                                                {Queries}
-                                            </Accordion>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="connect">
-                            <div className="row blacklight p-3">
-                                <div className="r-c r-c-16">
-                                    <h5>Connect Pages</h5>
-                                </div>
-
-                                <div className="slider-row mt-3 ">
-                                    <div className="slider px-4 blackdark">
-                                        {/* Not sure if these Connections should be rendered dynamicaly or static */}
-                                        <Swiper slidesPerView={3}>
+                            <div className="slider-row mt-3 ">
+                                <div className="slider blackdark">
+                                    {/* Not sure if these Connections should be rendered dynamicaly or static */}
+                                    <IconContext.Provider value={{ size: 60 }}>
+                                        <Swiper slidesPerView={"auto"} navigation>
+                                            {Cards}
                                             <SwiperSlide>
-                                                <div className="swiper_card facebook blacklight">
-                                                    <div className="con_Status">
-                                                        <span
-                                                            className={`indicator ${
-                                                                connections.facebook
-                                                                    ? "Connected"
-                                                                    : "Disconnected"
-                                                            }`}
-                                                        ></span>
-                                                        {connections.facebook
-                                                            ? "Connected"
-                                                            : "Disconnected"}
-                                                    </div>
-                                                    <FiFacebook
-                                                        color="#3B5998"
-                                                        fill="#3B5998"
-                                                        strokeWidth="0px"
-                                                        size="60px"
-                                                    />
-                                                    <p className="con_tag">
-                                                        {connections.facebook
-                                                            ? "Disconnect"
-                                                            : "Connect"}{" "}
-                                                        from Facebook
-                                                    </p>
-                                                    {connections.facebook ? (
-                                                        <button
-                                                            className="con_btn disconnect"
-                                                            onClick={() => {
-                                                                setConnection((prev) => {
-                                                                    return {
-                                                                        ...prev,
-                                                                        facebook: false,
-                                                                    };
-                                                                });
-                                                            }}
-                                                        >
-                                                            Disconnect
-                                                        </button>
-                                                    ) : (
-                                                        <button
-                                                            className="con_btn connect"
-                                                            onClick={() => {
-                                                                setConnection((prev) => {
-                                                                    return {
-                                                                        ...prev,
-                                                                        facebook: true,
-                                                                    };
-                                                                });
-                                                            }}
-                                                        >
-                                                            Connect
-                                                        </button>
-                                                    )}
-                                                </div>
+                                                <AddLink props={{ setAvailableCons }} />
                                             </SwiperSlide>
-                                            <SwiperSlide>
-                                                <div className="swiper_card instagram blacklight">
-                                                    <div className="con_Status">
-                                                        <span
-                                                            className={`indicator ${
-                                                                connections.instagram
-                                                                    ? "Connected"
-                                                                    : "Disconnected"
-                                                            }`}
-                                                        ></span>
-                                                        {connections.instagram
-                                                            ? "Connected"
-                                                            : "Disconnected"}
-                                                    </div>
-                                                    <FiInstagram color="#E4405F" size="60px" />
-                                                    <p className="con_tag">
-                                                        {connections.instagram
-                                                            ? "Disconnect"
-                                                            : "Connect"}{" "}
-                                                        from Instagram
-                                                    </p>
-                                                    {connections.instagram ? (
-                                                        <button
-                                                            className="con_btn disconnect"
-                                                            onClick={() => {
-                                                                setConnection((prev) => {
-                                                                    return {
-                                                                        ...prev,
-                                                                        instagram: false,
-                                                                    };
-                                                                });
-                                                            }}
-                                                        >
-                                                            Disconnect
-                                                        </button>
-                                                    ) : (
-                                                        <button
-                                                            className="con_btn connect"
-                                                            onClick={() => {
-                                                                setConnection((prev) => {
-                                                                    return {
-                                                                        ...prev,
-                                                                        instagram: true,
-                                                                    };
-                                                                });
-                                                            }}
-                                                        >
-                                                            Connect
-                                                        </button>
-                                                    )}
-                                                </div>
-                                            </SwiperSlide>
-                                            <SwiperSlide>
-                                                <div className="swiper_card linkedin blacklight">
-                                                    <div className="con_Status">
-                                                        <span
-                                                            className={`indicator ${
-                                                                connections.linkedin
-                                                                    ? "Connected"
-                                                                    : "Disconnected"
-                                                            }`}
-                                                        ></span>
-                                                        {connections.linkedin
-                                                            ? "Connected"
-                                                            : "Disconnected"}
-                                                    </div>
-                                                    <FiLinkedin
-                                                        fill="#0E76A8"
-                                                        size="60px"
-                                                        strokeWidth={0}
-                                                    />
-                                                    <p className="con_tag">
-                                                        {connections.linkedin
-                                                            ? "Disconnect"
-                                                            : "Connect"}
-                                                        {"  "}
-                                                        from Linkedin
-                                                    </p>
-                                                    {connections.linkedin ? (
-                                                        <button
-                                                            className="con_btn disconnect"
-                                                            onClick={() => {
-                                                                setConnection((prev) => {
-                                                                    return {
-                                                                        ...prev,
-                                                                        linkedin: false,
-                                                                    };
-                                                                });
-                                                            }}
-                                                        >
-                                                            Disconnect
-                                                        </button>
-                                                    ) : (
-                                                        <button
-                                                            className="con_btn connect"
-                                                            onClick={() => {
-                                                                setConnection((prev) => {
-                                                                    return {
-                                                                        ...prev,
-                                                                        linkedin: true,
-                                                                    };
-                                                                });
-                                                            }}
-                                                        >
-                                                            Connect
-                                                        </button>
-                                                    )}
-                                                </div>
-                                            </SwiperSlide>
-                                            <SwiperSlide></SwiperSlide>
                                         </Swiper>
+                                    </IconContext.Provider>
+                                </div>
+                            </div>
+
+                            <form onSubmit={submitOptions}>
+                                <div className="row mt-4 form_grid">
+                                    <div className="">
+                                        <div className="r-c r-c-16">
+                                            <h5>Domain Settings</h5>
+                                        </div>
+                                        <div className="my-3 ml-2 input-box">
+                                            <h5 className="tag">Domain name</h5>
+                                            <input
+                                                type="text"
+                                                name="domainName"
+                                                className="px-3"
+                                                placeholder={SubFormState.domainName}
+                                                onChange={(e) => {
+                                                    setSubFormState((prev) => {
+                                                        return {
+                                                            ...prev,
+                                                            [e.targte.name]: e.target.value,
+                                                        };
+                                                    });
+                                                }}
+                                            />
+                                        </div>
+                                        <div className="my-3 ml-2 input-box">
+                                            <h5 className="tag">Domain key</h5>
+                                            <input
+                                                type="text"
+                                                name="domainKey"
+                                                className="px-3"
+                                                placeholder={SubFormState.domainKey}
+                                                onChange={(e) => {
+                                                    setSubFormState((prev) => {
+                                                        return {
+                                                            ...prev,
+                                                            [e.targte.name]: e.target.value,
+                                                        };
+                                                    });
+                                                }}
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="">
+                                        <div className="r-c r-c-16">
+                                            <h5>Widget Options</h5>
+                                        </div>
+                                        <div className="my-3 ml-2 input-box">
+                                            <h5 className="tag">Enable/Disable Widget</h5>
+                                            <Dropdown
+                                                trigger={["click"]}
+                                                overlay={menu}
+                                                animation="slide-up"
+                                                closeOnSelect={false}
+                                            >
+                                                <div className="drop blackdark px-3">
+                                                    <input
+                                                        type="text"
+                                                        readOnly
+                                                        style={{ cursor: "pointer" }}
+                                                        value={SubFormState.widgetState}
+                                                    />
+                                                    <MdKeyboardArrowDown size="20px" />
+                                                </div>
+                                            </Dropdown>
+                                        </div>
+                                        <div className="cta ">
+                                            <button type="submit">
+                                                <span>Save</span>
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
-
-                                <form onSubmit={submitOptions}>
-                                    <div className="row mt-4 form_grid">
-                                        <div className="">
-                                            <div className="r-c r-c-16">
-                                                <h5>Domain Settings</h5>
-                                            </div>
-                                            <div className="my-3 ml-2 input-box">
-                                                <h5 className="tag">Domain name</h5>
-                                                <input
-                                                    type="text"
-                                                    name="domainName"
-                                                    className="px-3"
-                                                    placeholder={SubFormState.domainName}
-                                                    onChange={(e) => {
-                                                        setSubFormState((prev) => {
-                                                            return {
-                                                                ...prev,
-                                                                [e.targte.name]: e.target.value,
-                                                            };
-                                                        });
-                                                    }}
-                                                />
-                                            </div>
-                                            <div className="my-3 ml-2 input-box">
-                                                <h5 className="tag">Domain key</h5>
-                                                <input
-                                                    type="text"
-                                                    name="domainKey"
-                                                    className="px-3"
-                                                    placeholder={SubFormState.domainKey}
-                                                    onChange={(e) => {
-                                                        setSubFormState((prev) => {
-                                                            return {
-                                                                ...prev,
-                                                                [e.targte.name]: e.target.value,
-                                                            };
-                                                        });
-                                                    }}
-                                                />
-                                            </div>
-                                        </div>
-                                        <div className="">
-                                            <div className="r-c r-c-16">
-                                                <h5>Widget Options</h5>
-                                            </div>
-                                            <div className="my-3 ml-2 input-box">
-                                                <h5 className="tag">Enable/Disable Widget</h5>
-                                                <OnOutsideClick
-                                                    onOutsideClick={() => {
-                                                        setWidgetTab(false);
-                                                    }}
-                                                >
-                                                    <div
-                                                        className={`pages blackdark ${
-                                                            widgetTab ? "drop" : ""
-                                                        }`}
-                                                    >
-                                                        <div
-                                                            className="d-flex justify-content-lg-between align-items-center page-box dropDown"
-                                                            onClick={() => {
-                                                                setWidgetTab(!widgetTab);
-                                                            }}
-                                                        >
-                                                            {SubFormState.widgetState}
-                                                            <span>
-                                                                <MdKeyboardArrowDown size="1.4rem" />
-                                                            </span>
-                                                        </div>
-                                                        <CSSTransition
-                                                            in={widgetTab}
-                                                            timeout={400}
-                                                            classNames="drop"
-                                                            unmountOnExit
-                                                        >
-                                                            <div className="card drop-down shadow rounded-0">
-                                                                <div className="card-body">
-                                                                    <ul className="list-group">
-                                                                        {list}
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </CSSTransition>
-                                                    </div>
-                                                </OnOutsideClick>
-                                            </div>
-                                            <div className="cta ">
-                                                <button type="submit">Save</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -539,3 +268,145 @@ function Options({
 }
 
 export default Options;
+
+function AddLink({ props: { setAvailableCons } }) {
+    const [input, setInputVal] = useState({
+        name: "",
+        link: "",
+    });
+    const [AddLinkState, setAddLinkState] = useState({
+        AddPage: true,
+        form: false,
+        loading: false,
+        feedBack: {
+            state: false,
+            feedback: false,
+        },
+    });
+
+    function setInput({ target: { name, value } }) {
+        setInputVal((prev) => {
+            return { ...prev, [name]: value };
+        });
+    }
+
+    function connectLink(e) {
+        e.preventDefault();
+        setAddLinkState((prev) => {
+            return { ...prev, form: false, loading: true };
+        });
+        // Send request to API
+        // assuming success fedback
+        setAddLinkState((prev) => {
+            return { ...prev, loading: false, feedBack: { state: true, feedback: true } };
+        });
+
+        var newLink = {
+            id: v4(),
+            link: input.link,
+            name: input.name,
+            icon: <FaEllipsisH />,
+        };
+
+        setAvailableCons((prev) => {
+            return [...prev, newLink];
+        });
+
+        setTimeout(() => {
+            setAddLinkState((prev) => {
+                return { ...prev, feedBack: { ...prev.feedBack, state: false }, AddPage: true };
+            });
+        }, 2000);
+    }
+    return (
+        <div className="swiper_card blacklight shadow addLinkCard">
+            <CSSTransition
+                in={AddLinkState.AddPage}
+                classNames="conSlider"
+                timeout={0}
+                unmountOnExit
+            >
+                <div className="AddLink con d-flex flex-column align-items-center">
+                    <FiPlus
+                        style={{
+                            strokeLinecap: "square",
+                            strokeWidth: 1,
+                        }}
+                    />
+                    <button
+                        className="addLink"
+                        onClick={() => {
+                            setAddLinkState((prev) => {
+                                return { ...prev, form: true, AddPage: false };
+                            });
+                        }}
+                    >
+                        <span className="mt-3">Add new Link</span>
+                    </button>
+                </div>
+            </CSSTransition>
+            <CSSTransition
+                in={AddLinkState.form}
+                classNames="conSlider"
+                timeout={400}
+                unmountOnExit
+            >
+                <form className="con" onSubmit={connectLink}>
+                    <label>
+                        <p className="tag">Name</p>
+                        <input type="text" name="name" required onChange={setInput} />
+                    </label>
+                    <label>
+                        <p className="tag">Link</p>
+                        <input type="text" required name="link" onChange={setInput} />
+                    </label>
+                    <button className="submit" type="submit">
+                        Connect
+                    </button>
+                </form>
+            </CSSTransition>
+            <CSSTransition
+                in={AddLinkState.loading}
+                classNames="conSlider"
+                timeout={400}
+                unmountOnExit
+            >
+                <div className="cardLoading text-center con">
+                    <span className="spinner-grow spinner-grow"></span>
+                    <p>Connecting...</p>
+                </div>
+            </CSSTransition>
+            <CSSTransition
+                in={AddLinkState.loading}
+                classNames="conSlider"
+                timeout={400}
+                unmountOnExit
+            >
+                <div className="cardLoading text-center con">
+                    <span className="spinner-grow spinner-grow"></span>
+                    <p>Connecting...</p>
+                </div>
+            </CSSTransition>
+            <CSSTransition
+                in={AddLinkState.feedBack.state}
+                classNames="conSlider"
+                timeout={400}
+                unmountOnExit
+            >
+                <div className="text-center con text-center d-flex flex-column align-items-center">
+                    {AddLinkState.feedBack.feedback ? (
+                        <>
+                            <MdCheck />
+                            <p> Connected!</p>
+                        </>
+                    ) : (
+                        <>
+                            <MdError />
+                            <p>Failed to Connected!</p>
+                        </>
+                    )}
+                </div>
+            </CSSTransition>
+        </div>
+    );
+}

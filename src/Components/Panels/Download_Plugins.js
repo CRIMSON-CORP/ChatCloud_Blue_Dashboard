@@ -11,9 +11,9 @@ function Download_Plugins() {
         tl.to(
             ".platform",
             { scale: 1, opacity: 1, stagger: { each: 0.125 }, ease: Power4 },
-            "-=1.5"
+            "-=1.25"
         );
-        tl.from(".manual", { opacity: 0 }, "-=.25");
+        tl.from(".manual", { opacity: 0 }, "-=.5");
         tl.from(".step", { opacity: 0, stagger: { each: 0.1 } }, "-=.25");
     });
 

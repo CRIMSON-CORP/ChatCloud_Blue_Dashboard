@@ -136,10 +136,6 @@
                 height: 40px;
                 background: $blackDark;
                 border-radius: 50%;
-                -webkit-border-radius: 50%;
-                -moz-border-radius: 50%;
-                -ms-border-radius: 50%;
-                -o-border-radius: 50%;
                 display: inline-grid;
                 place-items: center;
                 cursor: pointer;
@@ -153,10 +149,6 @@
                 top: 0;
                 right: 0;
                 border-radius: 50%;
-                -webkit-border-radius: 50%;
-                -moz-border-radius: 50%;
-                -ms-border-radius: 50%;
-                -o-border-radius: 50%;
             }
         }
 
@@ -168,10 +160,6 @@
                 display: inline-grid;
                 place-items: center;
                 border-radius: 50%;
-                -webkit-border-radius: 50%;
-                -moz-border-radius: 50%;
-                -ms-border-radius: 50%;
-                -o-border-radius: 50%;
                 cursor: pointer;
             }
         }
@@ -181,10 +169,6 @@
 // drop-down transition
 .drop-enter-done {
     transform: translate(0px, 10px);
-    -webkit-transform: translate(0px, 10px);
-    -moz-transform: translate(0px, 10px);
-    -ms-transform: translate(0px, 10px);
-    -o-transform: translate(0px, 10px);
 }
 
 .drop-enter {
@@ -195,38 +179,14 @@
     opacity: 1;
     transform: translate(0px, 10px);
     transition: all 200ms;
-    -webkit-transform: translate(0px, 10px);
-    -moz-transform: translate(0px, 10px);
-    -ms-transform: translate(0px, 10px);
-    -o-transform: translate(0px, 10px);
-    -webkit-transition: all 200ms;
-    -moz-transition: all 200ms;
-    -ms-transition: all 200ms;
-    -o-transition: all 200ms;
 }
 .drop-exit {
     opacity: 1;
     transform: translate(0px, 10px);
     transition: all 200ms;
-    -webkit-transform: translate(0px, 10px);
-    -moz-transform: translate(0px, 10px);
-    -ms-transform: translate(0px, 10px);
-    -o-transform: translate(0px, 10px);
-    -webkit-transition: all 200ms;
-    -moz-transition: all 200ms;
-    -ms-transition: all 200ms;
-    -o-transition: all 200ms;
 }
 .drop-exit-active {
     opacity: 0;
     transform: translate(0px, 0px);
     transition: all 200ms;
-    -webkit-transition: all 200ms;
-    -moz-transition: all 200ms;
-    -ms-transition: all 200ms;
-    -o-transition: all 200ms;
-    -webkit-transform: translate(0px, 0px);
-    -moz-transform: translate(0px, 0px);
-    -ms-transform: translate(0px, 0px);
-    -o-transform: translate(0px, 0px);
 }

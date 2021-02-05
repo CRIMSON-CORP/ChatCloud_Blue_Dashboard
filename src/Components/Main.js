@@ -47,7 +47,9 @@ function Main() {
                                 <Options props={{ apiData: apiData }} />
                             </Route>
 
-                            <Route path="/Scripts" component={Scripts} />
+                            <Route path="/Scripts">
+                                <Scripts props={{ apiData: apiData }} />
+                            </Route>
                             <Route path="/Statistics" component={Statistics} />
                             <Route path="/Download_Plugins" component={Download_Plugins} />
                             <Route path="/Faqs" component={Faqs} />

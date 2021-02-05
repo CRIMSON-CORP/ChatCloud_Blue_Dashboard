@@ -1,58 +1,31 @@
 import React, { useState, useEffect } from "react";
-import { CSSTransition } from "react-transition-group";
-import OnOutsideClick from "react-outclick";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { TimelineLite } from "gsap";
-function Widgets({
-    props: {
-        apiData: {
-            widgets: {
-                agentName,
-                themeColor,
-                agentProfilePicURL,
-                messagesFontSize,
-                timestampFontSize,
-                messagesPadding,
-                widgetPos,
-            },
-        },
-    },
-}) {
-    const [themeColorState, setThemeColorState] = useState(themeColor);
-    const [posDrop, setPosDrop] = useState(false);
-    const [currentPos, setCurrentPos] = useState(widgetPos);
-    const [positions] = useState(["Top-left", "Top-right", "Bottom-left", "Bottom-right"]);
+import Dropdown from "rc-dropdown";
+import Menu, { Item as MenuItem, Divider } from "rc-menu";
+function Widgets({ props: { apiData: widgets } }) {
+    const Default = widgets.widgets;
+
     const [FormData, setFormData] = useState({
-        agentName: agentName,
-        themeColor: themeColor,
-        messagesFontSize: parseInt(messagesFontSize),
-        timestampFontSize: parseInt(timestampFontSize),
-        mesagesPadding: parseInt(messagesPadding),
-        widgetPos: currentPos,
+        agentName: Default.agentName,
+        themeColor: Default.themeColor,
+        messagesFontSize: parseInt(Default.messagesFontSize),
+        timestampFontSize: parseInt(Default.timestampFontSize),
+        messagesPadding: parseInt(Default.messagesPadding),
+        widgetPos: Default.widgetPos,
         // Dont Forget to Add  Profile image URL Steve
     });
     const [Tooltip, setTooltip] = useState(false);
-
     useEffect(() => {
         var tl = new TimelineLite({ duration: 0.25 });
         tl.from(".header_tag h3", { y: 20, opacity: 0 });
-        tl.from("form .row-grid div", { opacity: 0, stagger: { each: 0.1 } });
+        tl.from("form .row-grid div", {
+            autoAlpha: 0,
+            scale: 0.8,
+            ease: "back.out(1.5)",
+            stagger: { each: 0.125 },
+        });
     }, []);
-
-    const posList = positions.map((position, index) => {
-        return (
-            <li
-                key={index}
-                className="list-group-item p-2"
-                onClick={() => {
-                    setCurrentPos(position);
-                    setPosDrop(false);
-                }}
-            >
-                {position}
-            </li>
-        );
-    });
 
     function setData({ target: { name, value } }) {
         setFormData((prev) => {
@@ -64,14 +37,7 @@ function Widgets({
         e.preventDefault();
         // Put file in Db and get Download URL
         // eslint-disable-next-line no-unused-vars
-        var payload = {
-            agentName: FormData.agentName,
-            themeColor: FormData.themeColor,
-            messagesFontSize: parseInt(FormData.messagesFontSize),
-            timestampFontSize: parseInt(FormData.timestampFontSize),
-            mesagesPadding: parseInt(FormData.mesagesPadding),
-            widgetPos: currentPos,
-        };
+        var payload = FormData;
         // ^^ set Download URL in Payload object
         // send payload to API
     }
@@ -87,7 +53,7 @@ function Widgets({
                             header: "Agent Name",
                             type: "text",
                             name: "agentName",
-                            placeholder: agentName,
+                            placeholder: FormData.agentName,
                             change: setData,
                         }}
                     />
@@ -112,14 +78,15 @@ function Widgets({
                             <span className={`tooltip ${Tooltip ? "show" : ""}`}>
                                 Click Here to Change Theme Color
                             </span>
-                            <input type="text" value={themeColorState} readOnly={true} />
+                            <input type="text" value={FormData.themeColor} readOnly={true} />
                             <input
                                 type="color"
                                 name="themeColor"
-                                defaultValue={themeColor}
+                                defaultValue={FormData.themeColor}
                                 onChange={(e) => {
-                                    setThemeColorState(e.target.value);
-                                    setData(e);
+                                    setFormData((prev) => {
+                                        return { ...prev, themeColor: e.target.value };
+                                    });
                                 }}
                             />
                         </label>
@@ -127,9 +94,9 @@ function Widgets({
                     <InputBoxGen
                         props={{
                             header: "Messages Font Size",
-                            type: "text",
+                            type: "number",
                             name: "messagesFontSize",
-                            placeholder: messagesFontSize,
+                            placeholder: FormData.messagesFontSize,
                             change: setData,
                         }}
                     />
@@ -138,66 +105,32 @@ function Widgets({
                     <InputBoxGen
                         props={{
                             header: "Time-Stamp Font-Size",
-                            type: "text",
+                            type: "number",
                             name: "timestampFontSize",
-                            placeholder: timestampFontSize,
+                            placeholder: FormData.timestampFontSize,
                             change: setData,
                         }}
                     />
                     <InputBoxGen
                         props={{
                             header: "Messages Padding",
-                            type: "text",
+                            type: "number",
                             name: "mesagesPadding",
-                            placeholder: messagesPadding,
+                            placeholder: FormData.messagesPadding,
                             change: setData,
                         }}
                     />
-                    <div>
-                        <h5>Widget Positions</h5>
-                        <OnOutsideClick
-                            onOutsideClick={() => {
-                                setPosDrop(false);
-                            }}
-                        >
-                            <div className={`posDrop blacklight ${posDrop ? "drop" : ""}`}>
-                                <div
-                                    className="d-flex  align-items-start pos-box dropDown"
-                                    onClick={() => {
-                                        setPosDrop(!posDrop);
-                                    }}
-                                >
-                                    {currentPos}
-                                    <span>
-                                        <MdKeyboardArrowDown size="1.4rem" />
-                                    </span>
-                                </div>
-                                <CSSTransition
-                                    in={posDrop}
-                                    timeout={400}
-                                    classNames="drop"
-                                    unmountOnExit
-                                >
-                                    <div className="card drop-down shadow rounded-0">
-                                        <div className="card-body">
-                                            <ul className="list-group">{posList}</ul>
-                                        </div>
-                                    </div>
-                                </CSSTransition>
-                            </div>
-                        </OnOutsideClick>
-                    </div>
+                    <WidgetSetting props={{ widgetPos: FormData.widgetPos, setFormData }} />
                     <div className="cta">
                         <input
-                            className="reset shadow"
+                            className="reset"
                             type="reset"
                             value="Reset"
                             onClick={() => {
-                                setThemeColorState(themeColor);
-                                setCurrentPos(widgetPos);
+                                setFormData(Default);
                             }}
                         />
-                        <input className="submit shadow" type="submit" value="Save" />
+                        <input className="submit" type="submit" value="Save" />
                     </div>
                 </div>
             </form>
@@ -210,6 +143,42 @@ function InputBoxGen({ props: { header, type, name, placeholder, change } }) {
         <div>
             <h5>{header}</h5>
             <input type={type} name={name} placeholder={placeholder} onChange={change} />
+        </div>
+    );
+}
+
+function WidgetSetting({ props: { widgetPos, setFormData } }) {
+    const Positions = ["Top-left", "Top-right", "Bottom-left", "Bottom-right"];
+    function select({ key }) {
+        setFormData((prev) => {
+            return { ...prev, widgetPos: key };
+        });
+    }
+    const menu = (
+        <Menu onSelect={select}>
+            {Positions.map((type) => {
+                return (
+                    <>
+                        <MenuItem key={type}>{type}</MenuItem>
+                        <Divider />
+                    </>
+                );
+            })}
+        </Menu>
+    );
+
+    return (
+        <div>
+            <h5>Widget Positions</h5>
+            <Dropdown trigger={["click"]} overlay={menu} animation="slide-up" closeOnSelect={false}>
+                <div
+                    className="posDrop blacklight  px-3 py-2 my-2 d-flex flex-row justify-content-between"
+                    style={{ cursor: "pointer" }}
+                >
+                    <p className="m-0 leadType d-inline-block">{widgetPos}</p>
+                    <MdKeyboardArrowDown size="20px" />
+                </div>
+            </Dropdown>
         </div>
     );
 }

@@ -1,11 +1,4 @@
 @import "../variables";
-@mixin colorText {
-    background: linear-gradient($red 40%, $pink);
-    text-shadow: 1px 2px 2px rgba(0, 0, 0, 0.2);
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
-}
 
 .faqs {
     .row-grid {
@@ -34,7 +27,7 @@
                 h5 {
                     font-size: 14px;
                     margin-bottom: 5px;
-                    transition: all 0.4s ease-out;
+                    transition: color 0.4s ease-out;
                 }
                 svg {
                     transition: all 0.4s ease-out;
@@ -42,8 +35,7 @@
 
                 &.expanded {
                     h5 {
-                        @include colorText();
-                        font-weight: 900;
+                        color: $red;
                     }
                     svg {
                         transform: rotate(180deg);
@@ -51,10 +43,17 @@
                 }
             }
             .accordion__panel {
-                padding: 15px;
-                padding-top: 0;
                 background: $blackLight;
+                transition: max-height 0.5s ease-out;
+                max-height: 0px;
+                overflow: hidden;
+                &.para-expanded {
+                    max-height: 100px;
+                    overflow: hidden;
+                }
                 p {
+                    padding: 15px;
+                    padding-top: 0;
                     font-size: 10px;
                     font-style: italic;
                 }
@@ -66,7 +65,7 @@
         p {
             font-size: 12px;
             span {
-                @include colorText();
+                color: $red;
                 font-weight: bold;
             }
         }
@@ -75,4 +74,8 @@
             margin-bottom: 20px;
         }
     }
+}
+
+.faqs [hidden] {
+    display: block !important;
 }

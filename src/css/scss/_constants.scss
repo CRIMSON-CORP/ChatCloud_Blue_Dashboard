@@ -67,6 +67,28 @@ p {
     }
 }
 
+ul.rc-dropdown-menu {
+    border-radius: 5px;
+    background: $blackDark;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+    border: 2px solid rgba(0, 0, 0, 0.125);
+    outline: none;
+    .rc-dropdown-menu-item {
+        transition: 0.3s;
+        color: white !important;
+        &.active,
+        &:hover {
+            background-color: #333 !important;
+        }
+    }
+    .rc-dropdown-menu-item-divider {
+        background: rgba(0, 0, 0, 0.125);
+    }
+    .rc-dropdown-menu-item-selected {
+        background: none;
+    }
+}
+
 .r-c {
     position: relative;
     padding-left: 15px;
@@ -108,4 +130,9 @@ ul {
 button {
     cursor: pointer;
     outline: none;
+}
+
+.dropDown,
+.drop {
+    z-index: 999;
 }

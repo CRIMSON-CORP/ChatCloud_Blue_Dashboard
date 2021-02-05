@@ -88,8 +88,9 @@
 // }
 
 @import "./panels/dashboard";
-@import "./panels/download_plugins";
-@import "./panels/widgets";
-@import "./panels/faqs";
-@import "./panels/options";
 @import "./panels//conversations";
+@import "./panels/widgets";
+@import "./panels/options";
+@import "./panels/scripts";
+@import "./panels/download_plugins";
+@import "./panels/faqs";

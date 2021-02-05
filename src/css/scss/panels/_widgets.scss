@@ -92,6 +92,10 @@
             display: none;
         }
 
+        input[type="number"]::-webkit-inner-spin-button {
+            display: none;
+        }
+
         .cta {
             display: grid;
             grid-template-columns: 1fr 1fr;

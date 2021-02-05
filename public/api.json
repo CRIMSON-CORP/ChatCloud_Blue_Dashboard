@@ -62,6 +62,25 @@
         "widgetPos": "Bottom-right"
     },
     "options": {
+        "connections": [{
+                "id": 1,
+                "name": "facebook",
+                "link": "https://facebook-link",
+                "connectionStatus": true
+            },
+            {
+                "id": 2,
+                "name": "instagram",
+                "link": "https://instagram-link",
+                "connectionStatus": false
+            },
+            {
+                "id": 3,
+                "name": "linkedin",
+                "link": "https://linkedin-link",
+                "connectionStatus": false
+            }
+        ],
         "SocialConnections": {
             "facebook": true,
             "instagram": false,

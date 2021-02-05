@@ -43,21 +43,26 @@ function Dashboard({
     const [CurrentStats, setCurrentStats] = useState(main.currDayStats);
     useEffect(() => {
         var tl = new TimelineLite({ duration: 0.25 });
-        tl.from(".header_tag h3", { y: 20, opacity: 0 });
-        tl.from(".r-c", { x: -20, opacity: 0, stagger: { each: 0.5 } }, "-=.2");
+        tl.from(".header_tag h3", { y: 20, autoAlpha: 0 });
+        tl.from(".r-c", { x: -20, autoAlpha: 0, stagger: { each: 0.5 } }, "-=.2");
         tl.from(
             ".card",
             {
                 scale: 0.8,
-                opacity: 0,
+                autoAlpha: 0,
                 stagger: { each: 0.3 },
                 duration: 0.5,
                 ease: "back.out(2.5)",
             },
             "-=1.5"
         );
-        tl.from(".options", { x: 20, opacity: 0 }, "-=1");
-        tl.from(".box", { scale: 0.8, opacity: 0, stagger: { each: 0.1 } });
+        tl.from(".options", { x: 20, autoAlpha: 0 }, "-=1");
+        tl.from(".box", {
+            scale: 0.8,
+            autoAlpha: 0,
+            stagger: { each: 0.125 },
+            ease: "back.out(2)",
+        });
     }, []);
 
     useEffect(() => {
@@ -236,7 +241,7 @@ function Dashboard({
                     </OnOutsideClick>
                 </div>
             </div>
-            <div className="container-fluid mt-5">
+            <div className="container-fluid mt-4">
                 <div className="row">
                     <div className="r-c r-c-16">
                         <h4>Overview - {page}</h4>
@@ -333,7 +338,7 @@ function Dashboard({
                 </div>
                 <div className="row">
                     <div className="container-fluid">
-                        <div className="row mt-5">
+                        <div className="row mt-4">
                             <div className="r-c r-c-16">
                                 <h4>
                                     Today's Stat - <span className="text-muted small">{date}</span>
@@ -342,60 +347,92 @@ function Dashboard({
 
                             <div className="row">
                                 <div className="row today mt-3">
-                                    <IconContext.Provider value={{ size: "1.5rem" }}>
-                                        <div className="box shadow">
-                                            <div className="icon">
-                                                <MdPeople />
+                                    <IconContext.Provider value={{ size: "2rem" }}>
+                                        <div className="box shadow visitors">
+                                            <div className="content">
+                                                <div className="icon">
+                                                    <MdPeople />
+                                                </div>
+                                                <div className="count">
+                                                    <p>{graphPages[0]}</p>
+                                                    <h3>{CurrentStats.visitors}</h3>
+                                                </div>
                                             </div>
-                                            <div className="count">
-                                                <h3>{CurrentStats.visitors}</h3>
-                                                <p>{graphPages[0]}</p>
-                                            </div>
+                                            <hr />
+                                            <span className="tag">Total amount of Visitors</span>
                                         </div>
-                                        <div className="box shadow">
-                                            <div className="icon">
-                                                <BiChat fill="white" />
+                                        <div className="box shadow chats">
+                                            <div className="content">
+                                                <div className="icon">
+                                                    <BiChat fill="white" />
+                                                </div>
+                                                <div className="count">
+                                                    <p>{graphPages[1]}</p>
+                                                    <h3>{CurrentStats.chats}</h3>
+                                                </div>
                                             </div>
-                                            <div className="count">
-                                                <h3>{CurrentStats.chats}</h3>
-                                                <p>{graphPages[1]}</p>
-                                            </div>
+                                            <hr />
+                                            <span className="tag">
+                                                Total amounts of Chats initiated
+                                            </span>
                                         </div>
-                                        <div className="box shadow">
-                                            <div className="icon">
-                                                <BiMessageCheck />
+                                        <div className="box shadow leads">
+                                            <div className="content">
+                                                <div className="icon">
+                                                    <BiMessageCheck />
+                                                </div>
+                                                <div className="count">
+                                                    <p>{graphPages[2]}</p>
+                                                    <h3>{CurrentStats.leads}</h3>
+                                                </div>
                                             </div>
-                                            <div className="count">
-                                                <h3>{CurrentStats.leads}</h3>
-                                                <p>{graphPages[2]}</p>
-                                            </div>
+                                            <hr />
+                                            <span className="tag">
+                                                Toatl amount of Chats Converted to leads
+                                            </span>
                                         </div>
-                                        <div className="box shadow">
-                                            <div className="icon">
-                                                <FaCommentDollar />
+                                        <div className="box shadow sales">
+                                            <div className="content">
+                                                <div className="icon">
+                                                    <FaCommentDollar />
+                                                </div>
+                                                <div className="count">
+                                                    <p>{graphPages[3]}</p>
+                                                    <h3>{CurrentStats.sales}</h3>
+                                                </div>
                                             </div>
-                                            <div className="count">
-                                                <h3>{CurrentStats.sales}</h3>
-                                                <p>{graphPages[3]}</p>
-                                            </div>
+                                            <hr />
+                                            <span className="tag">
+                                                Total amount of Successfull Sales
+                                            </span>
                                         </div>
-                                        <div className="box shadow">
-                                            <div className="icon">
-                                                <FaCogs />
+                                        <div className="box shadow services">
+                                            <div className="content">
+                                                <div className="icon">
+                                                    <FaCogs />
+                                                </div>
+                                                <div className="count">
+                                                    <p>{graphPages[4]}</p>
+                                                    <h3>{CurrentStats.services}</h3>
+                                                </div>
                                             </div>
-                                            <div className="count">
-                                                <h3>{CurrentStats.services}</h3>
-                                                <p>{graphPages[4]}</p>
-                                            </div>
+                                            <hr />
+                                            <span className="tag">
+                                                Total amount of Services Rendered
+                                            </span>
                                         </div>
-                                        <div className="box shadow">
-                                            <div className="icon">
-                                                <FaEllipsisH />
+                                        <div className="box shadow others">
+                                            <div className="content">
+                                                <div className="icon">
+                                                    <FaEllipsisH />
+                                                </div>
+                                                <div className="count">
+                                                    <p>{graphPages[5]}</p>
+                                                    <h3>{CurrentStats.others}</h3>
+                                                </div>
                                             </div>
-                                            <div className="count">
-                                                <h3>{CurrentStats.others}</h3>
-                                                <p>{graphPages[5]}</p>
-                                            </div>
+                                            <hr />
+                                            <span className="tag">Other Uncatergorized Leads</span>
                                         </div>
                                     </IconContext.Provider>
                                 </div>
