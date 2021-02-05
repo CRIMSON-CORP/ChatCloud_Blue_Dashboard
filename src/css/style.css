@@ -1347,25 +1347,25 @@ form textarea {
   display: grid;
   -ms-grid-rows: (1fr)[4];
       grid-template-rows: repeat(4, 1fr);
-  row-gap: 18px;
+  row-gap: 30px;
 }
 
 .widget .row-grid div {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-line-pack: justify;
-      align-content: space-between;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .widget .row-grid h5 {
   font-size: 18px;
   font-weight: normal;
-  margin-bottom: 15px;
 }
 
 .widget .row-grid input {
@@ -1375,13 +1375,13 @@ form textarea {
   overflow: hidden;
 }
 
-.widget .row-grid label.spec {
+.widget .row-grid div.spec {
   display: block;
   position: relative;
   cursor: pointer;
 }
 
-.widget .row-grid label.spec span {
+.widget .row-grid div.spec span {
   color: rgba(255, 255, 255, 0.7);
   background: #231f20;
   position: absolute;
@@ -1393,7 +1393,7 @@ form textarea {
   padding: 5px 12px;
 }
 
-.widget .row-grid label.spec input[type="color"] {
+.widget .row-grid div.spec input[type="color"] {
   width: 100px;
   height: auto;
   top: 3px;
@@ -1406,7 +1406,7 @@ form textarea {
   border-color: transparent;
 }
 
-.widget .row-grid label.spec span.tooltip {
+.widget .row-grid div.spec span.tooltip {
   position: absolute;
   font-size: 10px;
   border-radius: 10px;
@@ -1421,21 +1421,18 @@ form textarea {
   width: 120px;
 }
 
-.widget .row-grid label.spec span.tooltip::before {
+.widget .row-grid div.spec span.tooltip::before {
   content: "";
   position: absolute;
   border: 7px solid white;
   border-color: transparent rgba(0, 0, 0, 0.5) rgba(0, 0, 0, 0.5) transparent;
   bottom: 0%;
   left: 50%;
-  transform: translate(-50%, 50%) rotate(45deg);
   -webkit-transform: translate(-50%, 50%) rotate(45deg);
-  -moz-transform: translate(-50%, 50%) rotate(45deg);
-  -ms-transform: translate(-50%, 50%) rotate(45deg);
-  -o-transform: translate(-50%, 50%) rotate(45deg);
+          transform: translate(-50%, 50%) rotate(45deg);
 }
 
-.widget .row-grid label.spec span.tooltip.show {
+.widget .row-grid div.spec span.tooltip.show {
   opacity: 1;
   top: -60%;
 }
@@ -1500,6 +1497,14 @@ form textarea {
 
 .widget .row-grid .posDrop .drop-down {
   width: 100%;
+}
+
+.themeColor {
+  position: relative;
+}
+
+.themeColor input[type="color"] {
+  opacity: 0;
 }
 
 .options .connect .row .slider-row {

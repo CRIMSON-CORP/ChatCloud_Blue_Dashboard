@@ -8,16 +8,15 @@
     .row-grid {
         display: grid;
         grid-template-rows: repeat(4, 1fr);
-        row-gap: 18px;
+        row-gap: 30px;
         div {
             display: flex;
-            align-content: space-between;
             flex-direction: column;
+            justify-content: space-between;
         }
         h5 {
             font-size: 18px;
             font-weight: normal;
-            margin-bottom: 15px;
         }
         input {
             padding: 10px 22px;
@@ -25,7 +24,7 @@
             width: 100%;
             overflow: hidden;
         }
-        label.spec {
+        div.spec {
             display: block;
             position: relative;
             cursor: pointer;
@@ -73,10 +72,6 @@
                     bottom: 0%;
                     left: 50%;
                     transform: translate(-50%, 50%) rotate(45deg);
-                    -webkit-transform: translate(-50%, 50%) rotate(45deg);
-                    -moz-transform: translate(-50%, 50%) rotate(45deg);
-                    -ms-transform: translate(-50%, 50%) rotate(45deg);
-                    -o-transform: translate(-50%, 50%) rotate(45deg);
                 }
 
                 &.show {
@@ -130,5 +125,12 @@
                 width: 100%;
             }
         }
+    }
+}
+
+.themeColor {
+    position: relative;
+    input[type="color"] {
+        opacity: 0;
     }
 }

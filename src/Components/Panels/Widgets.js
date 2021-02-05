@@ -3,6 +3,7 @@ import { MdKeyboardArrowDown } from "react-icons/md";
 import { TimelineLite } from "gsap";
 import Dropdown from "rc-dropdown";
 import Menu, { Item as MenuItem, Divider } from "rc-menu";
+import Tooltip from "react-simple-tooltip";
 function Widgets({ props: { apiData: widgets } }) {
     const Default = widgets.widgets;
 
@@ -15,7 +16,6 @@ function Widgets({ props: { apiData: widgets } }) {
         widgetPos: Default.widgetPos,
         // Dont Forget to Add  Profile image URL Steve
     });
-    const [Tooltip, setTooltip] = useState(false);
     useEffect(() => {
         var tl = new TimelineLite({ duration: 0.25 });
         tl.from(".header_tag h3", { y: 20, opacity: 0 });
@@ -41,6 +41,17 @@ function Widgets({ props: { apiData: widgets } }) {
         // ^^ set Download URL in Payload object
         // send payload to API
     }
+
+    var style = {
+        width: 100,
+        background: FormData.themeColor,
+        position: "absolute",
+        display: "inline",
+        right: 5,
+        top: 5,
+        bottom: 5,
+        whiteSpace: "nowrap",
+    };
     return (
         <div className="container-fluid">
             <div className="header_tag">
@@ -59,37 +70,34 @@ function Widgets({ props: { apiData: widgets } }) {
                     />
                     <div>
                         <h5>Agent Profile Picture</h5>
-                        <label className="spec">
+                        <div className="spec">
                             <input type="file" name="agentName" id="agentName" onChange={setData} />
                             <span>Choose File</span>
-                        </label>
+                        </div>
                     </div>
                     <div>
                         <h5>Theme Color</h5>
-                        <label
-                            className="spec"
-                            onMouseEnter={async () => {
-                                setTooltip(true);
-                            }}
-                            onMouseOut={() => {
-                                setTooltip(false);
-                            }}
-                        >
-                            <span className={`tooltip ${Tooltip ? "show" : ""}`}>
-                                Click Here to Change Theme Color
-                            </span>
+                        <div className="themeColor">
                             <input type="text" value={FormData.themeColor} readOnly={true} />
-                            <input
-                                type="color"
-                                name="themeColor"
-                                defaultValue={FormData.themeColor}
-                                onChange={(e) => {
-                                    setFormData((prev) => {
-                                        return { ...prev, themeColor: e.target.value };
-                                    });
-                                }}
-                            />
-                        </label>
+                            <Tooltip
+                                content={"Click Here to Change Theme Color"}
+                                customCss={style}
+                                padding={8}
+                                fadeDuration={300}
+                                fontSize={"10px"}
+                            >
+                                <input
+                                    type="color"
+                                    name="themeColor"
+                                    defaultValue={FormData.themeColor}
+                                    onChange={(e) => {
+                                        setFormData((prev) => {
+                                            return { ...prev, themeColor: e.target.value };
+                                        });
+                                    }}
+                                />
+                            </Tooltip>
+                        </div>
                     </div>
                     <InputBoxGen
                         props={{
@@ -157,12 +165,7 @@ function WidgetSetting({ props: { widgetPos, setFormData } }) {
     const menu = (
         <Menu onSelect={select}>
             {Positions.map((type) => {
-                return (
-                    <>
-                        <MenuItem key={type}>{type}</MenuItem>
-                        <Divider />
-                    </>
-                );
+                return <MenuItem key={type}>{type}</MenuItem>;
             })}
         </Menu>
     );
@@ -170,15 +173,22 @@ function WidgetSetting({ props: { widgetPos, setFormData } }) {
     return (
         <div>
             <h5>Widget Positions</h5>
-            <Dropdown trigger={["click"]} overlay={menu} animation="slide-up" closeOnSelect={false}>
-                <div
-                    className="posDrop blacklight  px-3 py-2 my-2 d-flex flex-row justify-content-between"
-                    style={{ cursor: "pointer" }}
+            <div>
+                <Dropdown
+                    trigger={["click"]}
+                    overlay={menu}
+                    animation="slide-up"
+                    closeOnSelect={false}
                 >
-                    <p className="m-0 leadType d-inline-block">{widgetPos}</p>
-                    <MdKeyboardArrowDown size="20px" />
-                </div>
-            </Dropdown>
+                    <div
+                        className="posDrop blacklight  px-3 py-2 my-2 d-flex flex-row justify-content-between"
+                        style={{ cursor: "pointer" }}
+                    >
+                        <p className="m-0 leadType d-inline-block">{widgetPos}</p>
+                        <MdKeyboardArrowDown size="20px" />
+                    </div>
+                </Dropdown>
+            </div>
         </div>
     );
 }
