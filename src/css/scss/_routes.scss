@@ -133,6 +133,10 @@
 }
 
 @media only screen and (max-width: 992px) {
+    div.language,
+    div.notification {
+        display: none;
+    }
     span.card_label {
         font-size: 12px;
     }

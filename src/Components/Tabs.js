@@ -10,7 +10,6 @@ import {
     MdSettings,
     MdWidgets,
 } from "react-icons/md";
-import { CgClose } from "react-icons";
 import { IconContext } from "react-icons";
 import { NavLink } from "react-router-dom";
 

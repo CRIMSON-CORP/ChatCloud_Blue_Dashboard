@@ -1,31 +1,27 @@
 import React, { useState } from "react";
-import { CSSTransition } from "react-transition-group";
-import OnOutsideClick from "react-outclick";
 import logo from "../img/chatcloudb.png";
 import { FiSearch } from "react-icons/fi";
 import { MdKeyboardArrowDown, MdPerson } from "react-icons/md";
 import { FaBell } from "react-icons/fa";
 import gsap, { Power3 } from "gsap";
+import Dropdown from "rc-dropdown";
+import Menu, { Item as MenuItem } from "rc-menu";
 
 function NavBar({ setOpen }) {
     const [language, setLanguage] = useState("en");
-    const [langDrop, setLangDrop] = useState(false);
-    const [languages] = useState(["en", "sp", "jp"]);
 
-    var list = languages.map((language, index) => {
-        return (
-            <li
-                key={index}
-                className="list-group-item"
-                onClick={() => {
-                    setLanguage(language);
-                    setLangDrop(false);
-                }}
-            >
-                {language}
-            </li>
-        );
-    });
+    const languages = ["en", "sp", "jp"];
+    const menu = (
+        <Menu
+            onSelect={({ key }) => {
+                setLanguage(key);
+            }}
+        >
+            {languages.map((type) => {
+                return <MenuItem key={type}>{type}</MenuItem>;
+            })}
+        </Menu>
+    );
 
     return (
         <div className="NavBar container-fluid">
@@ -64,40 +60,22 @@ function NavBar({ setOpen }) {
                     </div>
                 </div>
                 <div className="utils col-3">
-                    <OnOutsideClick
-                        onOutsideClick={() => {
-                            setLangDrop(false);
-                        }}
+                    <Dropdown
+                        trigger={["click"]}
+                        overlay={menu}
+                        animation="slide-up"
+                        closeOnSelect={false}
+                        openClassName={"drop"}
                     >
-                        <div className={`language ${langDrop ? "drop" : ""}`}>
-                            <div
-                                className="d-flex justify-content-lg-between align-items-center lang-box"
-                                onClick={() => {
-                                    setLangDrop(!langDrop);
-                                }}
-                            >
+                        <div className={`language`}>
+                            <div className="d-flex justify-content-lg-between align-items-center lang-box">
                                 {language}
                                 <span>
                                     <MdKeyboardArrowDown size="1.4rem" />
                                 </span>
                             </div>
-                            <CSSTransition
-                                in={langDrop}
-                                timeout={400}
-                                classNames="drop"
-                                unmountOnExit
-                            >
-                                <div className="card drop-down shadow">
-                                    <div className="card-header">Language</div>
-
-                                    <div className="card-body">
-                                        <ul className="list-group">{list}</ul>
-                                    </div>
-                                </div>
-                            </CSSTransition>
                         </div>
-                    </OnOutsideClick>
-
+                    </Dropdown>
                     <div className="notification">
                         <div className="notification-container">
                             <FaBell color="white" fill="white" size=".9rem" />
