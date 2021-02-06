@@ -262,7 +262,7 @@ function Dashboard({
                     </div>
                     <div className="container-fluid">
                         <div className="row row-grid mt-3">
-                            <div className="card-block">
+                            <div className="card-block" style={{ zIndex: 1 }}>
                                 <div className="container-fluid">
                                     <div className="row">
                                         <div className="card line-graph blacklight">
