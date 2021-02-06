@@ -203,11 +203,8 @@ body {
   position: absolute;
   top: 50%;
   left: 0;
-  transform: translate(15px, -50%);
   -webkit-transform: translate(15px, -50%);
-  -moz-transform: translate(15px, -50%);
-  -ms-transform: translate(15px, -50%);
-  -o-transform: translate(15px, -50%);
+          transform: translate(15px, -50%);
 }
 
 .NavBar .search input#search {
@@ -271,6 +268,7 @@ body {
   color: white;
   font-size: 14px;
   position: relative;
+  z-index: 10000 !important;
 }
 
 .NavBar .utils .language .lang-box {
@@ -283,7 +281,6 @@ body {
 }
 
 .NavBar .utils .language .drop-down {
-  z-index: 10000 !important;
   width: 100px;
   position: absolute;
   right: 0;
@@ -332,11 +329,8 @@ body {
 }
 
 .NavBar .utils .language.drop span {
-  transform: translate(-0.45rem, -50%) rotate(180deg);
   -webkit-transform: translate(-0.45rem, -50%) rotate(180deg);
-  -moz-transform: translate(-0.45rem, -50%) rotate(180deg);
-  -ms-transform: translate(-0.45rem, -50%) rotate(180deg);
-  -o-transform: translate(-0.45rem, -50%) rotate(180deg);
+          transform: translate(-0.45rem, -50%) rotate(180deg);
 }
 
 .NavBar .utils .notification {
@@ -441,11 +435,8 @@ body {
 
 .routes ul.list-group a.active .r-i-c::before {
   opacity: 1;
-  transform: translateX(0px);
   -webkit-transform: translateX(0px);
-  -moz-transform: translateX(0px);
-  -ms-transform: translateX(0px);
-  -o-transform: translateX(0px);
+          transform: translateX(0px);
 }
 
 .routes .r-i-c {
@@ -469,16 +460,10 @@ body {
   width: 7px;
   height: 100%;
   opacity: 0;
-  transform: translateX(-10px);
   -webkit-transform: translateX(-10px);
-  -moz-transform: translateX(-10px);
-  -ms-transform: translateX(-10px);
-  -o-transform: translateX(-10px);
-  transition: all 0.4s ease-out;
+          transform: translateX(-10px);
   -webkit-transition: all 0.4s ease-out;
-  -moz-transition: all 0.4s ease-out;
-  -ms-transition: all 0.4s ease-out;
-  -o-transition: all 0.4s ease-out;
+  transition: all 0.4s ease-out;
 }
 
 .routes .r-i-c h2 {
@@ -496,10 +481,6 @@ body {
   font-size: 14px;
   background: #231f20;
   border-radius: 50px;
-  -webkit-border-radius: 50px;
-  -moz-border-radius: 50px;
-  -ms-border-radius: 50px;
-  -o-border-radius: 50px;
   line-height: 35px;
   padding-left: 1.25rem;
   font-weight: bold;
@@ -517,10 +498,143 @@ body {
   display: -ms-grid;
   display: grid;
   place-items: center;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  -ms-border-radius: 50%;
-  -o-border-radius: 50%;
+}
+
+.logo.mobile {
+  display: none;
+}
+
+.navBarBtn {
+  width: 60px;
+  height: 60px;
+  background: #231f20;
+  border-radius: 50%;
+  padding: 15px 13px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  display: none;
+  cursor: pointer;
+  -webkit-transform: scale(0.8);
+          transform: scale(0.8);
+  -webkit-transform-origin: left;
+          transform-origin: left;
+}
+
+.navBarBtn .line {
+  width: 100%;
+  height: 3px;
+  background: White;
+  border-radius: 5px;
+}
+
+.navBarBtn .line:nth-child(2) {
+  width: 66%;
+}
+
+.navBarBtn .line:nth-child(3) {
+  width: 33%;
+}
+
+.main-controller {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 3fr 9fr;
+      grid-template-columns: 3fr 9fr;
+}
+
+.closeIcon {
+  color: white;
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  cursor: pointer;
+}
+
+.tabs.open {
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
+}
+
+@media only screen and (max-width: 992px) {
+  div.faqs .accordion .accordion__item .accordion__button h5 {
+    font-size: 12px;
+  }
+  div.faqs .accordion .accordion__item .accordion__button svg {
+    width: 15px;
+    height: 15px;
+  }
+  #root {
+    padding: 15px;
+  }
+  div.panel {
+    height: calc(100vh - 120px);
+  }
+  .panel .dashboard .card.blacklight {
+    padding: 5px;
+  }
+  .widget h5 {
+    margin-bottom: 10px;
+  }
+  .main-controller {
+    display: block;
+  }
+  .tabs {
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #231f20;
+    padding: 3rem 2rem;
+    z-index: 99999;
+    display: -ms-grid;
+    display: grid;
+    place-items: center;
+    -webkit-transform: translateX(-100%);
+            transform: translateX(-100%);
+    -webkit-transition: -webkit-transform 0.3s ease;
+    transition: -webkit-transform 0.3s ease;
+    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, -webkit-transform 0.3s ease;
+  }
+  .tabs svg {
+    width: 20px;
+    height: 20px;
+  }
+  .tabs ul.list-group {
+    border-radius: 0;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-rows: (1fr)[9];
+        grid-template-rows: repeat(9, 1fr);
+    row-gap: 0.5rem;
+    padding: 0px 0px;
+  }
+  .NavBar .searchbar {
+    display: none;
+  }
+  .logo.main .navBarBtn {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .logo.main img {
+    display: none;
+  }
+  .mobile {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .mobile .logo {
+    display: block;
+  }
 }
 
 .header {
@@ -2232,7 +2346,6 @@ ul.platform-lists li.platform::before {
 
 .faqs .accordion .accordion__item .accordion__button h5 {
   font-size: 14px;
-  margin-bottom: 5px;
   -webkit-transition: color 0.4s ease-out;
   transition: color 0.4s ease-out;
 }

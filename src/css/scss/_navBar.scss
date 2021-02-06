@@ -32,10 +32,6 @@
             top: 50%;
             left: 0;
             transform: translate(15px, -50%);
-            -webkit-transform: translate(15px, -50%);
-            -moz-transform: translate(15px, -50%);
-            -ms-transform: translate(15px, -50%);
-            -o-transform: translate(15px, -50%);
         }
 
         input#search {
@@ -71,6 +67,8 @@
             color: white;
             font-size: 14px;
             position: relative;
+
+            z-index: 10000 !important;
             .lang-box {
                 width: 60px;
                 height: 35px;
@@ -80,7 +78,6 @@
                 cursor: pointer;
             }
             .drop-down {
-                z-index: 10000 !important;
                 width: 100px;
                 position: absolute;
                 right: 0;
@@ -122,10 +119,6 @@
             }
             &.drop span {
                 transform: translate(-0.45rem, -50%) rotate(180deg);
-                -webkit-transform: translate(-0.45rem, -50%) rotate(180deg);
-                -moz-transform: translate(-0.45rem, -50%) rotate(180deg);
-                -ms-transform: translate(-0.45rem, -50%) rotate(180deg);
-                -o-transform: translate(-0.45rem, -50%) rotate(180deg);
             }
         }
 

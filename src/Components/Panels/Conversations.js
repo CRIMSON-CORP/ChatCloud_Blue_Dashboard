@@ -236,12 +236,7 @@ function ReClassifyDispute({ classifyDispute }) {
     const menu = (
         <Menu onSelect={select}>
             {DisputeTypes.map((type) => {
-                return (
-                    <>
-                        <MenuItem key={type}>{type}</MenuItem>
-                        <Divider />
-                    </>
-                );
+                return <MenuItem key={type}>{type}</MenuItem>;
             })}
         </Menu>
     );

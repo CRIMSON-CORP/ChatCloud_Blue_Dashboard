@@ -5,8 +5,9 @@ import logo from "../img/chatcloudb.png";
 import { FiSearch } from "react-icons/fi";
 import { MdKeyboardArrowDown, MdPerson } from "react-icons/md";
 import { FaBell } from "react-icons/fa";
+import gsap, { Power3 } from "gsap";
 
-function NavBar() {
+function NavBar({ setOpen }) {
     const [language, setLanguage] = useState("en");
     const [langDrop, setLangDrop] = useState(false);
     const [languages] = useState(["en", "sp", "jp"]);
@@ -29,10 +30,27 @@ function NavBar() {
     return (
         <div className="NavBar container-fluid">
             <div className="row">
-                <div className="logo col-3">
+                <div className="logo main col-3">
                     <img src={logo} alt="logo" />
+                    <div
+                        className="navBarBtn"
+                        onClick={() => {
+                            setOpen(true);
+                        }}
+                        onMouseEnter={() => {
+                            gsap.from(".line", {
+                                width: 0,
+                                ease: Power3,
+                                stagger: { each: 0.125 },
+                            });
+                        }}
+                    >
+                        <div className="line"></div>
+                        <div className="line"></div>
+                        <div className="line"></div>
+                    </div>
                 </div>
-                <div className="search col-6">
+                <div className="search col-6 mobile">
                     <div className="searchbar">
                         <div className="searchBarConatiner">
                             <span className="searchIcon">
@@ -40,6 +58,9 @@ function NavBar() {
                             </span>
                             <input type="text" name="search" id="search" placeholder="Search" />
                         </div>
+                    </div>
+                    <div className="logo mobile col-3">
+                        <img src={logo} alt="logo" />
                     </div>
                 </div>
                 <div className="utils col-3">

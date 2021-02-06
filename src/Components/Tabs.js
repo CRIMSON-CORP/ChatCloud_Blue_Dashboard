@@ -10,63 +10,76 @@ import {
     MdSettings,
     MdWidgets,
 } from "react-icons/md";
+import { CgClose } from "react-icons";
+import { IconContext } from "react-icons";
 import { NavLink } from "react-router-dom";
 
-function Tabs() {
+const TabsArr = [
+    {
+        head: "Dashboard",
+        link: "/",
+        icon: <MdDashboard />,
+    },
+    {
+        head: "Widgets",
+        link: "/Widgets",
+        icon: <MdWidgets />,
+    },
+    {
+        head: "Options",
+        link: "/Options",
+        icon: <MdSettings />,
+    },
+    {
+        head: "Scripts",
+        link: "/Scripts",
+        icon: <MdDescription />,
+    },
+    {
+        head: "Statistics",
+        link: "/Statistics",
+        icon: <MdAssessment />,
+    },
+    {
+        head: "Download/Plugins",
+        link: "/Download_Plugins",
+        icon: <MdArrowDownward />,
+    },
+    {
+        head: "FAQ",
+        link: "/Faqs",
+        icon: <MdQuestionAnswer />,
+    },
+];
+
+function Tabs({ setOpen }) {
+    const TabsJSX = TabsArr.map(({ head, link, icon }, index) => {
+        return (
+            <NavLink
+                to={link}
+                exact
+                activeClassName="active"
+                key={index}
+                onClick={() => {
+                    setOpen(false);
+                }}
+            >
+                <li className="list-group-item tab r-i-c">
+                    {icon}
+                    <h2>{head}</h2>
+                </li>
+            </NavLink>
+        );
+    });
     return (
         <div className="routes">
             <div className="routes-wrapper">
                 <div className="container-fluid">
                     <div className="row d-flex flex-column">
                         <ul className="route-tabs list-group">
-                            <NavLink to="/" exact activeClassName="active">
-                                <li className="list-group-item tab r-i-c">
-                                    <MdDashboard size="30px" />
-                                    <h2>Dashboard</h2>
-                                </li>
-                            </NavLink>
-                            <NavLink to="/Conversations" activeClassName="active">
-                                <li className="list-group-item tab r-i-c">
-                                    <MdMessage size="30px" />
-                                    <h2>Conversations</h2>
-                                </li>
-                            </NavLink>
-                            <NavLink activeClassName="active" exact to="/Widgets">
-                                <li className="list-group-item tab r-i-c">
-                                    <MdWidgets size="30px" />
-                                    <h2>Widgets</h2>
-                                </li>
-                            </NavLink>
-                            <NavLink activeClassName="active" exact to="/Options">
-                                <li className="list-group-item tab r-i-c">
-                                    <MdSettings size="30px" />
-                                    <h2>Options</h2>
-                                </li>
-                            </NavLink>
-                            <NavLink activeClassName="active" exact to="/Scripts">
-                                <li className="list-group-item tab r-i-c">
-                                    <MdDescription size="30px" />
-                                    <h2>Scripts</h2>
-                                </li>
-                            </NavLink>
-                            <NavLink activeClassName="active" exact to="/Statistics">
-                                <li className="list-group-item tab r-i-c">
-                                    <MdAssessment size="30px" />
-                                    <h2>Statistics</h2>
-                                </li>
-                            </NavLink>
-                            <NavLink activeClassName="active" exact to="/Download_Plugins">
-                                <li className="list-group-item tab r-i-c">
-                                    <MdArrowDownward size="30px" />
-                                    <h2>Download/Plugins</h2>
-                                </li>
-                            </NavLink>
-                            <NavLink activeClassName="active" exact to="/Faqs">
-                                <li className="list-group-item tab r-i-c">
-                                    <MdQuestionAnswer size="30px" />
-                                    <h2>FAQ</h2>
-                                </li>
-                            </NavLink>
+                            <IconContext.Provider value={{ size: 30 }}>
+                                {TabsJSX}
+                            </IconContext.Provider>
                             <div className="logout_wrapper">
                                 <button className="logout_btn">
                                     <span>

@@ -1,20 +1,28 @@
-import React from "react";
-import { BrowserRouter as Router } from "react-router-dom";
+import React, { useState } from "react";
+import { HashRouter as Router } from "react-router-dom";
 import Main from "./Components/Main";
 import NavBar from "./Components/NavBar";
 import Tabs from "./Components/Tabs";
+import { CgClose } from "react-icons/cg";
 
 function App() {
+    const [open, setOpen] = useState(false);
     return (
         <div className="container-fluid">
-            <NavBar />
+            <NavBar setOpen={setOpen} />
             <div className="container-fluid mt-4 board">
-                <div className="row">
+                <div className="row main-controller">
                     <Router>
-                        <div className="col-3 tabs">
-                            <Tabs />
+                        <div className={`tabs ${open && "open"}`}>
+                            <CgClose
+                                className={"closeIcon"}
+                                onClick={() => {
+                                    setOpen(false);
+                                }}
+                            />
+                            <Tabs setOpen={setOpen} />
                         </div>
-                        <div className="col-9 panel">
+                        <div className="panel">
                             <Main />
                         </div>
                     </Router>
