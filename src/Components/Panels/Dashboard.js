@@ -41,6 +41,7 @@ function Dashboard({
         ],
     });
     const [CurrentStats, setCurrentStats] = useState(main.currDayStats);
+    const [Fsize, setFSize] = useState(12);
     useEffect(() => {
         var tl = new TimelineLite({ duration: 0.25 });
         tl.from(".header_tag h3", { y: 20, autoAlpha: 0 });
@@ -131,6 +132,13 @@ function Dashboard({
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [graph, main.chats, main.leads, main.others, main.sales, main.services, main.visitors]);
 
+    useEffect(() => {
+        if (window.innerWidth <= 500) {
+            setFSize(8);
+        } else {
+            setFSize(12);
+        }
+    }, []);
     function setLineGraph(count, bg) {
         var GrpahData = {
             labels: labels,
@@ -154,6 +162,9 @@ function Dashboard({
         scales: {
             xAxes: [
                 {
+                    ticks: {
+                        fontSize: Fsize,
+                    },
                     gridLines: {
                         display: false,
                     },
@@ -161,6 +172,9 @@ function Dashboard({
             ],
             yAxes: [
                 {
+                    ticks: {
+                        fontSize: Fsize,
+                    },
                     gridLines: {
                         display: false,
                     },
@@ -313,6 +327,7 @@ function Dashboard({
                                             </div>
                                             <div className="graph pie-chart pt-2">
                                                 <Pie
+                                                    className={"pie"}
                                                     options={{
                                                         responsive: true,
                                                         legend: {
@@ -323,6 +338,7 @@ function Dashboard({
                                                                 padding: 15,
                                                                 fontFamily: "Roboto",
                                                                 fontColor: "White",
+                                                                fontSize: Fsize,
                                                             },
                                                         },
                                                     }}

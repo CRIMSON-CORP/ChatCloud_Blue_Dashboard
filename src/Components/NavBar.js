@@ -59,7 +59,7 @@ function NavBar({ setOpen }) {
                             <input type="text" name="search" id="search" placeholder="Search" />
                         </div>
                     </div>
-                    <div className="logo mobile col-3">
+                    <div className="logo mobile">
                         <img src={logo} alt="logo" />
                     </div>
                 </div>

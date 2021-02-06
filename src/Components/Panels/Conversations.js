@@ -4,7 +4,7 @@ import { MdKeyboardArrowDown } from "react-icons/md";
 import { NavLink, Route, Switch } from "react-router-dom";
 import { TimelineLite } from "gsap";
 import Dropdown from "rc-dropdown";
-import Menu, { Item as MenuItem, Divider } from "rc-menu";
+import Menu, { Item as MenuItem } from "rc-menu";
 import { CSSTransition } from "react-transition-group";
 
 function Conversations({

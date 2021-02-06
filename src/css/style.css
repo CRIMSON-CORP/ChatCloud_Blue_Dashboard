@@ -555,6 +555,7 @@ body {
   top: 2rem;
   right: 2rem;
   cursor: pointer;
+  display: none;
 }
 
 .tabs.open {
@@ -562,7 +563,50 @@ body {
           transform: translateX(0);
 }
 
+.chatList_item a {
+  -webkit-transition: background 0.3s ease;
+  transition: background 0.3s ease;
+}
+
+.chatList_item a:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
 @media only screen and (max-width: 992px) {
+  span.card_label {
+    font-size: 12px;
+  }
+  div.options p {
+    font-size: 10px;
+  }
+  div.options .pages .dropDown {
+    width: 75px;
+    font-size: 10px;
+  }
+  .closeIcon {
+    display: block;
+  }
+  div.chats {
+    max-height: 350px;
+    height: auto;
+  }
+  div.chats::-webkit-scrollbar {
+    width: 5px;
+    border-radius: 10px;
+    background: none;
+  }
+  div.chats::-webkit-scrollbar-thumb {
+    background: #333333;
+  }
+  div.convo_grid {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: auto !important;
+        grid-template-columns: auto !important;
+    row-gap: 30px;
+    -webkit-column-gap: 25px;
+            column-gap: 25px;
+  }
   div.faqs .accordion .accordion__item .accordion__button h5 {
     font-size: 12px;
   }

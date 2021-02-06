@@ -21,6 +21,11 @@ const TabsArr = [
         icon: <MdDashboard />,
     },
     {
+        head: "Conversation",
+        link: "/Conversations",
+        icon: <MdMessage />,
+    },
+    {
         head: "Widgets",
         link: "/Widgets",
         icon: <MdWidgets />,
