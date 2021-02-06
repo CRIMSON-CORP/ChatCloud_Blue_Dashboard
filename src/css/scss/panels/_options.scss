@@ -186,7 +186,7 @@
 
 .addLinkCard {
     position: relative;
-    .addLink {
+    button.addLink {
         background: linear-gradient(180deg, #ed1c24 0%, #d80164 100%);
         transition: all 0.3s ease;
         &:active {
@@ -258,14 +258,27 @@
         font-size: 12px;
         padding: 3px;
     }
-    button.submit {
-        background: linear-gradient(180deg, #4bb543 0%, #198a00 100%);
-        padding: 3px 10px;
-        border-radius: 10px;
+    &.form {
+        button {
+            background: $blackDark;
+            padding: 3px 10px;
+            border-radius: 3px;
+            margin-right: 10px;
+            &.cancel {
+                background: $red;
+            }
+        }
     }
 }
 
 .swiper-button-next,
 .swiper-button-prev {
     opacity: 1;
+}
+
+form.subForm {
+    input {
+        font-size: 14px;
+        height: 45px;
+    }
 }

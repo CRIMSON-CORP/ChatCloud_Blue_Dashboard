@@ -13,50 +13,49 @@ import {
 import { IconContext } from "react-icons";
 import { NavLink } from "react-router-dom";
 
-const TabsArr = [
-    {
-        head: "Dashboard",
-        link: "/",
-        icon: <MdDashboard />,
-    },
-    {
-        head: "Conversation",
-        link: "/Conversations",
-        icon: <MdMessage />,
-    },
-    {
-        head: "Widgets",
-        link: "/Widgets",
-        icon: <MdWidgets />,
-    },
-    {
-        head: "Options",
-        link: "/Options",
-        icon: <MdSettings />,
-    },
-    {
-        head: "Scripts",
-        link: "/Scripts",
-        icon: <MdDescription />,
-    },
-    {
-        head: "Statistics",
-        link: "/Statistics",
-        icon: <MdAssessment />,
-    },
-    {
-        head: "Download/Plugins",
-        link: "/Download_Plugins",
-        icon: <MdArrowDownward />,
-    },
-    {
-        head: "FAQ",
-        link: "/Faqs",
-        icon: <MdQuestionAnswer />,
-    },
-];
-
 function Tabs({ setOpen }) {
+    const TabsArr = [
+        {
+            head: "Dashboard",
+            link: "/",
+            icon: <MdDashboard />,
+        },
+        {
+            head: "Conversation",
+            link: "/Conversations",
+            icon: <MdMessage />,
+        },
+        {
+            head: "Widgets",
+            link: "/Widgets",
+            icon: <MdWidgets />,
+        },
+        {
+            head: "Options",
+            link: "/Options",
+            icon: <MdSettings />,
+        },
+        {
+            head: "Scripts",
+            link: "/Scripts",
+            icon: <MdDescription />,
+        },
+        {
+            head: "Statistics",
+            link: "/Statistics",
+            icon: <MdAssessment />,
+        },
+        {
+            head: "Download/Plugins",
+            link: "/Download_Plugins",
+            icon: <MdArrowDownward />,
+        },
+        {
+            head: "FAQ",
+            link: "/Faqs",
+            icon: <MdQuestionAnswer />,
+        },
+    ];
     const TabsJSX = TabsArr.map(({ head, link, icon }, index) => {
         return (
             <NavLink

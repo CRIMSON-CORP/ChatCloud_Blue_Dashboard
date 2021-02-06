@@ -18,42 +18,11 @@ function Options({
     props: {
         apiData: {
             options: {
-                connections,
-                SocialConnections,
                 optionSubSettings: { domainName, domainKey, widgetState },
             },
         },
     },
 }) {
-    const [SubFormState, setSubFormState] = useState({
-        domainName: domainName,
-        domainKey: domainKey,
-        widgetState: widgetState,
-    });
-    const [AvailableCon, setAvailableCons] = useState([
-        {
-            id: 1,
-            link: "",
-            name: "Facebook",
-            conStatus: false,
-            icon: <FiFacebook />,
-        },
-        {
-            id: 2,
-            link: "",
-            name: "Instagram",
-            conStatus: false,
-            icon: <FiInstagram />,
-        },
-        {
-            id: 3,
-            link: "",
-            name: "Linkedin",
-            conStatus: false,
-            icon: <FiLinkedin />,
-        },
-    ]);
-
     useEffect(() => {
         var tl = new TimelineLite({ duration: 0.2 });
         tl.from(".header_tag h3", { y: 20, opacity: 0 })
@@ -81,85 +50,7 @@ function Options({
             });
     }, []);
 
-    function submitOptions(e) {
-        e.preventDefault();
-        // eslint-disable-next-line no-unused-vars
-        var payload = SubFormState;
-        // fetch logic to submit and save settings to API
-        return;
-    }
     SwiperCore.use([Navigation]);
-
-    function select({ key }) {
-        setSubFormState((prev) => {
-            return { ...prev, widgetState: key };
-        });
-    }
-
-    const menu = (
-        <Menu onSelect={select}>
-            <MenuItem key="Enabled">Enabled</MenuItem>
-            <Divider />
-            <MenuItem key="Disabled">Disabled</MenuItem>
-        </Menu>
-    );
-
-    const Cards = AvailableCon.map(({ id, link, name, conStatus, icon, color }) => {
-        return (
-            <SwiperSlide key={id}>
-                <div className={`swiper_card blacklight shadow ${name}`}>
-                    <div className="con_Status">
-                        <span
-                            className={`indicator ${conStatus ? "Connected" : "Disconnected"}`}
-                        ></span>
-                        {conStatus ? "Connected" : "Disconnected"}
-                    </div>
-                    <div className="actions">
-                        <MdEdit size={15} />
-                        <MdDelete
-                            className="delete"
-                            size={15}
-                            onClick={() => {
-                                setAvailableCons(
-                                    AvailableCon.filter((con) => {
-                                        return con.id !== id;
-                                    })
-                                );
-                            }}
-                        />
-                    </div>
-                    <div className="icon">{icon}</div>
-                    <p className="con_tag">
-                        {conStatus ? "Disconnect from " : "Connect to "}
-                        {name}
-                    </p>
-
-                    <button
-                        className={`con_btn ${conStatus ? "disconnect" : "connect"}`}
-                        onClick={() => {
-                            if (!conStatus) {
-                                setAvailableCons(
-                                    AvailableCon.map((con) => {
-                                        if (con.id === id) con.conStatus = true;
-                                        return con;
-                                    })
-                                );
-                            } else {
-                                setAvailableCons(
-                                    AvailableCon.map((con) => {
-                                        if (con.id === id) con.conStatus = false;
-                                        return con;
-                                    })
-                                );
-                            }
-                        }}
-                    >
-                        {conStatus ? "Disconnect" : "Connect"}
-                    </button>
-                </div>
-            </SwiperSlide>
-        );
-    });
 
     return (
         <div className="container-fluid options">
@@ -177,88 +68,11 @@ function Options({
                                 <div className="slider blackdark">
                                     {/* Not sure if these Connections should be rendered dynamicaly or static */}
                                     <IconContext.Provider value={{ size: 60 }}>
-                                        <Swiper slidesPerView={"auto"} navigation>
-                                            {Cards}
-                                            <SwiperSlide>
-                                                <AddLink props={{ setAvailableCons }} />
-                                            </SwiperSlide>
-                                        </Swiper>
+                                        <ConnectionCard />
                                     </IconContext.Provider>
                                 </div>
                             </div>
-
-                            <form onSubmit={submitOptions}>
-                                <div className="row mt-4 form_grid">
-                                    <div className="">
-                                        <div className="r-c r-c-16">
-                                            <h5>Domain Settings</h5>
-                                        </div>
-                                        <div className="my-3 ml-2 input-box">
-                                            <h5 className="tag">Domain name</h5>
-                                            <input
-                                                type="text"
-                                                name="domainName"
-                                                className="px-3"
-                                                placeholder={SubFormState.domainName}
-                                                onChange={(e) => {
-                                                    setSubFormState((prev) => {
-                                                        return {
-                                                            ...prev,
-                                                            [e.targte.name]: e.target.value,
-                                                        };
-                                                    });
-                                                }}
-                                            />
-                                        </div>
-                                        <div className="my-3 ml-2 input-box">
-                                            <h5 className="tag">Domain key</h5>
-                                            <input
-                                                type="text"
-                                                name="domainKey"
-                                                className="px-3"
-                                                placeholder={SubFormState.domainKey}
-                                                onChange={(e) => {
-                                                    setSubFormState((prev) => {
-                                                        return {
-                                                            ...prev,
-                                                            [e.targte.name]: e.target.value,
-                                                        };
-                                                    });
-                                                }}
-                                            />
-                                        </div>
-                                    </div>
-                                    <div className="">
-                                        <div className="r-c r-c-16">
-                                            <h5>Widget Options</h5>
-                                        </div>
-                                        <div className="my-3 ml-2 input-box">
-                                            <h5 className="tag">Enable/Disable Widget</h5>
-                                            <Dropdown
-                                                trigger={["click"]}
-                                                overlay={menu}
-                                                animation="slide-up"
-                                                closeOnSelect={false}
-                                            >
-                                                <div className="drop blackdark px-3">
-                                                    <input
-                                                        type="text"
-                                                        readOnly
-                                                        style={{ cursor: "pointer" }}
-                                                        value={SubFormState.widgetState}
-                                                    />
-                                                    <MdKeyboardArrowDown size="20px" />
-                                                </div>
-                                            </Dropdown>
-                                        </div>
-                                        <div className="cta ">
-                                            <button type="submit">
-                                                <span>Save</span>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
+                            <SubForm props={{ domainName, domainKey, widgetState }} />
                         </div>
                     </div>
                 </div>
@@ -345,13 +159,8 @@ function AddLink({ props: { setAvailableCons } }) {
                     </button>
                 </div>
             </CSSTransition>
-            <CSSTransition
-                in={AddLinkState.form}
-                classNames="conSlider"
-                timeout={400}
-                unmountOnExit
-            >
-                <form className="con" onSubmit={connectLink}>
+            <CSSTransition in={AddLinkState.form} classNames="conSlider" timeout={0} unmountOnExit>
+                <form className="con form" onSubmit={connectLink}>
                     <label>
                         <p className="tag">Name</p>
                         <input type="text" name="name" required onChange={setInput} />
@@ -363,12 +172,23 @@ function AddLink({ props: { setAvailableCons } }) {
                     <button className="submit" type="submit">
                         Connect
                     </button>
+                    <button
+                        className="cancel"
+                        onClick={(e) => {
+                            e.preventDefault();
+                            setAddLinkState((prev) => {
+                                return { ...prev, form: false, AddPage: true };
+                            });
+                        }}
+                    >
+                        Cancel
+                    </button>
                 </form>
             </CSSTransition>
             <CSSTransition
                 in={AddLinkState.loading}
                 classNames="conSlider"
-                timeout={400}
+                timeout={0}
                 unmountOnExit
             >
                 <div className="cardLoading text-center con">
@@ -379,7 +199,7 @@ function AddLink({ props: { setAvailableCons } }) {
             <CSSTransition
                 in={AddLinkState.loading}
                 classNames="conSlider"
-                timeout={400}
+                timeout={0}
                 unmountOnExit
             >
                 <div className="cardLoading text-center con">
@@ -390,7 +210,7 @@ function AddLink({ props: { setAvailableCons } }) {
             <CSSTransition
                 in={AddLinkState.feedBack.state}
                 classNames="conSlider"
-                timeout={400}
+                timeout={0}
                 unmountOnExit
             >
                 <div className="text-center con text-center d-flex flex-column align-items-center">
@@ -408,5 +228,196 @@ function AddLink({ props: { setAvailableCons } }) {
                 </div>
             </CSSTransition>
         </div>
+    );
+}
+
+function ConnectionCard() {
+    const [AvailableCon, setAvailableCons] = useState([
+        {
+            id: 1,
+            link: "",
+            name: "Facebook",
+            conStatus: false,
+            icon: <FiFacebook />,
+        },
+        {
+            id: 2,
+            link: "",
+            name: "Instagram",
+            conStatus: false,
+            icon: <FiInstagram />,
+        },
+        {
+            id: 3,
+            link: "",
+            name: "Linkedin",
+            conStatus: false,
+            icon: <FiLinkedin />,
+        },
+    ]);
+
+    const Cards = AvailableCon.map(({ id, link, name, conStatus, icon, color }) => {
+        return (
+            <SwiperSlide key={id}>
+                <div className={`swiper_card blacklight shadow ${name}`}>
+                    <div className="con_Status">
+                        <span
+                            className={`indicator ${conStatus ? "Connected" : "Disconnected"}`}
+                        ></span>
+                        {conStatus ? "Connected" : "Disconnected"}
+                    </div>
+                    <div className="actions">
+                        <MdEdit size={15} />
+                        <MdDelete
+                            className="delete"
+                            size={15}
+                            onClick={() => {
+                                setAvailableCons(
+                                    AvailableCon.filter((con) => {
+                                        return con.id !== id;
+                                    })
+                                );
+                            }}
+                        />
+                    </div>
+                    <div className="icon">{icon}</div>
+                    <p className="con_tag">
+                        {conStatus ? "Disconnect from " : "Connect to "}
+                        {name}
+                    </p>
+
+                    <button
+                        className={`con_btn ${conStatus ? "disconnect" : "connect"}`}
+                        onClick={() => {
+                            if (!conStatus) {
+                                setAvailableCons(
+                                    AvailableCon.map((con) => {
+                                        if (con.id === id) con.conStatus = true;
+                                        return con;
+                                    })
+                                );
+                            } else {
+                                setAvailableCons(
+                                    AvailableCon.map((con) => {
+                                        if (con.id === id) con.conStatus = false;
+                                        return con;
+                                    })
+                                );
+                            }
+                        }}
+                    >
+                        {conStatus ? "Disconnect" : "Connect"}
+                    </button>
+                </div>
+            </SwiperSlide>
+        );
+    });
+    return (
+        <Swiper slidesPerView={"auto"} navigation>
+            {Cards}
+            <SwiperSlide>
+                <AddLink props={{ setAvailableCons }} />
+            </SwiperSlide>
+        </Swiper>
+    );
+}
+
+function SubForm({ props: { domainName, domainKey, widgetState } }) {
+    const [SubFormState, setSubFormState] = useState({
+        domainName: domainName,
+        domainKey: domainKey,
+        widgetState: widgetState,
+    });
+
+    function submitOptions(e) {
+        e.preventDefault();
+        // eslint-disable-next-line no-unused-vars
+        var payload = SubFormState;
+        // fetch logic to submit and save settings to API
+        return;
+    }
+
+    function select({ key }) {
+        setSubFormState((prev) => {
+            return { ...prev, widgetState: key };
+        });
+    }
+
+    function setSubForm({ target: { name, value } }) {
+        setSubFormState((prev) => {
+            return {
+                ...prev,
+                [name]: value,
+            };
+        });
+    }
+
+    const menu = (
+        <Menu onSelect={select}>
+            <MenuItem key="Enabled">Enabled</MenuItem>
+            <Divider />
+            <MenuItem key="Disabled">Disabled</MenuItem>
+        </Menu>
+    );
+
+    return (
+        <form onSubmit={submitOptions} className="subForm">
+            <div className="row mt-4 form_grid">
+                <div className="">
+                    <div className="r-c r-c-16">
+                        <h5>Domain Settings</h5>
+                    </div>
+                    <div className="my-3 ml-2 input-box">
+                        <h5 className="tag">Domain name</h5>
+                        <input
+                            type="text"
+                            name="domainName"
+                            className="px-3"
+                            placeholder={domainName}
+                            onChange={setSubForm}
+                        />
+                    </div>
+                    <div className="my-3 ml-2 input-box">
+                        <h5 className="tag">Domain key</h5>
+                        <input
+                            type="text"
+                            name="domainKey"
+                            className="px-3"
+                            placeholder={domainKey}
+                            onChange={setSubForm}
+                        />
+                    </div>
+                </div>
+                <div className="">
+                    <div className="r-c r-c-16">
+                        <h5>Widget Options</h5>
+                    </div>
+                    <div className="my-3 ml-2 input-box">
+                        <h5 className="tag">Enable/Disable Widget</h5>
+                        <Dropdown
+                            trigger={["click"]}
+                            overlay={menu}
+                            animation="slide-up"
+                            closeOnSelect={false}
+                        >
+                            <div className="drop blackdark px-3">
+                                <input
+                                    type="text"
+                                    readOnly
+                                    style={{ cursor: "pointer" }}
+                                    value={SubFormState.widgetState}
+                                />
+                                <MdKeyboardArrowDown size="20px" />
+                            </div>
+                        </Dropdown>
+                    </div>
+                    <div className="cta ">
+                        <button type="submit">
+                            <span>Save</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
     );
 }

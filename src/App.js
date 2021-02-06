@@ -13,7 +13,7 @@ function App() {
             <div className="container-fluid mt-4 board">
                 <div className="row main-controller">
                     <Router>
-                        <div className={`tabs ${open && "open"}`}>
+                        <div className={`tabs ${open ? "open" : ""}`}>
                             <CgClose
                                 className={"closeIcon"}
                                 onClick={() => {

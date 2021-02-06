@@ -6,7 +6,8 @@
     color: white;
     overflow-y: auto;
     overflow-x: hidden;
-    height: calc(100vh - 150px);
+    height: 100%;
+    position: relative;
     @media screen and(max-width:500px) {
         & {
             padding: 15px;
