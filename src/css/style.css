@@ -2295,6 +2295,59 @@ form.subForm input {
   margin-bottom: 20px;
 }
 
+.statistics .DateTabs {
+  border: 1px solid #231f20;
+  font-size: 12px;
+  padding: 5px 10px;
+  background: #333333;
+  cursor: pointer;
+}
+
+.statistics .DateTabs.active {
+  background: #231f20;
+  border: 1px solid #333333;
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+}
+
+@media only screen and (max-width: 766px) {
+  .statistics .col-md-4 div {
+    margin-top: 40px;
+  }
+}
+
+.statistics .wrapper {
+  border-radius: 15px;
+  position: relative;
+}
+
+.statistics .wrapper.visitors {
+  background: linear-gradient(45deg, #ed1c24, #ffc1c4);
+  -webkit-box-shadow: 0px 10px 25px -10px #ac5558;
+          box-shadow: 0px 10px 25px -10px #ac5558;
+}
+
+.statistics .wrapper.sales {
+  background: linear-gradient(45deg, var(--green), #b0fac1);
+  -webkit-box-shadow: 0px 10px 25px -10px #28a745;
+          box-shadow: 0px 10px 25px -10px #28a745;
+}
+
+.statistics .wrapper.leads {
+  background: linear-gradient(45deg, var(--orange), #fdcea7);
+  -webkit-box-shadow: 0px 10px 25px -10px #fd7e14;
+          box-shadow: 0px 10px 25px -10px #fd7e14;
+}
+
+.statistics .wrapper svg {
+  width: 90px;
+  height: 90px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: white;
+}
+
 ul.platform-lists {
   display: -ms-grid;
   display: grid;

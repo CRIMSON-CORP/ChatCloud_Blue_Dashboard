@@ -390,5 +390,74 @@
                 "location": "123 Main Street, New York, NY 10030"
             }
         }
-    ]
+    ],
+
+    "statistics": {
+        "headerData": {
+            "today": [{
+                    "header": "Visitors",
+                    "data": "300",
+                    "percent": "56"
+                },
+                {
+                    "header": "Sales",
+                    "data": "12.5",
+                    "percent": "67"
+                },
+                {
+                    "header": "Leads",
+                    "data": "110",
+                    "percent": "34"
+                }
+            ],
+            "month": [{
+                    "header": "Visitors",
+                    "data": "300",
+                    "percent": "56"
+                },
+                {
+                    "header": "Sales",
+                    "data": "12.5",
+                    "percent": "67"
+                },
+                {
+                    "header": "Leads",
+                    "data": "110",
+                    "percent": "34"
+                }
+            ],
+            "week": [{
+                    "header": "Visitors",
+                    "data": "3000",
+                    "percent": "56"
+                },
+                {
+                    "header": "Sales",
+                    "data": "45",
+                    "percent": "67"
+                },
+                {
+                    "header": "Leads",
+                    "data": "400",
+                    "percent": "34"
+                }
+            ],
+            "year": [{
+                    "header": "Visitors",
+                    "data": "300",
+                    "percent": "56"
+                },
+                {
+                    "header": "Sales",
+                    "data": "12.5",
+                    "percent": "67"
+                },
+                {
+                    "header": "Leads",
+                    "data": "110",
+                    "percent": "34"
+                }
+            ]
+        }
+    }
 }

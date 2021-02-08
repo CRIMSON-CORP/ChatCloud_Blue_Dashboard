@@ -50,7 +50,9 @@ function Main() {
                             <Route path="/Scripts">
                                 <Scripts props={{ apiData: apiData }} />
                             </Route>
-                            <Route path="/Statistics" component={Statistics} />
+                            <Route path="/Statistics">
+                                <Statistics props={{ apiData: apiData }} />
+                            </Route>
                             <Route path="/Download_Plugins" component={Download_Plugins} />
                             <Route path="/Faqs" component={Faqs} />
                             <Route path={["/", "/Dashboard"]}>
