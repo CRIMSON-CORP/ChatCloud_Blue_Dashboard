@@ -18,11 +18,26 @@
             font-size: 18px;
             font-weight: normal;
         }
-        input {
-            padding: 10px 22px;
+        .inputBox,
+        .spec,
+        .themeColor {
             background: $blackLight;
+            position: relative;
+            display: flex;
+            justify-content: space-between;
             width: 100%;
+            flex-direction: row;
+            align-items: center;
+            padding: 10px 22px;
+            span.unit {
+                font-size: 14px;
+                opacity: 0.3;
+            }
+        }
+        input {
             overflow: hidden;
+            background: transparent;
+            width: 100%;
         }
         div.spec {
             display: block;
@@ -103,10 +118,10 @@
                     box-shadow: none !important;
                 }
                 &.reset {
-                    background: $reset;
+                    background: var(--secondary);
                 }
                 &.submit {
-                    background: $save;
+                    background: var(--green);
                 }
             }
         }

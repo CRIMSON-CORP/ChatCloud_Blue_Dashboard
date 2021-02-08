@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { TimelineLite } from "gsap";
 import Dropdown from "rc-dropdown";
-import Menu, { Item as MenuItem, Divider } from "rc-menu";
+import Menu, { Item as MenuItem } from "rc-menu";
 import Tooltip from "react-simple-tooltip";
 function Widgets({ props: { apiData: widgets } }) {
     const Default = widgets.widgets;
@@ -40,18 +40,10 @@ function Widgets({ props: { apiData: widgets } }) {
         var payload = FormData;
         // ^^ set Download URL in Payload object
         // send payload to API
+        FormData.messagesFontSize = parseInt(FormData.messagesFontSize);
+        FormData.timestampFontSize = parseInt(FormData.timestampFontSize);
+        FormData.messagesPadding = parseInt(FormData.messagesPadding);
     }
-
-    var style = {
-        width: 100,
-        background: FormData.themeColor,
-        position: "absolute",
-        display: "inline",
-        right: 5,
-        top: 5,
-        bottom: 5,
-        whiteSpace: "nowrap",
-    };
     return (
         <div className="container-fluid">
             <div className="header_tag">
@@ -64,7 +56,7 @@ function Widgets({ props: { apiData: widgets } }) {
                             header: "Agent Name",
                             type: "text",
                             name: "agentName",
-                            placeholder: FormData.agentName,
+                            placeholder: Default.agentName,
                             change: setData,
                         }}
                     />
@@ -75,36 +67,13 @@ function Widgets({ props: { apiData: widgets } }) {
                             <span>Choose File</span>
                         </div>
                     </div>
-                    <div>
-                        <h5>Theme Color</h5>
-                        <div className="themeColor">
-                            <input type="text" value={FormData.themeColor} readOnly={true} />
-                            <Tooltip
-                                content={"Click Here to Change Theme Color"}
-                                customCss={style}
-                                padding={8}
-                                fadeDuration={300}
-                                fontSize={"10px"}
-                            >
-                                <input
-                                    type="color"
-                                    name="themeColor"
-                                    defaultValue={FormData.themeColor}
-                                    onChange={(e) => {
-                                        setFormData((prev) => {
-                                            return { ...prev, themeColor: e.target.value };
-                                        });
-                                    }}
-                                />
-                            </Tooltip>
-                        </div>
-                    </div>
+                    <ThemeColorSetting setFormData={setFormData} themeColor={FormData.themeColor} />
                     <InputBoxGen
                         props={{
                             header: "Messages Font Size",
                             type: "number",
                             name: "messagesFontSize",
-                            placeholder: FormData.messagesFontSize,
+                            placeholder: Default.messagesFontSize,
                             change: setData,
                         }}
                     />
@@ -115,7 +84,7 @@ function Widgets({ props: { apiData: widgets } }) {
                             header: "Time-Stamp Font-Size",
                             type: "number",
                             name: "timestampFontSize",
-                            placeholder: FormData.timestampFontSize,
+                            placeholder: Default.timestampFontSize,
                             change: setData,
                         }}
                     />
@@ -123,8 +92,8 @@ function Widgets({ props: { apiData: widgets } }) {
                         props={{
                             header: "Messages Padding",
                             type: "number",
-                            name: "mesagesPadding",
-                            placeholder: FormData.messagesPadding,
+                            name: "messagesPadding",
+                            placeholder: Default.messagesPadding,
                             change: setData,
                         }}
                     />
@@ -150,7 +119,54 @@ function InputBoxGen({ props: { header, type, name, placeholder, change } }) {
     return (
         <div>
             <h5>{header}</h5>
-            <input type={type} name={name} placeholder={placeholder} onChange={change} />
+            <div className="inputBox">
+                <input type={type} name={name} placeholder={placeholder} onChange={change} />
+                {type === "number" && <span className="unit">px</span>}
+            </div>
+        </div>
+    );
+}
+
+function ThemeColorSetting({ setFormData, themeColor }) {
+    const [colorChange, setColorChange] = useState(themeColor);
+    var style = {
+        width: 100,
+        background: colorChange,
+        position: "absolute",
+        display: "inline",
+        right: 5,
+        top: 5,
+        bottom: 5,
+        whiteSpace: "nowrap",
+    };
+    return (
+        <div
+            onMouseLeave={() => {
+                setFormData((prev) => {
+                    return { ...prev, themeColor: colorChange };
+                });
+            }}
+        >
+            <h5>Theme Color</h5>
+            <div className="themeColor">
+                <input type="text" value={colorChange} readOnly={true} />
+                <Tooltip
+                    content={"Click Here to Change Theme Color"}
+                    customCss={style}
+                    padding={8}
+                    fadeDuration={300}
+                    fontSize={"10px"}
+                >
+                    <input
+                        type="color"
+                        name="themeColor"
+                        defaultValue={themeColor}
+                        onChange={(e) => {
+                            setColorChange(e.target.value);
+                        }}
+                    />
+                </Tooltip>
+            </div>
         </div>
     );
 }

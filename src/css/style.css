@@ -1333,11 +1333,11 @@ div.dashboard .pie-chart {
 }
 
 .chats .chatList_item a .icon_status.success {
-  background: #4bb543;
+  background: var(--green);
 }
 
 .chats .chatList_item a .icon_status.pending {
-  background: #ffcc00;
+  background: var(--warning);
   color: #ed1c24;
 }
 
@@ -1531,11 +1531,39 @@ form textarea {
   font-weight: normal;
 }
 
-.widget .row-grid input {
-  padding: 10px 22px;
+.widget .row-grid .inputBox,
+.widget .row-grid .spec,
+.widget .row-grid .themeColor {
   background: #333333;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   width: 100%;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 10px 22px;
+}
+
+.widget .row-grid .inputBox span.unit,
+.widget .row-grid .spec span.unit,
+.widget .row-grid .themeColor span.unit {
+  font-size: 14px;
+  opacity: 0.3;
+}
+
+.widget .row-grid input {
   overflow: hidden;
+  background: transparent;
+  width: 100%;
 }
 
 .widget .row-grid div.spec {
@@ -1637,11 +1665,11 @@ form textarea {
 }
 
 .widget .row-grid .cta input.reset {
-  background: #354f7c;
+  background: var(--secondary);
 }
 
 .widget .row-grid .cta input.submit {
-  background: #198a00;
+  background: var(--green);
 }
 
 .widget .row-grid .posDrop {
@@ -2044,6 +2072,10 @@ form.subForm input {
   background: #ed1c24;
 }
 
+.scripts .action input.save {
+  background: var(--green);
+}
+
 .scripts .action input.edit {
   background: #354f7c;
 }
@@ -2203,8 +2235,8 @@ form.subForm input {
   border-radius: 50%;
   left: 20px;
   top: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  -webkit-transform: translate(-42%, -50%);
+          transform: translate(-42%, -50%);
 }
 
 .scripts .accordion__item {

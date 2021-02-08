@@ -60,7 +60,7 @@ function Tabs({ setOpen }) {
         return (
             <NavLink
                 to={link}
-                exact
+                exact={link === "/Conversations" ? false : true}
                 activeClassName="active"
                 key={index}
                 onClick={() => {

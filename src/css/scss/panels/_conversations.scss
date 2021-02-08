@@ -105,10 +105,10 @@
                 -ms-border-radius: 50%;
                 -o-border-radius: 50%;
                 &.success {
-                    background: #4bb543;
+                    background: var(--green);
                 }
                 &.pending {
-                    background: #ffcc00;
+                    background: var(--warning);
                     color: $red;
                 }
             }

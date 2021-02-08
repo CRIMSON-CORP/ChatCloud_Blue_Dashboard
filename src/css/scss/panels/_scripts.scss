@@ -21,6 +21,9 @@
             &.del {
                 background: $red;
             }
+            &.save {
+                background: var(--green);
+            }
             &.edit {
                 background: $reset;
             }
@@ -130,7 +133,7 @@
             border-radius: 50%;
             left: 20px;
             top: 50%;
-            transform: translate(-50%, -50%);
+            transform: translate(-42%, -50%);
         }
     }
     .accordion__item {
