@@ -1,0 +1,13 @@
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30.79 34.88">
+    <defs>
+        <style>
+            .cls-1 {
+                fill: #555;
+            }
+        </style>
+    </defs>
+    <title>caret</title>
+    <path class="cls-1"
+        d="M8.21,24.4,34.59,39.64a2.2,2.2,0,0,0,3.3-1.9V7.26a2.2,2.2,0,0,0-3.3-1.9L8.21,20.6A2.19,2.19,0,0,0,8.21,24.4Z"
+        transform="translate(-7.11 -5.06)" />
+</svg>

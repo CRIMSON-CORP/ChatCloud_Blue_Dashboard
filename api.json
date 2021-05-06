@@ -1,0 +1,463 @@
+{
+    "data": {
+        "date": "12/12/2020",
+        "charts": {
+            "website": {
+                "visitors": [100, 420, 560, 700],
+                "chats": [205, 300, 345, 410],
+                "leads": [30, 35, 65, 70],
+                "sales": [10, 21, 35, 56],
+                "services": [60, 90, 121, 210],
+                "others": [1, 7, 6, 12],
+                "currDayStats": {
+                    "visitors": 2203,
+                    "chats": 432,
+                    "leads": 348,
+                    "sales": 543,
+                    "services": 200,
+                    "others": 45
+                }
+            },
+            "facebook": {
+                "visitors": [201, 240, 301, 600],
+                "chats": [100, 160, 231, 500],
+                "leads": [87, 91, 121, 360],
+                "sales": [81, 85, 100, 319],
+                "services": [60, 90, 121, 210],
+                "others": [5, 6, 45, 110],
+                "currDayStats": {
+                    "visitors": 100,
+                    "chats": 130,
+                    "leads": 100,
+                    "sales": 45,
+                    "services": 120,
+                    "others": 45
+                }
+            },
+            "instagram": {
+                "visitors": [100, 500, 640, 2000],
+                "chats": [205, 300, 345, 410],
+                "leads": [30, 35, 65, 70],
+                "sales": [10, 21, 35, 56],
+                "services": [60, 90, 121, 210],
+                "others": [1, 7, 6, 12],
+                "currDayStats": {
+                    "visitors": 300,
+                    "chats": 231,
+                    "leads": 76,
+                    "sales": 123,
+                    "services": 12,
+                    "others": 2
+                }
+            }
+        }
+    },
+    "widgets": {
+        "agentName": "Felicia",
+        "agentProfilePicURL": "",
+        "themeColor": "#FFFFFF",
+        "messagesFontSize": 12,
+        "timestampFontSize": 8,
+        "messagesPadding": 10,
+        "widgetPos": "Bottom-right"
+    },
+    "options": {
+        "connections": [{
+                "id": 1,
+                "name": "facebook",
+                "link": "https://facebook-link",
+                "connectionStatus": true
+            },
+            {
+                "id": 2,
+                "name": "instagram",
+                "link": "https://instagram-link",
+                "connectionStatus": false
+            },
+            {
+                "id": 3,
+                "name": "linkedin",
+                "link": "https://linkedin-link",
+                "connectionStatus": false
+            }
+        ],
+        "SocialConnections": {
+            "facebook": true,
+            "instagram": false,
+            "linkedin": false
+        },
+        "optionSubSettings": {
+            "domainName": "hello World",
+            "domainKey": "e45r-dfde-ere4-wsds",
+            "widgetState": "Enabled"
+        }
+    },
+    "queries": [{
+            "label": "Greeting",
+            "labelId": "gr123",
+            "content": [{
+                    "text": "May i have your number please?",
+                    "id": "123"
+                },
+                {
+                    "text": "This is Felicia, Thanks for Contacting Chatcloud, How may I help You?",
+                    "id": "1235"
+                },
+                {
+                    "text": "May i have your Phone number Please?",
+                    "id": "1236"
+                },
+                {
+                    "text": "May i have Your email address please?",
+                    "id": "1237"
+                },
+                {
+                    "text": "May i have your Phone number and Email Address in case we need to contact you later?",
+                    "id": "12374"
+                }
+            ]
+        },
+        {
+            "label": "Greeting",
+            "labelId": "gr1234",
+            "content": [{
+                    "text": "May i have your number please?",
+                    "id": "123"
+                },
+                {
+                    "text": "This is Felicia, Thanks for Contacting Chatcloud, How may I help You?",
+                    "id": "1235"
+                },
+                {
+                    "text": "May i have your Phone number Please?",
+                    "id": "1236"
+                },
+                {
+                    "text": "May i have Your email address please?",
+                    "id": "1237"
+                },
+                {
+                    "text": "May i have your Phone number and Email Address in case we need to contact you later?",
+                    "id": "12374"
+                }
+            ]
+        }, {
+            "label": "Greeting",
+            "labelId": "gr12345",
+            "content": [{
+                    "text": "May i have your number please?",
+                    "id": "123"
+                },
+                {
+                    "text": "This is Felicia, Thanks for Contacting Chatcloud, How may I help You?",
+                    "id": "1235"
+                },
+                {
+                    "text": "May i have your Phone number Please?",
+                    "id": "1236"
+                },
+                {
+                    "text": "May i have Your email address please?",
+                    "id": "1237"
+                },
+                {
+                    "text": "May i have your Phone number and Email Address in case we need to contact you later?",
+                    "id": "12374"
+                }
+            ]
+        }, {
+            "label": "Greeting",
+            "labelId": "gr123456",
+            "content": [{
+                    "text": "May i have your number please?",
+                    "id": "123"
+                },
+                {
+                    "text": "This is Felicia, Thanks for Contacting Chatcloud, How may I help You?",
+                    "id": "1235"
+                },
+                {
+                    "text": "May i have your Phone number Please?",
+                    "id": "1236"
+                },
+                {
+                    "text": "May i have Your email address please?",
+                    "id": "1237"
+                },
+                {
+                    "text": "May i have your Phone number and Email Address in case we need to contact you later?",
+                    "id": "12374"
+                }
+            ]
+        }, {
+            "label": "Greeting",
+            "labelId": "gr1234567",
+            "content": [{
+                    "text": "May i have your number please?",
+                    "id": "123"
+                },
+                {
+                    "text": "This is Felicia, Thanks for Contacting Chatcloud, How may I help You?",
+                    "id": "1235"
+                },
+                {
+                    "text": "May i have your Phone number Please?",
+                    "id": "1236"
+                },
+                {
+                    "text": "May i have Your email address please?",
+                    "id": "1237"
+                },
+                {
+                    "text": "May i have your Phone number and Email Address in case we need to contact you later?",
+                    "id": "12374"
+                }
+            ]
+        }, {
+            "label": "Greeting",
+            "labelId": "gr12345678",
+            "content": [{
+                    "text": "May i have your number please?",
+                    "id": "123"
+                },
+                {
+                    "text": "This is Felicia, Thanks for Contacting Chatcloud, How may I help You?",
+                    "id": "1235"
+                },
+                {
+                    "text": "May i have your Phone number Please?",
+                    "id": "1236"
+                },
+                {
+                    "text": "May i have Your email address please?",
+                    "id": "1237"
+                },
+                {
+                    "text": "May i have your Phone number and Email Address in case we need to contact you later?",
+                    "id": "12374"
+                }
+            ]
+        }, {
+            "label": "Greeting",
+            "labelId": "gr123234",
+            "content": [{
+                    "text": "May i have your number please?",
+                    "id": "123"
+                },
+                {
+                    "text": "This is Felicia, Thanks for Contacting Chatcloud, How may I help You?",
+                    "id": "1235"
+                },
+                {
+                    "text": "May i have your Phone number Please?",
+                    "id": "1236"
+                },
+                {
+                    "text": "May i have Your email address please?",
+                    "id": "1237"
+                },
+                {
+                    "text": "May i have your Phone number and Email Address in case we need to contact you later?",
+                    "id": "12374"
+                }
+            ]
+        }
+    ],
+
+    "conversations": [{
+            "chatId": 244321,
+            "userId": 12753457390287,
+            "type": "sucess",
+            "messages": [{
+                    "sender": "agent",
+                    "timestamp": "GMT 10:98:08 00",
+                    "message": "For a month."
+                }, {
+                    "sender": "agent",
+                    "timestamp": "GMT 10:98:08 00",
+                    "message": "For a month."
+                }, {
+                    "sender": "agent",
+                    "timestamp": "GMT 10:98:08 00",
+                    "message": "For a month."
+                }, {
+                    "sender": "agent",
+                    "timestamp": "GMT 10:98:08 00",
+                    "message": "For a month."
+                }, {
+                    "sender": "agent",
+                    "timestamp": "GMT 10:98:08 00",
+                    "message": "For a month."
+                }, {
+                    "sender": "agent",
+                    "timestamp": "GMT 10:98:08 00",
+                    "message": "For a month."
+                }, {
+                    "sender": "agent",
+                    "timestamp": "GMT 10:98:08 00",
+                    "message": "For a month."
+                }, {
+                    "sender": "agent",
+                    "timestamp": "GMT 10:98:08 00",
+                    "message": "For a month."
+                }, {
+                    "sender": "agent",
+                    "timestamp": "GMT 10:98:08 00",
+                    "message": "For a month."
+                }, {
+                    "sender": "agent",
+                    "timestamp": "GMT 10:98:08 00",
+                    "message": "For a month."
+                },
+                {
+                    "sender": "agent",
+                    "timestamp": "GMT 10:98:08 00",
+                    "message": "For a month."
+                },
+                {
+                    "sender": "agent",
+                    "timestamp": "GMT 10:98:08 00",
+                    "message": "For a month."
+                },
+                {
+                    "sender": "user",
+                    "timestamp": "GMT 10:98:06 0",
+                    "message": "Great. What are all formalities needed to be done?"
+                }, {
+                    "sender": "agent",
+                    "timestamp": "GMT 10:98:08 00",
+                    "message": "Sir for booking this package you have to pay 2500/- with a copy of your id proof and photograph."
+                }, {
+                    "sender": "user",
+                    "timestamp": "GMT 10:98:06 00",
+                    "message": "Just send me your account details and your WhatsApp number."
+                }, {
+                    "sender": "agent",
+                    "timestamp": "GMT 10:98:08 00",
+                    "message": "OK!"
+                }
+            ],
+            "lead": {
+                "leadType": "Sales",
+                "leadSent": "03:14:07 2038/01/19",
+                "category": "Instagram"
+            },
+            "visitor": {
+                "name": "Alan Walker",
+                "phoneNumber": "+1-541-754-3010",
+                "email": "alanwalker@eample.com",
+                "ipAddress": "192.168.0.45",
+                "location": "123 Main Street, New York, NY 10030"
+            }
+        },
+        {
+            "chatId": 244334,
+            "userId": 12753457390287,
+            "type": "pendding",
+            "messages": [{
+                    "sender": "agent",
+                    "timestamp": "GMT 10:98:08 00",
+                    "message": "For a month."
+                },
+                {
+                    "sender": "user",
+                    "timestamp": "GMT 10:98:06 0",
+                    "message": "lities needed to be done?"
+                }, {
+                    "sender": "agent",
+                    "timestamp": "GMT 10:98:08 00",
+                    "message": "Sir for booking this package you have to pay 2500/- with a copy of your id proof and photograph."
+                }, {
+                    "sender": "user",
+                    "timestamp": "GMT 10:98:06 00",
+                    "message": "Just send me your account details and your WhatsApp number."
+                }, {
+                    "sender": "agent",
+                    "timestamp": "GMT 10:98:08 00",
+                    "message": "OK!"
+                }
+            ],
+            "lead": {
+                "leadType": "Sales",
+                "leadSent": "03:14:07 2038/01/19",
+                "category": "Instagram"
+            },
+            "visitor": {
+                "name": "Alan Walker",
+                "phoneNumber": "+1-541-754-3010",
+                "email": "alanwalker@eample.com",
+                "ipAddress": "192.168.0.45",
+                "location": "123 Main Street, New York, NY 10030"
+            }
+        }
+    ],
+
+    "statistics": {
+        "headerData": {
+            "today": [{
+                    "header": "Visitors",
+                    "data": "300",
+                    "percent": "56"
+                },
+                {
+                    "header": "Sales",
+                    "data": "12.5",
+                    "percent": "67"
+                },
+                {
+                    "header": "Leads",
+                    "data": "110",
+                    "percent": "34"
+                }
+            ],
+            "month": [{
+                    "header": "Visitors",
+                    "data": "300",
+                    "percent": "56"
+                },
+                {
+                    "header": "Sales",
+                    "data": "12.5",
+                    "percent": "67"
+                },
+                {
+                    "header": "Leads",
+                    "data": "110",
+                    "percent": "34"
+                }
+            ],
+            "week": [{
+                    "header": "Visitors",
+                    "data": "3000",
+                    "percent": "56"
+                },
+                {
+                    "header": "Sales",
+                    "data": "45",
+                    "percent": "67"
+                },
+                {
+                    "header": "Leads",
+                    "data": "400",
+                    "percent": "34"
+                }
+            ],
+            "year": [{
+                    "header": "Visitors",
+                    "data": "300",
+                    "percent": "56"
+                },
+                {
+                    "header": "Sales",
+                    "data": "12.5",
+                    "percent": "67"
+                },
+                {
+                    "header": "Leads",
+                    "data": "110",
+                    "percent": "34"
+                }
+            ]
+        }
+    }
+}

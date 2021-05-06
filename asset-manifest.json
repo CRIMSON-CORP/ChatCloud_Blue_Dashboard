@@ -1,0 +1,41 @@
+{
+  "files": {
+    "main.css": "/ChatCloud_Blue_Dashboard/static/css/main.9b5a5c50.chunk.css",
+    "main.js": "/ChatCloud_Blue_Dashboard/static/js/main.1ebac14d.chunk.js",
+    "main.js.map": "/ChatCloud_Blue_Dashboard/static/js/main.1ebac14d.chunk.js.map",
+    "runtime-main.js": "/ChatCloud_Blue_Dashboard/static/js/runtime-main.ada38595.js",
+    "runtime-main.js.map": "/ChatCloud_Blue_Dashboard/static/js/runtime-main.ada38595.js.map",
+    "static/css/2.9b35d964.chunk.css": "/ChatCloud_Blue_Dashboard/static/css/2.9b35d964.chunk.css",
+    "static/js/2.f70ee372.chunk.js": "/ChatCloud_Blue_Dashboard/static/js/2.f70ee372.chunk.js",
+    "static/js/2.f70ee372.chunk.js.map": "/ChatCloud_Blue_Dashboard/static/js/2.f70ee372.chunk.js.map",
+    "static/js/3.b1b72cca.chunk.js": "/ChatCloud_Blue_Dashboard/static/js/3.b1b72cca.chunk.js",
+    "static/js/3.b1b72cca.chunk.js.map": "/ChatCloud_Blue_Dashboard/static/js/3.b1b72cca.chunk.js.map",
+    "index.html": "/ChatCloud_Blue_Dashboard/index.html",
+    "service-worker.js": "/ChatCloud_Blue_Dashboard/service-worker.js",
+    "service-worker.js.map": "/ChatCloud_Blue_Dashboard/service-worker.js.map",
+    "static/css/2.9b35d964.chunk.css.map": "/ChatCloud_Blue_Dashboard/static/css/2.9b35d964.chunk.css.map",
+    "static/css/main.9b5a5c50.chunk.css.map": "/ChatCloud_Blue_Dashboard/static/css/main.9b5a5c50.chunk.css.map",
+    "static/js/2.f70ee372.chunk.js.LICENSE.txt": "/ChatCloud_Blue_Dashboard/static/js/2.f70ee372.chunk.js.LICENSE.txt",
+    "static/media/Bell.7bb1636b.svg": "/ChatCloud_Blue_Dashboard/static/media/Bell.7bb1636b.svg",
+    "static/media/Conversations.7d44f423.svg": "/ChatCloud_Blue_Dashboard/static/media/Conversations.7d44f423.svg",
+    "static/media/Dashboard.b0184452.svg": "/ChatCloud_Blue_Dashboard/static/media/Dashboard.b0184452.svg",
+    "static/media/Download.883744b4.svg": "/ChatCloud_Blue_Dashboard/static/media/Download.883744b4.svg",
+    "static/media/Faq.242e814c.svg": "/ChatCloud_Blue_Dashboard/static/media/Faq.242e814c.svg",
+    "static/media/Hamburger.aaea4a37.svg": "/ChatCloud_Blue_Dashboard/static/media/Hamburger.aaea4a37.svg",
+    "static/media/LogOut.1de9d2e9.svg": "/ChatCloud_Blue_Dashboard/static/media/LogOut.1de9d2e9.svg",
+    "static/media/Login_Bg.1254388a.jpg": "/ChatCloud_Blue_Dashboard/static/media/Login_Bg.1254388a.jpg",
+    "static/media/Scripts.3143a0fd.svg": "/ChatCloud_Blue_Dashboard/static/media/Scripts.3143a0fd.svg",
+    "static/media/Settings.da89df46.svg": "/ChatCloud_Blue_Dashboard/static/media/Settings.da89df46.svg",
+    "static/media/Statistics.93dfd52a.svg": "/ChatCloud_Blue_Dashboard/static/media/Statistics.93dfd52a.svg",
+    "static/media/Widgets.74306976.svg": "/ChatCloud_Blue_Dashboard/static/media/Widgets.74306976.svg",
+    "static/media/style.css": "/ChatCloud_Blue_Dashboard/static/media/caret.ce883783.svg",
+    "static/media/image.f8704550.jpg": "/ChatCloud_Blue_Dashboard/static/media/image.f8704550.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ada38595.js",
+    "static/css/2.9b35d964.chunk.css",
+    "static/js/2.f70ee372.chunk.js",
+    "static/css/main.9b5a5c50.chunk.css",
+    "static/js/main.1ebac14d.chunk.js"
+  ]
+}
